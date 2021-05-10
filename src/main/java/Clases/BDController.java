@@ -61,7 +61,102 @@ public class BDController {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Error en existeJugador del BDController" + e.getMessage());
+			System.out.println("Error en existeJuego del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeCliente(int id_cliente) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM clientes WHERE id='" + id_cliente + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeCliente del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeGenero(int id_genero) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM genero WHERE id='" + id_genero + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeGenero del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeFormato(int id_formato) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM  WHERE formato id='" + id_formato + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existFormato del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeDistribuidor(int id_distribuidor) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM distribuidor WHERE id='" + id_distribuidor + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeDistribuidor del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeLocal(int id_local) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM local_fisico WHERE id='" + id_local + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeLocal del BDController" + e.getMessage());
 		}
 		return existe;
 	}
