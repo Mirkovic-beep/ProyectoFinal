@@ -340,6 +340,28 @@ form textarea {
   background-color: #69c697;
 }
 
+.button, form input[type="button"], form button, form input[type="reset"] {
+  border: none;
+  background: #45b77d;
+  color: white;
+  widht:20px;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 3px;
+  -webkit-transition: .3s ease;
+          transition: .3s ease;
+}
+.button.muted, form input.muted[type="button"], form button.muted, form input.muted[type="reset"] {
+  background-color: #e5e5e5;
+  color: #898e90;
+}
+.button.muted:hover, form input.muted[type="button"]:hover, form button.muted:hover, form input.muted[type="reset"]:hover, .button.muted:focus, form input.muted[type="button"]:focus, form button.muted:focus, form input.muted[type="reset"]:focus {
+  background-color: #cccccc;
+}
+.button:hover, form input[type="button"]:hover, form button:hover, form input[type="reset"]:hover, .button:focus, form input[type="button"]:focus, form button:focus, form input[type="button"]:focus {
+  background-color: #69c697;
+}
+
 .no-bullet {
   list-style-type: none;
 }

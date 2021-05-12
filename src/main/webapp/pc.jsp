@@ -154,7 +154,7 @@
 						</div> <!-- column -->
 						<div class="col-md-6">
 							<div class="widget">
-								<h3 class="widget-title">Â¿Quieres recibir notificaciones?</h3>
+								<h3 class="widget-title">¿Quieres recibir notificaciones?</h3>
 								<form action="#" class="newsletter-form">
 									<input type="text" placeholder="Inserta tu email...">
 									<input type="submit" value="Suscribirse">
@@ -182,13 +182,13 @@
 			<a href="#" class="close"><i class="fa fa-close"></i></a>
 			<div class="row">
 				<div class="col-md-6">
-					<h2 class="section-title">Inicio de sesiÃ³n</h2>
+					<h2 class="section-title">Inicio de sesión</h2>
 					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="password" placeholder="ContraseÃ±a...">
-						<input type="submit" value="Iniciar sesion">
-					</form>
-				</div> <!-- .column -->
+                    <input type="text" id="nombreLogin" placeholder="Nombre de usuario...">
+                    <input type="password" id="passLogin" placeholder="Contraseña...">
+                    <input type="button" id="enviarLogin" onclick="Revisar()" value="Iniciar sesion">
+                </form>
+                </div>
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
 					<form action="#">

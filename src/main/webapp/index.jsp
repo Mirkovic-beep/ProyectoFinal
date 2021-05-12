@@ -240,10 +240,10 @@
 				<div class="col-md-6">
 					<h2 class="section-title">Inicio de sesión</h2>
 					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="password" placeholder="Contraseña...">
-						<input type="submit" value="Iniciar sesion">
-					</form>
+                    <input type="text" id="nombreLogin" placeholder="Nombre de usuario...">
+                    <input type="password" id="passLogin" placeholder="Contraseña...">
+                    <input type="button" id="enviarLogin" onclick="Revisar()" value="Iniciar sesion">
+                </form>
 				</div> <!-- .column -->
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>

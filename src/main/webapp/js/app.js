@@ -48,3 +48,27 @@
 	});
 
 })(jQuery, document, window);
+
+
+var nombre;
+var pass;
+
+$(document).ready(function() {
+  $("#nombreLogin").keyup(function() {
+    nombre = ($(this).val());
+  });
+})
+
+$(document).ready(function() {
+  $("#passLogin").keyup(function() {
+    pass = ($(this).val());
+  });
+})
+
+function Revisar(){
+    if(nombre == ("admin") && pass == ("root")){
+        window.location.href = "wii.jsp";
+    }else{
+            
+    }
+}
