@@ -11,10 +11,10 @@ public class Main {
 		BDController controlador = new BDController();
 		
 		
-		//ArrayList<Videojuego> juegos = 	controlador.dameVideojuegos();
-		//for (int i = 0; i < juegos.size(); i++) {
-			//System.out.println(juegos.get(i).toString());
-		//}
+		ArrayList<Videojuego> juegos = 	controlador.dameJuegosGenero(2);
+		for (int i = 0; i < juegos.size(); i++) {
+			System.out.println(juegos.get(i).toString());
+		}
 		
 		//ArrayList<Videojuego> juegosCon = controlador.dameJuegosConsola("PC");
 		//for (int i = 0; i < juegosCon.size(); i++) {
@@ -24,6 +24,8 @@ public class Main {
 		System.out.println(controlador.existeCliente(0));
 		
 		System.out.println(controlador.dameJuego(4));
+		
+		
 		
 		
 	}

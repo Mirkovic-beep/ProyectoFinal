@@ -408,5 +408,70 @@ public class BDController {
 		return local;	
 	}
 	
+	public String dameNombreGenero(int id) {
+		String genero="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM genero WHERE id IN (SELECT id_genero FROM videojuegos WHERE id='"+id+"')");
+			
+			if (rs.first() == true) {
+				genero = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalVideojuego del BDController" + e.getMessage());
+		}
+		return genero;	
+	}
+	
+
+	public int dameGeneroVideojuego(int id) {
+		int genero=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM genero WHERE id IN (SELECT id_genero FROM videojuegos WHERE id='"+id+"')");
+			
+			if (rs.first() == true) {
+				genero = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalVideojuego del BDController" + e.getMessage());
+		}
+		return genero;	
+	}
+	
+	public ArrayList<Videojuego> dameJuegosGenero(int id) {
+		ArrayList<Videojuego> juegos = new ArrayList<Videojuego>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			int id_genero = dameGeneroVideojuego(id);
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM videojuegos WHERE id_genero='"+id_genero+"'");
+
+			while (rs.next() == true) {
+				juegos.add(new Videojuego(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getDouble(8),rs.getString(9),rs.getString(10)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameJuegosGenero del BDController" + e.getMessage());
+		}
+		return juegos;
+	}
+	
+	
+	
 
 }

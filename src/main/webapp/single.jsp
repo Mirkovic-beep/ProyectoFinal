@@ -70,7 +70,12 @@
 			<% 
 					int id = Integer.parseInt(request.getParameter("id"));
 					BDController controlador = new BDController();
-					Videojuego juego = controlador.dameJuego(id);	
+					Videojuego juego = controlador.dameJuego(id);
+					controlador.dameGeneroVideojuego(id);
+					ArrayList<Videojuego> juegos = controlador.dameJuegosGenero(id);
+					int genero = controlador.dameGeneroVideojuego(id);
+					String nombreGenero = controlador.dameNombreGenero(id);
+
 			%>
 			
 			<main class="main-content">
@@ -96,11 +101,13 @@
 									<small class="price"><%=juego.getPrecio()%> €</small>
 
 									<p>Copias disponibles: <%=juego.getNcopias() %></p>
-									<br>
 									<p>Duracion: <%=juego.getDuracion()%> minutos</p>
+									<br>
+									<p>Genero: <%=nombreGenero %> </p>
 									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %>
 									<p>Desarrolladora: <%=controlador.dameDesarrolladoraVideojuego(id)%>
 									<p>Local físico: <%=controlador.dameLocalVideojuego(id) %>
+									
 																		
 
 									<div class="addtocart-bar">
@@ -130,58 +137,27 @@
 							<header>
 								<h2 class="section-title">Productos similares</h2>
 							</header>
+							
 							<div class="product-list">
+							
+							<%for(int i=0;i<juegos.size();i++){ %>
 								<div class="product">
 									<div class="inner-product">
 										<div class="figure-image">
-											<a href="single.html"><img src="images/hotline.jpg" alt="Game 1"></a>
+											<a href="single.jsp?id=<%=juegos.get(i).getId() %>"><img src="images/<%=juegos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
 										</div>
-										<h3 class="product-title"><a href="#">Hotline Miama</a></h3>
-										<small class="price">19.00â¬</small>
-										<a href="cart.html" class="button">AÃ±adir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
+										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=juegos.get(i).getPrecio() %> €</small>
+										<a href="cart.jsp" class="button">Añadir al carrito</a>
+										<a href="single.jsp?id=<%=juegos.get(i).getId() %>" class="button muted">Detalles</a>
 									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/deadspace.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Dead Space</a></h3>
-										<small class="price">39.00â¬</small>
-										<a href="cart.html" class="button">AÃ±adir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/quakearena.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Quake Arena</a></h3>
-										<small class="price">29.00â¬</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/scurge.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Scurge</a></h3>
-										<small class="price">39.00â¬</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
+								</div> <!-- .product -->	
+							<%} %>
 								
-							</div> <!-- .product-list --></section>
-
-						
+								
+							</div> <!-- .product-list -->
+							
+						</section>
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
