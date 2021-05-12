@@ -44,12 +44,12 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="pc.html">PC</a></li>
-							<li class="menu-item"><a href="playstation.html">PlayStation</a></li>
-							<li class="menu-item"><a href="xbox.html">Xbox</a></li>
-							<li class="menu-item"><a href="wii.html">Wii</a></li>
-							<li class="menu-item"><a href="aboutus.html">Sobre nosotros</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="pc.jsp">PC</a></li>
+							<li class="menu-item"><a href="playstation.jsp">PlayStation</a></li>
+							<li class="menu-item"><a href="xbox.jsp">Xbox</a></li>
+							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
+							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
 						<div class="search-form">
 							<label><img src="images/icon-search.png"></label>

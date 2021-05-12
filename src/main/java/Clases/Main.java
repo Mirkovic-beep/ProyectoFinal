@@ -23,6 +23,8 @@ public class Main {
 		
 		System.out.println(controlador.existeCliente(0));
 		
+		System.out.println(controlador.dameJuego(4));
+		
 		
 	}
 

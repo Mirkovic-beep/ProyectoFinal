@@ -5,6 +5,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		<%@ page import="Clases.*" %>
+		<%@ page import="java.util.*" %>
 		
 		<title>Home</title>
 
@@ -20,6 +22,11 @@
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+		
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Videojuego> ofertas = cotroladorBD.dameJuegosOferta();%>
+<%ArrayList<Videojuego> nuevos = cotroladorBD.dameJuegosNuevos(1);%>
+
 
 	</head>
 
@@ -44,12 +51,12 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="pc.html">PC</a></li>
-							<li class="menu-item"><a href="playstation.html">PlayStation</a></li>
-							<li class="menu-item"><a href="xbox.html">Xbox</a></li>
-							<li class="menu-item"><a href="wii.html">Wii</a></li>
-							<li class="menu-item"><a href="aboutus.html">Sobre nosotros</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="pc.jsp">PC</a></li>
+							<li class="menu-item"><a href="playstation.jsp">PlayStation</a></li>
+							<li class="menu-item"><a href="xbox.jsp">Xbox</a></li>
+							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
+							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
 						<div class="search-form">
 							<label><img src="images/icon-search.png"></label>
@@ -74,7 +81,7 @@
 								<a href="cart.jsp" class="button">Añadir al carrito</a>
 							</div>
 
-							<img src="images/skyrim.jpg" class="slide-image">
+							<img src="images/Skyrim.jpg" class="slide-image">
 						</div>
 					</li>
 					<li data-bg-image="images/fondo.jpg">
@@ -88,7 +95,7 @@
 								<a href="cart.jsp" class="button">Añadir al carrito</a>
 							</div>
 
-							<img src="images/mario.jpg" class="slide-image">
+							<img src="images/Mario.jpg" class="slide-image">
 						</div>
 					</li>
 					<li data-bg-image="images/fondo.jpg">
@@ -102,7 +109,7 @@
 								<a href="cart.jsp" class="button">Añadir al carrito</a>
 							</div>
 
-							<img src="images/borderlands.jpg" class="slide-image">
+							<img src="images/Borderlands.jpg" class="slide-image">
 						</div>
 					</li>
 				</ul> <!-- .slides -->
@@ -113,119 +120,50 @@
 					<div class="page">
 						<section>
 							<header>
-								<h2 class="section-title">Juegos nuevos</h2>
+								<h2 class="section-title">Precios Ultra Rebajados</h2>
 							</header>
 
+						
 							<div class="product-list">
+						
+							<%for(int i=0;i<ofertas.size();i++){ %>
 								<div class="product">
 									<div class="inner-product">
 										<div class="figure-image">
-											<a href="single.jsp"><img src="images/diablo.jpg" alt="Game 1"></a>
+											<a href="single.jsp?id=<%=ofertas.get(i).getId() %>"><img src="images/<%=ofertas.get(i).getNombre()%>.jpg" alt="Game 1"></a>
 										</div>
-										<h3 class="product-title"><a href="#">Diablo III</a></h3>
-										<small class="price">19.00€</small>
+										<h3 class="product-title"><a href="#"><%=ofertas.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=ofertas.get(i).getPrecio() %> €</small>
 										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
+										<a href="single.jsp?id=<%=ofertas.get(i).getId() %>" class="button muted">Detalles</a>
 									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/deadspace.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Dead Space</a></h3>
-										<small class="price">39.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/hotline.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Hotline Miami</a></h3>
-										<small class="price">29.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/mortalkombat.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Mortal Kombat</a></h3>
-										<small class="price">59.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
+								</div> <!-- .product -->	
+							<%} %>
 							</div> <!-- .product-list -->
 
 						</section>
 
 						<section>
 							<header>
-								<h2 class="section-title">Hall de la fama</h2>
+								<h2 class="section-title">Juegos nuevos</h2>
 							</header>
 
 							<div class="product-list">
-								
+							
+							<%for(int i=0;i<nuevos.size();i++){ %>
 								<div class="product">
 									<div class="inner-product">
 										<div class="figure-image">
-											<a href="single.jsp"><img src="images/bioshock.jpg" alt="Game 1"></a>
+												<a href="single.jsp?id=<%=nuevos.get(i).getId() %>"><img src="images/<%=nuevos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
 										</div>
-										<h3 class="product-title"><a href="#">Bioshock</a></h3>
-										<small class="price">59.00€</small>
+										<h3 class="product-title"><a href="#"><%=nuevos.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=nuevos.get(i).getPrecio() %> €</small>
 										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
+										<a href="single.jsp?id=<%=nuevos.get(i).getId() %>" class="button muted">Detalles</a>
 									</div>
 								</div> <!-- .product -->
+							<%} %>
 								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/halo4.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Halo 4</a></h3>
-										<small class="price">19.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/crazytaxi.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Crazy Taxi</a></h3>
-										<small class="price">29.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp"><img src="images/colossus.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Shadow of the colossus</a></h3>
-										<small class="price">49.00€</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
 								
 							</div> <!-- .product-list -->
 

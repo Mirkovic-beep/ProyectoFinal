@@ -1,11 +1,13 @@
-<!DOCTYPE html>
 <html lang="en">
 	<head>
+		<%@page contentType="text/html" pageEncoding="UTF-8"%>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		<%@ page import="Clases.*" %>
+		<%@ page import="java.util.*" %>
 		
-		<title>XBOX</title>
+		<title>PC</title>
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
@@ -21,6 +23,9 @@
 		<![endif]-->
 
 	</head>
+	
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Xbox");%>
 
 
 	<body>
@@ -44,12 +49,12 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="pc.html">PC</a></li>
-							<li class="menu-item"><a href="playstation.html">PlayStation</a></li>
-							<li class="menu-item"><a href="xbox.html">Xbox</a></li>
-							<li class="menu-item"><a href="wii.html">Wii</a></li>
-							<li class="menu-item"><a href="aboutus.html">Sobre nosotros</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="pc.jsp">PC</a></li>
+							<li class="menu-item"><a href="playstation.jsp">PlayStation</a></li>
+							<li class="menu-item"><a href="xbox.jsp">Xbox</a></li>
+							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
+							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
 						<div class="search-form">
 							<label><img src="images/icon-search.png"></label>
@@ -87,114 +92,23 @@
 						</div> <!-- .filter-bar -->
 						
 						<div class="product-list">
+							
+							<%for(int i=0;i<juegos.size();i++){ %>
 								<div class="product">
 									<div class="inner-product">
 										<div class="figure-image">
-											<a href="single.html"><img src="images/armoredcore.jpg" alt="Game 1"></a>
+											<a href="single.jsp?id=<%=juegos.get(i).getId() %>"><img src="images/<%=juegos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
 										</div>
-										<h3 class="product-title"><a href="#">Armored Core</a></h3>
-										<small class="price">19.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
+										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=juegos.get(i).getPrecio() %> €</small>
+										<a href="cart.jsp" class="button">Añadir al carrito</a>
+										<a href="single.jsp?id=<%=juegos.get(i).getId() %>" class="button muted">Detalles</a>
 									</div>
-								</div> <!-- .product -->
+								</div> <!-- .product -->	
+							<%} %>
 
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/bioshock.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Bioshock</a></h3>
-										<small class="price">39.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/halo4.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Halo 4</a></h3>
-										<small class="price">29.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/left4dead.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Left 4 dead</a></h3>
-										<small class="price">59.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/skyrim.jpg" alt="Game 1"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Skyrim</a></h3>
-										<small class="price">19.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/streetfighter.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Street Fighter</a></h3>
-										<small class="price">39.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/monkeyisland.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Monkey Island</a></h3>
-										<small class="price">29.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="images/starwars.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Starwars</a></h3>
-										<small class="price">59.00€</small>
-										<a href="cart.html" class="button">Añadir al carrito</a>
-										<a href="#" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->
-
-							</div> <!-- .product-list -->
-						<div class="pagination-bar">
-							<div class="pagination">
-								<a href="#" class="page-number"><i class="fa fa-angle-left"></i></a>
-								<span class="page-number current">1</span>
-								<a href="#" class="page-number">2</a>
-								<a href="#" class="page-number">3</a>
-								<a href="#" class="page-number">...</a>
-								<a href="#" class="page-number">12</a>
-								<a href="#" class="page-number"><i class="fa fa-angle-right"></i></a>
-							</div> <!-- .pagination -->
-						</div>
+						</div> <!-- .product-list -->
+					
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
@@ -231,13 +145,13 @@
 									<li><a href="#">Opciones</a></li>
 									<li><a href="#">Carrito</a></li>
 									<li><a href="#">Localizar paquete</a></li>
-									<li><a href="#">Cerrar sesión</a></li>
+									<li><a href="#">Cerrar sesiÃ³n</a></li>
 								</ul>
 							</div> <!-- .widget -->
 						</div> <!-- column -->
 						<div class="col-md-6">
 							<div class="widget">
-								<h3 class="widget-title">¿Quieres recibir notificaciones?</h3>
+								<h3 class="widget-title">Â¿Quieres recibir notificaciones?</h3>
 								<form action="#" class="newsletter-form">
 									<input type="text" placeholder="Inserta tu email...">
 									<input type="submit" value="Suscribirse">
@@ -265,10 +179,10 @@
 			<a href="#" class="close"><i class="fa fa-close"></i></a>
 			<div class="row">
 				<div class="col-md-6">
-					<h2 class="section-title">Inicio de sesión</h2>
+					<h2 class="section-title">Inicio de sesiÃ³n</h2>
 					<form action="#">
 						<input type="text" placeholder="Nombre de usuario...">
-						<input type="password" placeholder="Contraseña...">
+						<input type="password" placeholder="ContraseÃ±a...">
 						<input type="submit" value="Iniciar sesion">
 					</form>
 				</div> <!-- .column -->
@@ -277,7 +191,7 @@
 					<form action="#">
 						<input type="text" placeholder="Nombre de usuario...">
 						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="Contraseña...">
+						<input type="text" placeholder="ContraseÃ±a...">
 						<input type="submit" value="Registrarse">
 					</form>
 				</div> <!-- .column -->

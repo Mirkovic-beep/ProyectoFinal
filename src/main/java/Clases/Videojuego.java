@@ -11,10 +11,11 @@ public class Videojuego {
 	private int id_distribuidor;
 	private double precio;
 	private String consola;
+	private String nuevo;
 	
 	
 	public Videojuego(int id, int id_genero, int ncopias, int duracion, String nombre, String pegi, int id_distribuidor,
-			double precio,String consola) {
+			double precio,String consola,String nuevo) {
 		super();
 		this.id = id;
 		this.id_genero = id_genero;
@@ -25,7 +26,21 @@ public class Videojuego {
 		this.id_distribuidor = id_distribuidor;
 		this.precio = precio;
 		this.consola = consola;
+		this.nuevo = nuevo;
 	}
+	
+	public Videojuego() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getNuevo() {
+		return nuevo;
+	}
+	
+	public void setNuevo(String nuevo) {
+		this.nuevo = nuevo;
+	}
+	
 	
 	public String getConsola() {
 		return consola;
