@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 function Revisar(){
     if(nombre == ("admin") && pass == ("root")){
-        window.location.href = "wii.jsp";
+        window.location.href = "indexadmin.jsp";
     }else{
             
     }

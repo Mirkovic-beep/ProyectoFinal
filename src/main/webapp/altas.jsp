@@ -42,25 +42,21 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> Carrito Vacío</a>
-						<a href="#" class="login-button">Iniciar sesion/Registro</a>
+						<a href=index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="pc.jsp">PC</a></li>
-							<li class="menu-item"><a href="playstation.jsp">PlayStation</a></li>
-							<li class="menu-item"><a href="xbox.jsp">Xbox</a></li>
-							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
-							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
+							<li class="menu-item"><a href="alta_videojuego.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
+							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
+							<li class="menu-item"><a href="alta_local.jsp">Formato </a></li>
+							<li class="menu-item"><a href="alta_local.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="alta_local.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
-						<div class="search-form">
-							<label><img src="images/icon-search.png"></label>
-							<input type="text" placeholder="Buscar...">
-						</div> <!-- .search-form -->
-
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
@@ -68,7 +64,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Wii</span>
+							<span>Altas</span>
 						</div>
 					</div>
 
@@ -77,35 +73,26 @@
 			<main class="main-content">
 				<div class="container">
 					<div class="page">
-						<div class="filter-bar">
-							<div class="filter">
-								<span>
-									<label>Ordenar por:</label>
-									<select name="#">
-										<option value="#">Popularidad</option>
-										<option value="#">Mas votados</option>
-										<option value="#">Precio más bajo</option>
-									</select>
-								</span>
-					
-							</div> <!-- .filter -->
-						</div> <!-- .filter-bar -->
+						
 						
 						<div class="product-list">
+							
+							<section>
+							<header>
+								<h2 class="section-title">Menu Altas</h2>
+							</header>
+		
+							<div class="product-list">
+							
+								<p> En el menú superior encontrará el acceso a los formularios de alta de todas las entidades de la base de datos</p>
+							
+							
+								
+								
+							</div> <!-- .product-list -->
+
+						</section>
 						
-						<%for(int i=0;i<juegos.size();i++){ %>
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.jsp?id=<%=juegos.get(i).getId() %>"><img src="images/<%=juegos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
-										</div>
-										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
-										<small class="price"><%=juegos.get(i).getPrecio() %> €</small>
-										<a href="cart.jsp" class="button">Añadir al carrito</a>
-										<a href="single.jsp?id=<%=juegos.get(i).getId() %>" class="button muted">Detalles</a>
-									</div>
-								</div> <!-- .product -->	
-							<%} %>
 								
 						</div> <!-- .product-list -->
 					</div>
