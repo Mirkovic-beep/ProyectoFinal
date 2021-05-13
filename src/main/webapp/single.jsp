@@ -107,6 +107,9 @@
 									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %>
 									<p>Desarrolladora: <%=controlador.dameDesarrolladoraVideojuego(id)%>
 									<p>Local físico: <%=controlador.dameLocalVideojuego(id) %>
+									<br>
+									<br>
+									<img src="images/<%=juego.getPegi()%>.png" style="width:100px">
 									
 																		
 

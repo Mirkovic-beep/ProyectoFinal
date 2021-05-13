@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -34,7 +34,7 @@
 			<div class="site-header">
 				<div class="container">
 					<a href="index.html" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,20 +42,22 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href=index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation">
+					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Bajas/videojuegos.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Formato </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Desarrolladora </a></li>
+							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="videojuegos.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clientes.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="locales.jsp">Local </a></li>
+							<li class="menu-item"><a href="generos.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidor.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladora.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
+							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -64,7 +66,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Bajas</span>
+							<span>Altas</span>
 						</div>
 					</div>
 
@@ -78,17 +80,25 @@
 						<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Bajas</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los menús desplegables para hacer las eliminaciones</p>
-					
-							</div> <!-- .product-list -->
-
-						</section>
+								<h3>Alta Videojuego-Local</h3>
+								
+								<form action="../operaciones_alu.jsp?accion=AltaVideojuegoLocal" method="post">
+									<div>
+										<div class="">
+											<input type="number" name="id_local" id="id_local" required placeholder="Id del local" maxlength="4"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="id_videojuego" id="id_videojuego" required placeholder="Id del videojuego"/>
+										</div>
+										<br>	
+									</div>
+									<br>
+										<input type="submit" class="button" value="Dar de Alta" />
+									
+								</form>
+								
+							</section>
 						
 								
 						</div> <!-- .product-list -->
@@ -181,9 +191,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
 

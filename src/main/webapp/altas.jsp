@@ -45,17 +45,19 @@
 						<a href=index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation">
+					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="alta_videojuego.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="Altas/videojuegos.jsp">Videojuego</a></li>
 							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Formato </a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Altas/Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
+							<li class="menu-item"><a href="Altas/Local_videojuego.jsp">Local-Videojuego</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->

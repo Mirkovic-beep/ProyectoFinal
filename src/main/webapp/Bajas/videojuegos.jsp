@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -25,7 +25,7 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Videojuego> juegos = cotroladorBD.dameVideojuegos();%>
 
 
 	<body>
@@ -34,7 +34,7 @@
 			<div class="site-header">
 				<div class="container">
 					<a href="index.html" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,14 +42,14 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href=index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Bajas/videojuegos.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="alta_videojuego.jsp">Videojuego</a></li>
 							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
 							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
@@ -64,7 +64,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Bajas</span>
+							<span>Altas</span>
 						</div>
 					</div>
 
@@ -74,22 +74,35 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
-							<section>
-							<header>
-								<h2 class="section-title">Menu Bajas</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los menús desplegables para hacer las eliminaciones</p>
+				<form action="../operaciones_alu.jsp?accion=BajaVideojuego" method="post">
+					<div class="row gtr-50">
 					
-							</div> <!-- .product-list -->
-
-						</section>
-						
+							<section>		
+								<h3>Baja Videojuego</h3>
+								
+								<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona jugador</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<juegos.size();i++){%>
+									<li class="input-option" data-value="<%=juegos.get(i).getId()%>">
+									<img src="../images/<%=juegos.get(i).getNombre() %>.jpg" alt="Girl in a jacket" width="500" height="600">
+									<h3><%=juegos.get(i).getNombre()%></h3>
+									<input type="hidden" class="option" name="id_videojuego" value="<%=juegos.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
+							</div>
+								
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Dar de baja"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -112,7 +125,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>
@@ -181,9 +194,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
 

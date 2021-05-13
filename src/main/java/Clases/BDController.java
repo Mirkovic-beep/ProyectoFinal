@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
 
+
 public class BDController {
 	private Connection miConexion;
 
@@ -23,12 +24,7 @@ public class BDController {
 
 		} catch (SQLException e) {
 			System.out.println("Error en constructor BDController" + e.getMessage()); 
-		}
-		String sqlconsultaPrepExisteJugador = "SELECT*FROM jugadores WHERE cod_jugador=?";
-		String sqlconsultaPrepExisteEquipo = "SELECT * FROM equipos WHERE cod_equipo=?";
-		String sqlconsultaPrepExisteNombreEquipo = "SELECT*FROM equipos WHERE nombre=?";
-		String sqlconsultaPrepExisteLiga = "SELECT*FROM ligas WHERE cod_liga=?";
-		
+		}		
 	}
 	
 	public BDController(Connection miConexion) {
@@ -157,6 +153,25 @@ public class BDController {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error en existeLocal del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeDesarrolladora(int id_desarrolladora) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM desarrolladora WHERE id='" + id_desarrolladora + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeDesarrolladora del BDController" + e.getMessage());
 		}
 		return existe;
 	}
@@ -388,6 +403,26 @@ public class BDController {
 		return desarrolladora;	
 	}
 	
+	public int dameDesarrolladoraVideojuegoId(int id) {
+		int desarrolladora=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT id FROM desarrolladora WHERE id in (SELECT id_desarrolladora from es_desarrollado where id_videojuego in (SELECT id from videojuegos where id='"+id+"'));");
+
+			if (rs.first() == true) {
+				desarrolladora = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameDesarrolladoraVideojuegoId del BDController" + e.getMessage());
+		}
+		return desarrolladora;	
+	}
+	
 	public String dameLocalVideojuego(int id) {
 		String local="";
 		
@@ -407,6 +442,27 @@ public class BDController {
 		}
 		return local;	
 	}
+	
+	public int dameLocalVideojuegoId(int id) {
+		int id_videojuego=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT id FROM local_fisico WHERE id in (SELECT id_local from almacenar where id_videojuego in (SELECT id from videojuegos where id='"+id+"'));");
+
+			if (rs.first() == true) {
+				id_videojuego = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalVideojuego del BDController" + e.getMessage());
+		}
+		return id_videojuego;	
+	}
+
 	
 	public String dameNombreGenero(int id) {
 		String genero="";
@@ -448,6 +504,28 @@ public class BDController {
 		}
 		return genero;	
 	}
+
+	public String damePegiVideojuego(int id) {
+		String pegi="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT pegi FROM videojuegos WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				pegi = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en damePegiVideojuego del BDController" + e.getMessage());
+		}
+		return pegi;	
+	}
+	
+
 	
 	public ArrayList<Videojuego> dameJuegosGenero(int id) {
 		ArrayList<Videojuego> juegos = new ArrayList<Videojuego>();
@@ -471,7 +549,96 @@ public class BDController {
 		return juegos;
 	}
 	
+	// Calcular codigos
 	
 	
+	public int calcularCod_videojuego() {
+		int id_videojuego = 1;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT MAX(id) FROM videojuegos");
+			if (rs.first() == true) {
+				id_videojuego = rs.getInt(1);
+				id_videojuego++;
+				}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Error en calcularCod_liga del BDController" + e.getMessage());
+		}
+		return id_videojuego;
+	}
+	
+	//Insercciones
+	
+	public void insertarJuegoBDD(Videojuego juego) {
+					
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			
+			String sql = "INSERT INTO videojuegos VALUES ('" + juego.getId() + "', '" + juego.getId_genero() + "', '" + juego.getNcopias() +  "', '" + juego.getDuracion() + "', '" + juego.getNombre() + "', '" + juego.getPegi() + "', '" + juego.getId_distribuidor() + "', '" + juego.getPrecio() + "', '" + juego.getConsola() + "', '" + juego.getNuevo() + "')";
+			miStatement.executeUpdate(sql);			
+			
+			miStatement.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en insertarJuego del BDController" + e.getMessage());
+		}
+	}
+	
+	
+	
+	public void insertarJuegoDesarrolladora(int id_videojuego,int id_desarrolladora) {
+		
+			try {
+				Statement miStatement = this.miConexion.createStatement();
+				
+				String sql ="INSERT INTO es_desarrollado values ('" +id_videojuego +"' , '"+ id_desarrolladora+"')";
+				miStatement.executeUpdate(sql);
+				
+				miStatement.close();
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Error en insertarJuegoDesarrolladora del BDController" + e.getMessage());
+			}
+		}
+	
+	public void insertarJuegoLocal(int id_local,int id_videojuego) {
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			
+			String sql ="INSERT INTO almacenar values ('" +id_local +"' , '"+ id_videojuego+"')";
+			miStatement.executeUpdate(sql);
+			
+			miStatement.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en insertarJuegoLocal del BDController" + e.getMessage());
+		}
+	}
+	
+	
+	//Bajas
+	
+	public void borrarVideojuego(int id_juego) {
 
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM videojuegos WHERE id='"+id_juego+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarJuego del BDController" + e.getMessage());
+		}
+	}
+	
 }
