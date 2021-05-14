@@ -85,7 +85,7 @@
 								<form action="../operaciones_alu.jsp?accion=AltaVideojuego" method="post">
 									<div>
 										<div class="">
-											<input type="number" name="id_genero" id="id_genero" required placeholder="Id del género del juego" maxlength="4"/>
+											<input type="text" name="nombre_genero" id="nombre_genero" required style="width:163px" placeholder="Nombre del género" />
 										</div>
 										<br>
 										<div class="">
@@ -97,26 +97,26 @@
 										</div>
 										<br>			
 										<div class="">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required style="width:163px" maxlength="20"/>
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required style="width:163px" />
 										</div>	
 										<div class="">
-											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required style="width:163px" maxlength="20"/>
+											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required style="width:163px"/>
 										</div>	
 										<br>
 										<div class="">
-											<input type="number" name="id_distribuidor" id="id_distribuidor" required placeholder="ID del distribuidor" maxlength="4"/>
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="number" name="precio" id="precio" required placeholder="Precio juego" maxlength="4"/>
+											<input type="number" step="0.01" name="precio" id="precio" required placeholder="Precio juego" />
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="consola" id="consola" required placeholder="Consola" style="width:163px" maxlength="4"/>
+											<input type="text" name="consola" id="consola" required placeholder="Consola" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="number" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)" maxlength="4"/>
+											<input type="number" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)"/>
 										</div>
 												
 									</div>

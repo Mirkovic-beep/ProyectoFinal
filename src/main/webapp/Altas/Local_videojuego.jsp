@@ -85,16 +85,16 @@
 								<form action="../operaciones_alu.jsp?accion=AltaVideojuegoLocal" method="post">
 									<div>
 										<div class="">
-											<input type="number" name="id_local" id="id_local" required placeholder="Id del local" maxlength="4"/>
+											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="number" name="id_videojuego" id="id_videojuego" required placeholder="Id del videojuego"/>
+											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
 										</div>
 										<br>	
 									</div>
 									<br>
-										<input type="submit" class="button" value="Dar de Alta" />
+									<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								

@@ -525,6 +525,108 @@ public class BDController {
 		return pegi;	
 	}
 	
+	public int dameCodigoGeneroNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM genero WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoGeneroNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	public int dameCodigoVideojuegoNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM videojuegos WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoJuegoNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	public int dameCodigoDesarrolladoraNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM desarrolladora WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoDesarrolladoraNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	public int dameCodigoDistribuidorNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM distribuidor WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoDistribuidorNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	public int dameCodigoLocalNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT id FROM local_fisico WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoLocalNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	
+	
 
 	
 	public ArrayList<Videojuego> dameJuegosGenero(int id) {

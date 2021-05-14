@@ -85,11 +85,11 @@
 								<form action="../operaciones_alu.jsp?accion=AltaVideojuegoDesarrolladora" method="post">
 									<div>
 										<div class="">
-											<input type="number" name="id_videojuego" id="id_videojuego" required placeholder="Id del videojuego" maxlength="4"/>
+											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="number" name="id_desarrolladora" id="id_desarrolladora" required placeholder="Id de la desarrolladora"/>
+											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required placeholder="Nombre de la desarrolladora" style="width:163px"/>
 										</div>
 										<br>	
 									</div>

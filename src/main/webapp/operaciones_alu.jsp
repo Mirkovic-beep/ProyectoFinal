@@ -33,7 +33,12 @@
 		String nombre = "";
 		String pegi = "";
 		String consola = "";
+		String nombre_genero = "";
 		String nuevo = "";
+		String nombre_distribuidor = "";
+		String nombre_videojuego = "";
+		String nombre_local = "";
+		String nombre_desarrolladora = "";
 		int id_genero = 0;
 		int ncopias = 0;
 		int duracion = 0;
@@ -49,13 +54,20 @@
 		
 		if (accion.equalsIgnoreCase("AltaVideojuego")){
 			
-			if (request.getParameter("id_genero").isEmpty()){
-				mensaje = "El código del genero no puede estar vacío";
+			nombre_genero = request.getParameter("nombre_genero");
+			nombre_distribuidor = request.getParameter("nombre_distribuidor");
+			
+			id_distribuidor = controladorBD.dameCodigoDistribuidorNombre(nombre_distribuidor);
+			id_genero = controladorBD.dameCodigoGeneroNombre(nombre_genero);
+			
+			if (Integer.toString(id_genero).equalsIgnoreCase("")){
+				mensaje = "El nombre del genero no puede estar vacio";
+				
 			}else{
-				if (controladorBD.existeGenero(Integer.parseInt(request.getParameter("id_genero")))){
-					id_genero = Integer.parseInt(request.getParameter("id_genero"));
+				if (controladorBD.existeGenero(id_genero)){
+					id_genero = controladorBD.dameCodigoGeneroNombre(nombre_genero);
 				}else{
-					mensaje = mensaje + "El código del equipo no existe en la BD.";
+					mensaje = mensaje + "El nombre del genero no existe en la BD.";
 				}
 			}
 			
@@ -83,13 +95,13 @@
 				pegi = request.getParameter("pegi");
 			}
 			
-			if (request.getParameter("id_distribuidor").isEmpty()){
-				mensaje = mensaje + " El id de distribuidor no puede estar vacío";
+			if (Integer.toString(id_distribuidor).equalsIgnoreCase("")){
+				mensaje = mensaje + " El nombre del distribuidor no puede estar vacío";
 			}else{
-				if (controladorBD.existeDistribuidor(Integer.parseInt(request.getParameter("id_distribuidor")))){
-					id_distribuidor = Integer.parseInt(request.getParameter("id_distribuidor"));
+				if (controladorBD.existeDistribuidor(id_distribuidor)){
+					id_distribuidor = controladorBD.dameCodigoDistribuidorNombre(nombre_distribuidor);
 				}else{
-					mensaje = mensaje + "El código del distribuidor no existe en la BD.";
+					mensaje = mensaje + "El nombre del distribuidor no existe en la BD.";
 				}
 			}
 			
@@ -126,26 +138,35 @@
 		
 		
 	if (accion.equalsIgnoreCase("AltaVideojuegoDesarrolladora")){
+		
+		nombre_videojuego = request.getParameter("nombre_videojuego");
+		nombre_desarrolladora = request.getParameter("nombre_desarrolladora");
+		
+		id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+		id_desarrolladora = controladorBD.dameCodigoDesarrolladoraNombre(nombre_desarrolladora);
+		
+		if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
+			mensaje = "El nombre del videojuego no puede estar vacio";
 			
-			if (request.getParameter("id_videojuego").isEmpty()){
-				mensaje = "El código del videojuego";
+		}else{
+			if (controladorBD.existeJuego(id_videojuego)){
+				id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 			}else{
-				if (controladorBD.existeJuego(Integer.parseInt(request.getParameter("id_videojuego")))){
-					id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
-				}else{
-					mensaje = mensaje + "El código del videojuego";
-				}
-			}		
-			
-			if (request.getParameter("id_desarrolladora").isEmpty()){
-				mensaje = mensaje + " El id de desarrolladora no puede estar vacío";
-			}else{
-				if (controladorBD.existeDesarrolladora(Integer.parseInt(request.getParameter("id_desarrolladora")))){
-					id_desarrolladora = Integer.parseInt(request.getParameter("id_desarrolladora"));
-				}else{
-					mensaje = mensaje + "El código de la desarrolladora no existe";
-				}
+				mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
 			}
+		}
+		
+		if (Integer.toString(id_desarrolladora).equalsIgnoreCase("")){
+			mensaje = "El nombre de la desarrolladora no puede estar vacio";
+			
+		}else{
+			if (controladorBD.existeDesarrolladora(id_desarrolladora)){
+				id_desarrolladora = controladorBD.dameCodigoDesarrolladoraNombre(nombre_desarrolladora);
+			}else{
+				mensaje = mensaje + "El nombre de la desarrolladora no existe en la BD.";
+			}
+		}
+			
 			
 			//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
 			if (mensaje.equalsIgnoreCase("")){				
@@ -159,23 +180,31 @@
 	
 	if (accion.equalsIgnoreCase("AltaVideojuegoLocal")){
 		
-		if (request.getParameter("id_videojuego").isEmpty()){
-			mensaje = "El código del videojuego";
-		}else{
-			if (controladorBD.existeJuego(Integer.parseInt(request.getParameter("id_videojuego")))){
-				id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
-			}else{
-				mensaje = mensaje + "El código del videojuego";
-			}
-		}		
+		nombre_videojuego = request.getParameter("nombre_videojuego");
+		nombre_local = request.getParameter("nombre_local");
 		
-		if (request.getParameter("id_local").isEmpty()){
-			mensaje = mensaje + " El id del local no puede estar vacío";
+		id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+		id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+		
+		if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
+			mensaje = "El nombre del videojuego no puede estar vacio";
+			
 		}else{
-			if (controladorBD.existeLocal(Integer.parseInt(request.getParameter("id_local")))){
-				id_local = Integer.parseInt(request.getParameter("id_local"));
+			if (controladorBD.existeJuego(id_videojuego)){
+				id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 			}else{
-				mensaje = mensaje + "El código del local no existe";
+				mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+			}
+		}	
+		
+		if (Integer.toString(id_local).equalsIgnoreCase("")){
+			mensaje = "El nombre del local no puede estar vacio";
+			
+		}else{
+			if (controladorBD.existeLocal(id_local)){
+				id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+			}else{
+				mensaje = mensaje + "El nombre del local no existe en la BD.";
 			}
 		}
 		
