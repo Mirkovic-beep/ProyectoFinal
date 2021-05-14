@@ -48,16 +48,15 @@
 					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="videojuegos.jsp">Videojuego</a></li>
 							<li class="menu-item"><a href="clientes.jsp">Cliente</a></li>
 							<li class="menu-item"><a href="locales.jsp">Local </a></li>
 							<li class="menu-item"><a href="generos.jsp">Género </a></li>
 							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
-							<li class="menu-item"><a href="distribuidor.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="desarrolladora.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
+							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="altasextra.jsp">Consultas extra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -66,7 +65,9 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Altas</span>
+							<a href="indexadmin.jsp">Admin</a>
+							<a href="../altas.jsp">Altas</a>
+							<pre>Alta juego</pre>
 						</div>
 					</div>
 

@@ -39,6 +39,10 @@
 		String nombre_videojuego = "";
 		String nombre_local = "";
 		String nombre_desarrolladora = "";
+		String dificultad = "";
+		String sede = "";
+		String localizacion = "";
+		String afiliacion = "";
 		int id_genero = 0;
 		int ncopias = 0;
 		int duracion = 0;
@@ -47,6 +51,9 @@
 		int id_distribuidor = 0;
 		int id_desarrolladora = 0;
 		int id_local = 0;
+		int stock = 0;
+		int id_formato = 0;
+		
 		
 		String mensaje = "";
 			
@@ -137,6 +144,8 @@
 		}
 		
 		
+	//Alta videojuego desarrolladora
+	
 	if (accion.equalsIgnoreCase("AltaVideojuegoDesarrolladora")){
 		
 		nombre_videojuego = request.getParameter("nombre_videojuego");
@@ -166,7 +175,11 @@
 				mensaje = mensaje + "El nombre de la desarrolladora no existe en la BD.";
 			}
 		}
-			
+		
+		if(controladorBD.existeJuegoDesarrolladora(id_desarrolladora, id_videojuego)){
+			mensaje = "El juego ya pertenece a esa desarrolladora";
+		}else{
+		}
 			
 			//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
 			if (mensaje.equalsIgnoreCase("")){				
@@ -177,6 +190,8 @@
 				mensaje = "Operación cancelada: " + mensaje;
 			}
 		}
+	
+	//Alta videojuego-local
 	
 	if (accion.equalsIgnoreCase("AltaVideojuegoLocal")){
 		
@@ -208,6 +223,11 @@
 			}
 		}
 		
+		if(controladorBD.existeJuegoLocal(id_local, id_videojuego)==true){
+			mensaje = "El juego ya pertenece a ese local";
+		}else{
+		}
+		
 		//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
 		if (mensaje.equalsIgnoreCase("")){		
 			
@@ -219,6 +239,158 @@
 		}
 	}
 
+//Alta genero
+	
+	if (accion.equalsIgnoreCase("AltaGenero")){
+			
+			if (request.getParameter("nombre").equalsIgnoreCase("")){
+				mensaje = mensaje + " El nombre no puede estar vacío.";
+			}else{
+				nombre = request.getParameter("nombre");
+			}
+			
+			
+			if (request.getParameter("dificultad").equalsIgnoreCase("")){
+				mensaje = mensaje + " La dificultad no puede estar vacía";
+			}else{
+				dificultad = request.getParameter("dificultad");
+			}
+				
+				
+			if (mensaje.equalsIgnoreCase("")){
+				id_genero = controladorBD.calcularCod_genero();
+				Genero genero = new Genero(id_genero,nombre,dificultad);
+				
+				controladorBD.insertarGeneroBDD(genero);
+				
+				mensaje = "Genero dado de alta";
+			}else{
+				mensaje = "Operación cancelada: " + mensaje;
+			}
+			}
+
+	//Alta desarrolladora
+	
+		if (accion.equalsIgnoreCase("AltaDesarrolladora")){
+				
+				if (request.getParameter("nombre").equalsIgnoreCase("")){
+					mensaje = mensaje + " El nombre no puede estar vacío.";
+				}else{
+					nombre = request.getParameter("nombre");
+				}
+				
+				
+				if (request.getParameter("sede").equalsIgnoreCase("")){
+					mensaje = mensaje + " La sede no puede estar vacía";
+				}else{
+					sede = request.getParameter("sede");
+				}
+					
+					
+				if (mensaje.equalsIgnoreCase("")){
+					id_desarrolladora = controladorBD.calcularCod_desarrolladora();
+					Desarrolladora desarrolladora = new Desarrolladora(id_desarrolladora,nombre,sede);
+					
+					controladorBD.insertarDesarrolladoraBDD(desarrolladora);
+					
+					mensaje = "Desarrolladora dada de alta";
+				}else{
+					mensaje = "Operación cancelada: " + mensaje;
+				}
+				}
+	
+		//Alta Formato
+		
+			if (accion.equalsIgnoreCase("AltaFormato")){
+					
+					if (request.getParameter("nombre").equalsIgnoreCase("")){
+						mensaje = mensaje + " El nombre no puede estar vacío.";
+					}else{
+						nombre = request.getParameter("nombre");
+					}
+					
+					if (request.getParameter("stock").isEmpty()){
+						mensaje = mensaje + "El stock no puede estar vacío";
+					}else{
+						stock = Integer.parseInt(request.getParameter("stock"));
+					}
+							
+					if (mensaje.equalsIgnoreCase("")){
+						id_formato = controladorBD.calcularCod_formato();
+						
+						Formato formato = new Formato(id_formato,nombre,stock);
+						
+						controladorBD.insertarFormatoBDD(formato);
+						
+						mensaje = "Formato dado de alta";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
+					}
+					}
+		
+			//Alta Local
+			
+			if (accion.equalsIgnoreCase("AltaLocal")){
+					
+					if (request.getParameter("nombre").equalsIgnoreCase("")){
+						mensaje = mensaje + " El nombre no puede estar vacío.";
+					}else{
+						nombre = request.getParameter("nombre");
+					}
+					
+					if (request.getParameter("localizacion").equalsIgnoreCase("")){
+						mensaje = mensaje + "La localización no puede estar vacia";
+					}else{
+						localizacion = request.getParameter("localizacion");
+					}
+							
+					if (mensaje.equalsIgnoreCase("")){
+						id_local = controladorBD.calcularCod_local();
+						
+						Local local = new Local(id_local,nombre,localizacion);
+						
+						controladorBD.insertarLocalBDD(local);
+						
+						mensaje = "Local dado de alta";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
+					}
+					}
+			
+			//Alta Distribuidor
+			
+			if (accion.equalsIgnoreCase("AltaDistribuidor")){
+					
+					if (request.getParameter("nombre").equalsIgnoreCase("")){
+						mensaje = mensaje + " El nombre no puede estar vacío.";
+					}else{
+						nombre = request.getParameter("nombre");
+					}
+					
+					if (request.getParameter("afiliacion").equalsIgnoreCase("")){
+						mensaje = mensaje + "La afiliacion no puede estar vacia";
+					}else{
+						afiliacion = request.getParameter("afiliacion");
+					}
+					
+					if (request.getParameter("sede").equalsIgnoreCase("")){
+						mensaje = mensaje + "La sede no puede estar vacia";
+					}else{
+						sede = request.getParameter("sede");
+					}
+							
+					if (mensaje.equalsIgnoreCase("")){
+						id_distribuidor = controladorBD.calcularCod_distribuidor();
+						
+						Distribuidor distribuidor = new Distribuidor(id_distribuidor,nombre,afiliacion,sede);
+						
+						controladorBD.insertarDistribuidorBDD(distribuidor);
+						
+						mensaje = "Distribuidor dado de alta";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
+					}
+					}
 
 		
 		//BAJA Videojuego
@@ -320,7 +492,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>

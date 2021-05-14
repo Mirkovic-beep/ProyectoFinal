@@ -75,6 +75,10 @@
 					ArrayList<Videojuego> juegos = controlador.dameJuegosGenero(id);
 					int genero = controlador.dameGeneroVideojuego(id);
 					String nombreGenero = controlador.dameNombreGenero(id);
+					ArrayList<String> desarrolladoras = controlador.dameDesarrolladoraVideojuego(id);
+					ArrayList<String> locales = controlador.dameLocalVideojuego(id);
+
+
 
 			%>
 			
@@ -90,9 +94,13 @@
 											<a href="images/<%=juego.getNombre()%>.jpg"><img src="images/<%=juego.getNombre()%>.jpg" alt="<%=juego.getNombre()%>"></a>
 										</figure>
 										<div class="thumbnails">
-											<a href="images/<%=controlador.dameDesarrolladoraVideojuego(id)%>.png"><img src="images/<%=controlador.dameDesarrolladoraVideojuego(id)%>.png" alt=""></a>
+											<%for(int i=0;i<desarrolladoras.size();i++){ %>
+												<a href="images/<%=desarrolladoras.get(i)%>.png"><img src="images/<%=desarrolladoras.get(i)%>.png" alt=""></a>
+											<%} %>
 											<a href="images/<%=controlador.dameDistribuidoraVideojuego(id)%>.png"><img src="images/<%=controlador.dameDistribuidoraVideojuego(id)%>.png" alt=""></a>
-											<a href="images/<%=controlador.dameLocalVideojuego(id)%>.jpg"><img src="images/<%=controlador.dameLocalVideojuego(id)%>.jpg" alt=""></a>
+											<%for(int i=0;i<locales.size();i++){ %>
+											<a href="images/<%=locales.get(i)%>.jpg"><img src="images/<%=locales.get(i)%>.jpg" alt=""></a>
+											<%} %>
 										</div>
 									</div>
 								</div>
@@ -105,8 +113,12 @@
 									<br>
 									<p>Genero: <%=nombreGenero %> </p>
 									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %>
-									<p>Desarrolladora: <%=controlador.dameDesarrolladoraVideojuego(id)%>
-									<p>Local físico: <%=controlador.dameLocalVideojuego(id) %>
+									<%for(int i=0;i<desarrolladoras.size();i++){ %>
+										<p>Desarrolladora: <%=desarrolladoras.get(i)%>
+									<%} %>
+									<%for(int i=0;i<locales.size();i++){ %>
+										<p>Local físico: <%=locales.get(i) %>
+									<%} %>
 									<br>
 									<br>
 									<img src="images/<%=juego.getPegi()%>.png" style="width:100px">

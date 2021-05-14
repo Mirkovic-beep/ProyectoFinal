@@ -42,22 +42,21 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="videojuegos.jsp">Videojuego</a></li>
 							<li class="menu-item"><a href="clientes.jsp">Cliente</a></li>
 							<li class="menu-item"><a href="locales.jsp">Local </a></li>
 							<li class="menu-item"><a href="generos.jsp">Género </a></li>
 							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
-							<li class="menu-item"><a href="distribuidor.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="desarrolladora.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
+							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="altasextra.jsp">Consultas extra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -66,7 +65,9 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Altas</span>
+							<a href="indexadmin.jsp">Admin</a>
+							<a href="../altas.jsp">Altas</a>
+							<pre>Alta Desarrolladora</pre>
 						</div>
 					</div>
 
@@ -80,21 +81,22 @@
 						<div class="product-list">
 							
 							<section>
-								<h3>Alta Videojuego-Local</h3>
+								<h3>Alta Desarrolladora</h3>
 								
-								<form action="../operaciones_alu.jsp?accion=AltaVideojuegoLocal" method="post">
+								<form action="../operaciones_alu.jsp?accion=AltaDesarrolladora" method="post">
 									<div>
 										<div class="">
-											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
-										</div>
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre desarrolladora" required style="width:163px"/>
+										</div>	
 										<br>
 										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
+											<input type="text" name="sede" id="sede" required placeholder="Sede" style="width:163px"/>
 										</div>
-										<br>	
+										<br>
+							
 									</div>
 									<br>
-									<input type="submit" class="button" value="Dar de Alta" />
+										<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								

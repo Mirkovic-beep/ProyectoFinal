@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -34,7 +34,7 @@
 			<div class="site-header">
 				<div class="container">
 					<a href="index.html" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+						<img src="../../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,22 +42,15 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation" style="width:1450px">
+					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-						
-							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Altas/videojuegos.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="Altas/clientes.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="Altas/locales.jsp">Local </a></li>
-							<li class="menu-item"><a href="Altas/generos.jsp">Género </a></li>
-							<li class="menu-item"><a href="Altas/formatos.jsp">Formato </a></li>
-							<li class="menu-item"><a href="Altas/distribuidores.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="Altas/desarrolladoras.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Altas/altasextra.jsp">Consultas extra</a></li>
+							<li class="menu-item home current-menu-item"><a href="../../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
+							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -67,7 +60,8 @@
 						<div class="container">
 							<a href="index.jsp">Home</a>
 							<a href="indexadmin.jsp">Admin</a>
-							<pre>Altas</pre>
+							<a href="../altasextra.jsp">Altas-extra</a>
+							<pre>Local-juego</pre>
 						</div>
 					</div>
 
@@ -81,20 +75,25 @@
 						<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Altas</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los formularios de alta de todas las entidades de la base de datos</p>
-							
-							
+								<h3>Alta Videojuego-Local</h3>
 								
+								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoLocal" method="post">
+									<div>
+										<div class="">
+											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
+										</div>
+										<br>	
+									</div>
+									<br>
+									<input type="submit" class="button" value="Dar de Alta" />
+									
+								</form>
 								
-							</div> <!-- .product-list -->
-
-						</section>
+							</section>
 						
 								
 						</div> <!-- .product-list -->
@@ -187,9 +186,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
 

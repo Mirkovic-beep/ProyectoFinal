@@ -21,9 +21,8 @@ public class Main {
 		//for (int i = 0; i < juegosCon.size(); i++) {
 						//System.out.println(juegosCon.get(i).toString());
 		//}
-		int desarrolladoraJuego = 0;
-		System.out.println(desarrolladoraJuego = controlador.dameDesarrolladoraVideojuegoId(controlador.calcularCod_videojuego()));
-
+		
+		System.out.println(controlador.existeJuegoDesarrolladora(33, 3));
 	}
 
 }
