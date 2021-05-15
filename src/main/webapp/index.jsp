@@ -61,19 +61,16 @@
 						
 						
 						<div class="search-form">
-								<%int id = 3; %>
-																	
+							<%int id = 3; %>										
 								<form action="single.jsp?id=<%=id %>" method="post">
 									<label><img src="images/icon-search.png"></label>
 									<input type="text" name="nombre_juego" id="nombre_juego" placeholder="Buscar...">
 								</form>
-								
-						</div> <!-- .search-form -->
-
-						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
-					</div> <!-- .main-navigation -->
-				</div> <!-- .container -->
-			</div> <!-- .site-header -->
+										</div> <!-- .search-form -->
+									<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
+								</div> <!-- .main-navigation -->
+							</div> <!-- .container -->
+						</div> <!-- .site-header -->
 			
 		
 

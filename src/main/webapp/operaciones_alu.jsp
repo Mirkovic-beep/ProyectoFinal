@@ -258,7 +258,6 @@
 		nombre_videojuego = request.getParameter("nombre_videojuego");
 		nombre_local = request.getParameter("nombre_local");
 		
-		id_transaccion = Integer.parseInt(request.getParameter("id_transaccion"));
 		id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 		id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
 		

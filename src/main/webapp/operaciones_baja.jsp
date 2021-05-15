@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 	<head>
 		<%@page contentType="text/html" pageEncoding="UTF-8"%>
 		<meta charset="UTF-8">
@@ -7,10 +8,10 @@
 		<%@ page import="Clases.*" %>
 		<%@ page import="java.util.*" %>
 		
-		<title>PC</title>
+		<title>Home</title>
 
 		<!-- Loading third party fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
+
 		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
@@ -21,19 +22,171 @@
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+		
+	</head>	
 
-	</head>
-	
-<%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
 
+<%
+		//variables
+		BDController controladorBD = new BDController();
+		String accion = request.getParameter("accion");
+		String nombre = "";
+		String pegi = "";
+		String consola = "";
+		String nombre_genero = "";
+		String nuevo = "";
+		String nombre_distribuidor = "";
+		String nombre_videojuego = "";
+		String nombre_local = "";
+		String nombre_desarrolladora = "";
+		String dificultad = "";
+		String sede = "";
+		String localizacion = "";
+		String afiliacion = "";
+		String nombre_cliente = "";
+		String apellidos_cliente = "";
+		String dni_cliente = "";
+		String fecha_compra = "";
+		String nombre_formato = "";
+		int id_genero = 0;
+		int ncopias = 0;
+		int duracion = 0;
+		int id_videojuego = 0;
+		double precio = 0;
+		int id_distribuidor = 0;
+		int id_desarrolladora = 0;
+		int id_local = 0;
+		int stock = 0;
+		int id_formato = 0;
+		int id_cliente = 0;
+		int id_transaccion = 0;
+		String mensaje = "";
+			
+		
+		//BAJA Videojuego
+		
+		if(accion.equalsIgnoreCase("BajaVideojuego")){
+			
+			if(request.getParameter("id_videojuego").isEmpty()) {
+				mensaje = mensaje + "El código del juego no puede estar vacío";
+			}else{
+				id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+				if(controladorBD.existeJuego(id_videojuego)){
+					controladorBD.borrarVideojuego(id_videojuego);
+					mensaje = mensaje + "Videojuego dado de baja con exito";
+				}else{
+				}
+			}
+		}
+		
+		//BAJA Cliente
+		
+				if(accion.equalsIgnoreCase("BajaCliente")){
+					
+					if(request.getParameter("id_cliente").isEmpty()) {
+						mensaje = mensaje + "El código del cliente no puede estar vacío";
+					}else{
+						id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+						if(controladorBD.existeCliente(id_cliente)){
+							controladorBD.borrarCliente(id_cliente);
+							mensaje = mensaje + "Cliente dado de baja con exito";
+						}else{
+						}
+					}
+				}
+		
+		
+				//BAJA Local
+				
+				if(accion.equalsIgnoreCase("BajaLocal")){
+					
+					if(request.getParameter("id_local").isEmpty()) {
+						mensaje = mensaje + "El código del local no puede estar vacío";
+					}else{
+						id_local = Integer.parseInt(request.getParameter("id_local"));
+						if(controladorBD.existeLocal(id_local)){
+							controladorBD.borrarLocal(id_local);
+							mensaje = mensaje + "Local dado de baja con exito";
+						}else{
+						}
+					}
+				}
+				
+				
+			//BAJA Genero
+				
+				if(accion.equalsIgnoreCase("BajaGenero")){
+					
+					if(request.getParameter("id_genero").isEmpty()) {
+						mensaje = mensaje + "El código del genero no puede estar vacío";
+					}else{
+						id_genero = Integer.parseInt(request.getParameter("id_genero"));
+						if(controladorBD.existeGenero(id_genero)){
+							controladorBD.borrarGenero(id_genero);
+							mensaje = mensaje + "Genero dado de baja con exito";
+						}else{
+						}
+					}
+				}
+			
+			//BAJA Distribuidor
+				
+				if(accion.equalsIgnoreCase("BajaDistribuidor")){
+					
+					if(request.getParameter("id_distribuidor").isEmpty()) {
+						mensaje = mensaje + "El código del distribuidor no puede estar vacío";
+					}else{
+						id_distribuidor = Integer.parseInt(request.getParameter("id_distribuidor"));
+						if(controladorBD.existeDistribuidor(id_distribuidor)){
+							controladorBD.borrarDistribuidor(id_distribuidor);
+							mensaje = mensaje + "Distribuidor dado de baja con exito";
+						}else{
+						}
+					}
+				}
+			
+			//BAJA Formato
+				
+				if(accion.equalsIgnoreCase("BajaFormato")){
+					
+					if(request.getParameter("id_formato").isEmpty()) {
+						mensaje = mensaje + "El código del formato no puede estar vacío";
+					}else{
+						id_formato = Integer.parseInt(request.getParameter("id_formato"));
+						if(controladorBD.existeFormato(id_formato)){
+							controladorBD.borrarFormato(id_formato);
+							mensaje = mensaje + "Formato dado de baja con exito";
+						}else{
+						}
+					}
+				}	
+			
+			//BAJA Desarrolladora
+				
+				if(accion.equalsIgnoreCase("BajaDesarrolladora")){
+					
+					if(request.getParameter("id_desarrolladora").isEmpty()) {
+						mensaje = mensaje + "El código de la desarrolladora no puede estar vacío";
+					}else{
+						id_desarrolladora = Integer.parseInt(request.getParameter("id_desarrolladora"));
+						if(controladorBD.existeDesarrolladora(id_desarrolladora)){
+							controladorBD.borrarDesarrolladora(id_desarrolladora);
+							mensaje = mensaje + "Desarrolladora dada de baja con exito";
+						}else{
+						}
+					}
+				}	
+		
+
+		
+		%>
 
 	<body>
 		
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.jsp" id="branding">
+					<a href="index.html" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -45,9 +198,10 @@
 						<a href="index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
+
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
+							<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="Bajas/videojuegos.jsp">Videojuego</a></li>
 							<li class="menu-item"><a href="Bajas/clientes.jsp">Cliente</a></li>
@@ -59,14 +213,11 @@
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
-					
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
-							<span>Bajas</span>
 						</div>
 					</div>
 
@@ -80,17 +231,8 @@
 						<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Bajas</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los menús desplegables para hacer las eliminaciones</p>
-					
-							</div> <!-- .product-list -->
-
-						</section>
+								<h3><%=mensaje %></h3>
+							</section>
 						
 								
 						</div> <!-- .product-list -->
@@ -114,7 +256,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>
@@ -176,17 +318,31 @@
 					<form action="#">
 						<input type="text" placeholder="Nombre de usuario...">
 						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
+						<input type="text" placeholder="Contrasena...">
 						<input type="submit" value="Registrarse">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
+
+</html>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/index.js"></script>
+			<script src="assets/js/dropdown.js"></script>
+
+</body>
 
 </html>

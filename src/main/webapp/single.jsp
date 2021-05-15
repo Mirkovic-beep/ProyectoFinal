@@ -77,6 +77,9 @@
 					String nombreGenero = controlador.dameNombreGenero(id);
 					ArrayList<String> desarrolladoras = controlador.dameDesarrolladoraVideojuego(id);
 					ArrayList<String> locales = controlador.dameLocalVideojuego(id);
+					ArrayList<String> formatos = controlador.dameFormatoVideojuego(id);
+					
+
 
 
 
@@ -112,13 +115,23 @@
 									<p>Duracion: <%=juego.getDuracion()%> minutos</p>
 									<br>
 									<p>Genero: <%=nombreGenero %> </p>
-									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %>
+									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %></p>
+									<p>
 									<%for(int i=0;i<desarrolladoras.size();i++){ %>
-										<p>Desarrolladora: <%=desarrolladoras.get(i)%>
+										Desarrolladora: <%=desarrolladoras.get(i)%>
 									<%} %>
+									</p>
+									<p> Locales:
 									<%for(int i=0;i<locales.size();i++){ %>
-										<p>Local físico: <%=locales.get(i) %>
+									 <%=locales.get(i) %>
 									<%} %>
+									</p>
+									
+									<p> Formatos:
+									<%for(int i=0;i<formatos.size();i++){ %>
+										 <%=formatos.get(i)%>
+									<%} %>
+									</p>
 									<br>
 									<br>
 									<img src="images/<%=juego.getPegi()%>.png" style="width:100px">

@@ -436,16 +436,37 @@ public class BDController {
 		return juegos;
 	}
 	
+	public ArrayList<Cliente> dameClientes() {
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM clientes");
+
+			while (rs.next() == true) {
+				clientes.add(new Cliente(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameClientes del BDController" + e.getMessage());
+		}
+		return clientes;
+	}
+
+	
 	public ArrayList<Genero> dameGeneros() {
 		ArrayList<Genero> generos = new ArrayList<Genero>();
 
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM generos");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM genero");
 
 			while (rs.next() == true) {
-				generos.add(new Genero(rs.getInt(1),rs.getString(1),rs.getString(2)));
+				generos.add(new Genero(rs.getInt(1),rs.getString(2),rs.getString(3)));
 			}
 			miStatement.close();
 			rs.close();
@@ -456,16 +477,37 @@ public class BDController {
 		return generos;
 	}
 	
+	public ArrayList<Local> dameLocales() {
+		ArrayList<Local> locales = new ArrayList<Local>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM local_fisico");
+
+			while (rs.next() == true) {
+				locales.add(new Local(rs.getInt(1),rs.getString(2),rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocales del BDController" + e.getMessage());
+		}
+		return locales;
+	}
+
+	
 	public ArrayList<Distribuidor> dameDistribuidores() {
 		ArrayList<Distribuidor> distribuidores = new ArrayList<Distribuidor>();
 
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM distribuidores");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM distribuidor");
 
 			while (rs.next() == true) {
-				distribuidores.add(new Distribuidor(rs.getInt(1),rs.getString(1),rs.getString(2),rs.getString(3)));
+				distribuidores.add(new Distribuidor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
 			}
 			miStatement.close();
 			rs.close();
@@ -482,10 +524,10 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM desarrolladoras");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM desarrolladora");
 
 			while (rs.next() == true) {
-				desarrolladoras.add(new Desarrolladora(rs.getInt(1),rs.getString(1),rs.getString(2)));
+				desarrolladoras.add(new Desarrolladora(rs.getInt(1),rs.getString(2),rs.getString(3)));
 			}
 			miStatement.close();
 			rs.close();
@@ -502,10 +544,10 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM formatos");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM formato");
 
 			while (rs.next() == true) {
-				formatos.add(new Formato(rs.getInt(1),rs.getString(1),rs.getInt(2)));
+				formatos.add(new Formato(rs.getInt(1),rs.getString(2),rs.getInt(3)));
 			}
 			miStatement.close();
 			rs.close();
@@ -639,6 +681,26 @@ public class BDController {
 			System.out.println("Error en dameDesarrolladoraVideojuego del BDController" + e.getMessage());
 		}
 		return desarrolladoras;	
+	}
+	
+	public ArrayList<String> dameFormatoVideojuego(int id) {
+		ArrayList<String> formatos = new ArrayList<String>();
+				
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT nombre FROM formato WHERE id in (SELECT id_formato from formato_juego where id_videojuego in (SELECT id from videojuegos where id='"+id+"'));");
+
+			while (rs.next() == true) {
+				formatos.add(rs.getString(1));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameFormatoVideojuego del BDController" + e.getMessage());
+		}
+		return formatos;	
 	}
 	
 	public int dameDesarrolladoraVideojuegoId(int id) {
@@ -1283,6 +1345,90 @@ public void insertarClienteBDD(Cliente cliente) {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error en borrarJuego del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarCliente(int id_cliente) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM clientes WHERE id='"+id_cliente+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarCliente del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarLocal(int id_local) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM local_fisico WHERE id='"+id_local+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarLocal del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarGenero(int id_genero) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM genero WHERE id='"+id_genero+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarGenero del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarFormato(int id_formato) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM formato WHERE id='"+id_formato+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarFormato del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarDistribuidor(int id_distribuidor) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM distribuidor WHERE id='"+id_distribuidor+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarDistribuidor del BDController" + e.getMessage());
+		}
+	}
+	
+	public void borrarDesarrolladora(int id_desarrolladora) {
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			String sql = "DELETE FROM desarrolladora WHERE id='"+id_desarrolladora+"'";
+			miStatement.executeUpdate(sql);
+			miStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en borrarDesarrolladora del BDController" + e.getMessage());
 		}
 	}
 	

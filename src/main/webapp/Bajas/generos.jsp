@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -25,7 +25,7 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Genero> generos = cotroladorBD.dameGeneros();%>
 
 
 	<body>
@@ -33,8 +33,8 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.jsp" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+					<a href="../index.jsp" id="branding">
+						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,31 +42,30 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Bajas/videojuegos.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="Bajas/clientes.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="Bajas/locales.jsp">Local </a></li>
-							<li class="menu-item"><a href="Bajas/generos.jsp">Género </a></li>
-							<li class="menu-item"><a href="Bajas/formatos.jsp">Formato </a></li>
-							<li class="menu-item"><a href="Bajas/distribuidores.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="Bajas/desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="videojuegos.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clientes.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="locales.jsp">Local </a></li>
+							<li class="menu-item"><a href="generos.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
-					
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
-							<span>Bajas</span>
+							<a href="../index.jsp">Home</a>
+							<a href="../bajas.jsp">Bajas</a>
+							<span>Generos</span>
 						</div>
 					</div>
 
@@ -76,22 +75,34 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
-							<section>
-							<header>
-								<h2 class="section-title">Menu Bajas</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los menús desplegables para hacer las eliminaciones</p>
+				<form action="../operaciones_baja.jsp?accion=BajaGenero" method="post">
+					<div class="row gtr-50">
 					
-							</div> <!-- .product-list -->
-
-						</section>
-						
+							<section>		
+								<h3>Baja genero</h3>
+								
+						<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona genero</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<generos.size();i++){%>
+									<li class="input-option" data-value="<%=generos.get(i).getId()%>">
+									<h3><%=generos.get(i).getNombre()%></h3>
+									<input type="hidden" class="option" name="id_genero" value="<%=generos.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
+							</div>
+								
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Dar de baja"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -114,7 +125,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>
@@ -183,9 +194,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
 
