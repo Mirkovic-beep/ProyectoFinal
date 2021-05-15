@@ -35,7 +35,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -44,7 +44,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> Carrito Vacio</a>
+						<a href="cart.jsp" class="cart"><i class="icon-cart"></i> Carrito Vacio</a>
 						<a href="#" class="login-button">Iniciar sesion/Registro</a>
 					</div> <!-- .right-section -->
 
@@ -58,62 +58,47 @@
 							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
 							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
+						
+						
 						<div class="search-form">
-							<label><img src="images/icon-search.png"></label>
-							<input type="text" placeholder="Buscar...">
+								<%int id = 3; %>
+																	
+								<form action="single.jsp?id=<%=id %>" method="post">
+									<label><img src="images/icon-search.png"></label>
+									<input type="text" name="nombre_juego" id="nombre_juego" placeholder="Buscar...">
+								</form>
+								
 						</div> <!-- .search-form -->
 
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 			</div> <!-- .site-header -->
+			
+		
 
 			<div class="home-slider">
 				<ul class="slides">
-					<li data-bg-image="images/fondo.jpg">
-						<div class="container">
-							<div class="slide-content">
-								<h2 class="slide-title">Skyrim</h2>
-								<small class="slide-subtitle">70.00€</small>
+				
+				<%for(int i=0;i<nuevos.size();i++){ %>
+				
+						<li data-bg-image="images/fondo1.jpg">
+							<div class="container">
+								<div class="slide-content">
+									<h2 class="slide-title"><%=nuevos.get(i).getNombre() %></h2>
+									<small class="slide-subtitle"><%=nuevos.get(i).getPrecio() %> €</small>
+									<img src="images/<%=nuevos.get(i).getPegi()%>.png" style="width:100px" alt="Game 1">
+									<!-- <a href="cart.jsp" class="button">Añadir al carrito</a> -->
+								</div>
 								
-								<p>The Elder Scrolls V: Skyrim Dragonborn es el tercer contenido descargable y ultimo por el momento. oficial para el videojuego de rol de accion de mundo abierto</p>
-								
-								<a href="cart.jsp" class="button">Añadir al carrito</a>
+							<a href="single.jsp?id=<%=nuevos.get(i).getId() %>"><img src="images/<%=nuevos.get(i).getNombre()%>.jpg" class="slide-image" alt="Game 1"></a>
+							
 							</div>
-
-							<img src="images/Skyrim.jpg" class="slide-image">
-						</div>
-					</li>
-					<li data-bg-image="images/fondo.jpg">
-						<div class="container">
-							<div class="slide-content">
-								<h2 class="slide-title">Super Mario Galaxy</h2>
-								<small class="slide-subtitle">60.00€</small>
-								
-								<p>Super Mario Galaxy 2 es un videojuego de plataformas desarrollado por Nintendo EAD Tokio y publicado por Nintendo para su consola Wii. Fue anunciado en el E3 2009 y es la secuela directa de Super Mario Galaxy</p>
-								
-								<a href="cart.jsp" class="button">Añadir al carrito</a>
-							</div>
-
-							<img src="images/Mario.jpg" class="slide-image">
-						</div>
-					</li>
-					<li data-bg-image="images/fondo.jpg">
-						<div class="container">
-							<div class="slide-content">
-								<h2 class="slide-title">Borderlands (2009)</h2>
-								<small class="slide-subtitle">40.00€</small>
-								
-								<p>Borderlands es una serie de videojuegos de accion y disparos en primera persona ambientados en escenarios space western y de ciencia ficcion fantastica, desarrollados por Gearbox Software para multiples plataformas.</p>
-								
-								<a href="cart.jsp" class="button">Añadir al carrito</a>
-							</div>
-
-							<img src="images/Borderlands.jpg" class="slide-image">
-						</div>
-					</li>
+						</li>
+				<%} %>
 				</ul> <!-- .slides -->
 			</div> <!-- .home-slider -->
+		
 
 			<main class="main-content">
 				<div class="container">
@@ -247,11 +232,11 @@
 				</div> <!-- .column -->
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="Contraseña...">
-						<input type="submit" value="Registrarse">
+					<form action="operaciones_alu.jsp?accion=AltaCliente" method="post">
+						<input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Nombre de usuario...">
+						<input type="text" name="apellidos_cliente" id="id_cliente" placeholder="Apellidos...">
+						<input type="text" name="dni_cliente" id="dni_cliente"placeholder="Dni...">
+						<input type="submit" value="Dar de alta">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->

@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -53,11 +53,6 @@
 							<li class="menu-item"><a href="bajas.jsp">Bajas</a></li>
 							<li class="menu-item"><a href="modificaciones.jsp">Modificaciones</a></li>
 						</ul> <!-- .menu -->
-						<div class="search-form">
-							<label><img src="images/icon-search.png"></label>
-							<input type="text" placeholder="Buscar...">
-						</div> <!-- .search-form -->
-
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->

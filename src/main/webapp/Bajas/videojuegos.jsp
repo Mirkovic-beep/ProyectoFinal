@@ -82,7 +82,7 @@
 							<section>		
 								<h3>Baja Videojuego</h3>
 								
-								<div class="">
+						<div class="">
 							<div class="mm-dropdown">
 								<div class="textfirst">Selecciona jugador</div>
 								<ul class="scrollable-menu">

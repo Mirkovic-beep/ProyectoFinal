@@ -42,10 +42,10 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation" style="width:1450px">
+					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
@@ -58,11 +58,12 @@
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-					<div class="breadcrumbs">
+						<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
+							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<pre>Altas extra</pre>
+							<a href="../altas.jsp">Altas</a>
+							<span>Altas extra</span>
 						</div>
 					</div>
 

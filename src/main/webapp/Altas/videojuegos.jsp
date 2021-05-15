@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="../index.jsp" id="branding">
 						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -42,10 +42,10 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation" style="width:1450px">
+					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
@@ -56,7 +56,7 @@
 							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
 							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="altasextra.jsp">Consultas extra</a></li>
+							<li class="menu-item"><a href="altasextra.jsp">Uniones</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -64,10 +64,10 @@
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
+							<a href="../index.jsp">Home</a>
+							<a href="../indexadmin.jsp">Admin</a>
 							<a href="../altas.jsp">Altas</a>
-							<pre>Alta juego</pre>
+							<span>Alta juego</span>
 						</div>
 					</div>
 

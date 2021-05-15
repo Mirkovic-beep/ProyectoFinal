@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="../../index.jsp" id="branding">
 						<img src="../../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -42,7 +42,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
@@ -60,10 +60,10 @@
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
+							<a href="../../index.jsp">Home</a>
+							<a href="../../indexadmin.jsp">Admin</a>
 							<a href="../altasextra.jsp">Altas-extra</a>
-							<pre>Desarrolladora-Juego</pre>
+							<span>Compra</span>
 						</div>
 
 				</div> <!-- .container -->
@@ -81,23 +81,23 @@
 								<form action="../../operaciones_alu.jsp?accion=AltaCompraVideojuegoLocal" method="post">
 									<div>
 										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
+											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre videojuego" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" style="width:163px"/>
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre cliente" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="number" name="id_transaccion" id="id_transaccion" required placeholder="Numero de la transaccion" style="width:163px"/>
+											<input type="number" name="id_transaccion" id="id_transaccion" required placeholder="Numero transaccion" style="width:163px"/>
 										</div>
 										<br>	
 										<div class="">
-											<input type="date" name="fecha_compra" id="fecha_compra" required placeholder="Fecha de compra" style="width:163px"/>
+											<input type="date" name="fecha_compra" id="fecha_compra" required placeholder="Fecha compra" style="width:163px"/>
 										</div>
 										<br>			
 										<div class="">
-											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
+											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre local" style="width:163px"/>
 										</div>
 										<br>	
 									</div>

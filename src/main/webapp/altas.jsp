@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -67,7 +67,7 @@
 						<div class="container">
 							<a href="index.jsp">Home</a>
 							<a href="indexadmin.jsp">Admin</a>
-							<pre>Altas</pre>
+							<span>Altas</span>
 						</div>
 					</div>
 
@@ -180,7 +180,7 @@
 					<form action="#">
 						<input type="text" placeholder="Nombre de usuario...">
 						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
+						<input type="text" placeholder="Contrasena...">
 						<input type="submit" value="Registrarse">
 					</form>
 				</div> <!-- .column -->

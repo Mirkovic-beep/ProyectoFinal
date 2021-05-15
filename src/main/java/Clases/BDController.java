@@ -723,6 +723,26 @@ public class BDController {
 		return genero;	
 	}
 	
+	public String dameNombreVideojuego(int id) {
+		String genero="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM videojuegos WHERE id='"+id+"')");
+			
+			if (rs.first() == true) {
+				genero = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNombreVideojuego del BDController" + e.getMessage());
+		}
+		return genero;	
+	}
+	
 
 	public int dameGeneroVideojuego(int id) {
 		int genero=0;

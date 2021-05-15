@@ -28,7 +28,7 @@
 			<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -37,7 +37,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> Carrito VacÃ­o</a>
+						<a href="cart.jsp" class="cart"><i class="icon-cart"></i> Carrito Vacio</a>
 						<a href="#" class="login-button">Iniciar sesion/Registro</a>
 					</div> <!-- .right-section -->
 
@@ -60,7 +60,7 @@
 					</div> <!-- .main-navigation -->
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="#">Home</a>
+							<a href="index.jsp">Home</a>
 							<span>Sobre nosotros</span>
 						</div>
 					</div>
@@ -71,16 +71,16 @@
 					<div class="page">
 						
 						<h2 class="title-aboutus">NelsON Games Reinventando el futuro del alquiler de videojuegos</h2>
-						<p>En NelsON games nos preocupamos por nuestros clientes, aseguramos una entrega del producto en perfecto estado, de forma rÃ¡pida y eficaz. Disponemos de muchos convenios con empresas creadoras y distribuidoras de videojuegos de todas las categorÃ­as.</p>
+						<p>En NelsON games nos preocupamos por nuestros clientes, aseguramos una entrega del producto en perfecto estado, de forma rápida y eficaz. Disponemos de muchos convenios con empresas creadoras y distribuidoras de videojuegos de todas las categorías.</p>
 						<br>
 
 						<h2 class="title-aboutus">Nuestros valores</h2>
 				
 						<ol>
-							<li>Entrega rÃ¡pida o si no te devolvemos el dinero</li>
+							<li>Entrega rápida o si no te devolvemos el dinero</li>
 							<li>No testeamos nuestros productos con animales solo con jugadores de League of Legends</li>
 							<li>Sello de confianza</li>
-							<li>Soporte tÃ©cnico cercano y eficaz</li>
+							<li>Soporte técnico cercano y eficaz</li>
 						</ol>
 
 						<div class="row">
@@ -89,7 +89,7 @@
 									<div class="feature-icon">
 										<i class="icon-box-check"></i>
 									</div>
-									<h3 class="feature-title">PaqueterÃ­a segura</h3>
+									<h3 class="feature-title">Paquetería segura</h3>
 								</div> <!-- .feature -->
 							</div> <!-- .column -->
 							<div class="col-md-3">
@@ -105,7 +105,7 @@
 									<div class="feature-icon">
 										<i class="icon-car"></i>
 									</div>
-									<h3 class="feature-title">EnvÃ­o rÃ¡pido asegurado</h3>
+									<h3 class="feature-title">Envío rápido asegurado</h3>
 								</div> <!-- .feature -->
 							</div> <!-- .column -->
 							<div class="col-md-3">
@@ -113,7 +113,7 @@
 									<div class="feature-icon">
 										<i class="icon-customer-service"></i>
 									</div>
-									<h3 class="feature-title">Soporte tÃ©cnico 24/h</h3>
+									<h3 class="feature-title">Soporte técnico 24/h</h3>
 								</div> <!-- .feature -->
 							</div> <!-- .column -->
 						</div> <!-- .row -->
@@ -137,7 +137,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>
@@ -159,7 +159,7 @@
 						</div> <!-- column -->
 						<div class="col-md-6">
 							<div class="widget">
-								<h3 class="widget-title">Â¿Quieres recibir notificaciones?</h3>
+								<h3 class="widget-title">¿Quieres recibir notificaciones?</h3>
 								<form action="#" class="newsletter-form">
 									<input type="text" placeholder="Inserta tu email...">
 									<input type="submit" value="Suscribirse">
@@ -196,11 +196,11 @@
                 </div>
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
-						<input type="submit" value="Registrarse">
+					<form action="operaciones_alu.jsp?accion=AltaCliente" method="post">
+						<input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Nombre de usuario...">
+						<input type="text" name="apellidos_cliente" id="id_cliente" placeholder="Apellidos...">
+						<input type="text" name="dni_cliente" id="dni_cliente"placeholder="Dni...">
+						<input type="submit" value="Dar de alta">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->

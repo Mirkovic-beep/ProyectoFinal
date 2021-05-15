@@ -26,6 +26,11 @@ summary {
   display: block;
 }
 
+.pegi{
+	width:20%;
+	height:20%;
+}
+
 .page{
   font-family: 'Fjalla One', sans-serif;
 }

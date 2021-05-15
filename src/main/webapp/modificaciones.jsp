@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -42,7 +42,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href=index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
@@ -64,6 +64,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
+							<a href="indexadmin.jsp">Admin</a>
 							<span>Modificaciones</span>
 						</div>
 					</div>

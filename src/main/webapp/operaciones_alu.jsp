@@ -626,7 +626,7 @@
 					</div> <!-- .right-section -->
 
 
-					<div class="main-navigation" style="width:1450px">
+					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 							<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
@@ -637,7 +637,7 @@
 							<li class="menu-item"><a href="Altas/formatos.jsp">Formato </a></li>
 							<li class="menu-item"><a href="Altas/distribuidores.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="Altas/desarrolladoras.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Altas/altasextra.jsp">Consultas extra</a></li>
+							<li class="menu-item"><a href="Altas/altasextra.jsp">Uniones</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -646,7 +646,6 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
-							<span>Altas</span>
 						</div>
 					</div>
 

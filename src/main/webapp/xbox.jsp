@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -42,7 +42,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> Carrito Vacío</a>
+						<a href="cart.jsp" class="cart"><i class="icon-cart"></i> Carrito Vacío</a>
 						<a href="#" class="login-button">Iniciar sesion/Registro</a>
 					</div> <!-- .right-section -->
 
@@ -67,7 +67,7 @@
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.html">Home</a>
+							<a href="index.jsp">Home</a>
 							<span>Xbox</span>
 						</div>
 					</div>
@@ -188,11 +188,11 @@
                 </div>
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
-						<input type="submit" value="Registrarse">
+					<form action="operaciones_alu.jsp?accion=AltaCliente" method="post">
+						<input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Nombre de usuario...">
+						<input type="text" name="apellidos_cliente" id="id_cliente" placeholder="Apellidos...">
+						<input type="text" name="dni_cliente" id="dni_cliente"placeholder="Dni...">
+						<input type="submit" value="Dar de alta">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->

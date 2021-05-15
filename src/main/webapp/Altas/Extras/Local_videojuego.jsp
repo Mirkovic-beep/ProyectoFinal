@@ -33,7 +33,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="../../index.jsp" id="branding">
 						<img src="../../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -42,7 +42,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="../../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
@@ -58,14 +58,13 @@
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-					<div class="breadcrumbs">
+				<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
+							<a href="../../index.jsp">Home</a>
+							<a href="../../indexadmin.jsp">Admin</a>
 							<a href="../altasextra.jsp">Altas-extra</a>
-							<pre>Local-juego</pre>
+							<span>Local-Videojuego</span>
 						</div>
-					</div>
 
 				</div> <!-- .container -->
 			</div> <!-- .site-header -->
@@ -86,7 +85,7 @@
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
+											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre videojuego" style="width:163px"/>
 										</div>
 										<br>	
 									</div>
