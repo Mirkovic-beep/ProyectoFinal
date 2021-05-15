@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="../../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="../../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="../../style.css">
+		<link rel="stylesheet" href="../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -34,7 +34,7 @@
 			<div class="site-header">
 				<div class="container">
 					<a href="index.html" id="branding">
-						<img src="../../images/logo.png" alt="" class="logo">
+						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -45,14 +45,18 @@
 						<a href="index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
-					<div class="main-navigation">
+					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../../index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
-							<li class="menu-item"><a href="Formato_videojuego.jsp">Formato-Videojuego</a></li>
-							<li class="menu-item"><a href="Compra_videojuego.jsp">Compra</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="videojuegos.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clientes.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="locales.jsp">Local </a></li>
+							<li class="menu-item"><a href="generos.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="altasextra.jsp">Consultas extra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -62,9 +66,10 @@
 						<div class="container">
 							<a href="index.jsp">Home</a>
 							<a href="indexadmin.jsp">Admin</a>
-							<a href="../altasextra.jsp">Altas-extra</a>
-							<pre>Desarrolladora-Juego</pre>
+							<a href="../altas.jsp">Altas</a>
+							<pre>Alta cliente</pre>
 						</div>
+					</div>
 
 				</div> <!-- .container -->
 			</div> <!-- .site-header -->
@@ -76,18 +81,22 @@
 						<div class="product-list">
 							
 							<section>
-								<h3>Alta Videojuego-Desarrolladora</h3>
+								<h3>Alta Cliente</h3>
 								
-								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoDesarrolladora" method="post">
+								<form action="../operaciones_alu.jsp?accion=AltaCliente" method="post">
 									<div>
 										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required style="width:163px" placeholder="Nombre del cliente" />
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required placeholder="Nombre de la desarrolladora" style="width:163px"/>
+											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required placeholder="Apellidos del cliente"/>
 										</div>
-										<br>	
+										<br>
+										<div class="">
+											<input type="text" name="dni_cliente" id="dni_cliente" required placeholder="Dni cliente formato 00000000A"/>
+										</div>
+												
 									</div>
 									<br>
 										<input type="submit" class="button" value="Dar de Alta" />

@@ -76,16 +76,28 @@
 						<div class="product-list">
 							
 							<section>
-								<h3>Alta Videojuego-Desarrolladora</h3>
+								<h3>Alta Compra-videojuego-local</h3>
 								
-								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoDesarrolladora" method="post">
+								<form action="../../operaciones_alu.jsp?accion=AltaCompraVideojuegoLocal" method="post">
 									<div>
 										<div class="">
 											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required placeholder="Nombre de la desarrolladora" style="width:163px"/>
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" style="width:163px"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="id_transaccion" id="id_transaccion" required placeholder="Numero de la transaccion" style="width:163px"/>
+										</div>
+										<br>	
+										<div class="">
+											<input type="date" name="fecha_compra" id="fecha_compra" required placeholder="Fecha de compra" style="width:163px"/>
+										</div>
+										<br>			
+										<div class="">
+											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
 										</div>
 										<br>	
 									</div>

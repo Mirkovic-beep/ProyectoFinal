@@ -43,6 +43,11 @@
 		String sede = "";
 		String localizacion = "";
 		String afiliacion = "";
+		String nombre_cliente = "";
+		String apellidos_cliente = "";
+		String dni_cliente = "";
+		String fecha_compra = "";
+		String nombre_formato = "";
 		int id_genero = 0;
 		int ncopias = 0;
 		int duracion = 0;
@@ -53,6 +58,8 @@
 		int id_local = 0;
 		int stock = 0;
 		int id_formato = 0;
+		int id_cliente = 0;
+		int id_transaccion = 0;
 		
 		
 		String mensaje = "";
@@ -129,6 +136,11 @@
 			}else{
 				nuevo = request.getParameter("nuevo");
 			}
+			
+			if(controladorBD.existeJuegoNombre(nombre)){
+				mensaje = "Error el juego ya existe";
+			}else{
+			}
 				
 			//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
 			if (mensaje.equalsIgnoreCase("")){
@@ -191,6 +203,54 @@
 			}
 		}
 	
+	//Alta videojuego formato
+	
+	if (accion.equalsIgnoreCase("AltaVideojuegoFormato")){
+			
+			nombre_videojuego = request.getParameter("nombre_videojuego");
+			nombre_formato = request.getParameter("nombre_formato");
+			
+			id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+			id_formato = controladorBD.dameCodigoFormatoNombre(nombre_formato);
+			
+			if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
+				mensaje = "El nombre del videojuego no puede estar vacio";
+				
+			}else{
+				if (controladorBD.existeJuego(id_videojuego)){
+					id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+				}else{
+					mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+				}
+			}
+			
+			if (Integer.toString(id_formato).equalsIgnoreCase("")){
+				mensaje = "El formato del juego no puede estar vacio";
+				
+			}else{
+				if (controladorBD.existeFormato(id_formato)){
+					id_formato = controladorBD.dameCodigoFormatoNombre(nombre_formato);
+				}else{
+					mensaje = mensaje + "El nombre del formato no existe en la BD.";
+				}
+			}
+			
+			if(controladorBD.existeJuegoFormato(id_desarrolladora, id_videojuego)){
+				mensaje = "El juego ya tiene ese formato registrado";
+			}else{
+			}
+				
+				//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
+				if (mensaje.equalsIgnoreCase("")){				
+					controladorBD.insertarJuegoFormato(id_videojuego,id_formato);
+					
+					mensaje = "Formato registrado para el juego";
+				}else{
+					mensaje = "Operación cancelada: " + mensaje;
+				}
+			}
+
+	
 	//Alta videojuego-local
 	
 	if (accion.equalsIgnoreCase("AltaVideojuegoLocal")){
@@ -198,6 +258,7 @@
 		nombre_videojuego = request.getParameter("nombre_videojuego");
 		nombre_local = request.getParameter("nombre_local");
 		
+		id_transaccion = Integer.parseInt(request.getParameter("id_transaccion"));
 		id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 		id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
 		
@@ -238,6 +299,74 @@
 			mensaje = "Operación cancelada: " + mensaje;
 		}
 	}
+	
+	//Alta videojuego-cliente-local
+	
+	if (accion.equalsIgnoreCase("AltaCompraVideojuegoLocal")){
+			
+			nombre_videojuego = request.getParameter("nombre_videojuego");
+			nombre_local = request.getParameter("nombre_local");
+			nombre_cliente = request.getParameter("nombre_cliente");
+			fecha_compra = request.getParameter("fecha_compra");
+			
+			id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+			id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+			id_cliente = controladorBD.dameCodigoClienteNombre(nombre_cliente);
+			
+			if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
+				mensaje = "El nombre del videojuego no puede estar vacio";
+				
+			}else{
+				if (controladorBD.existeJuego(id_videojuego)){
+					id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+				}else{
+					mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+				}
+			}	
+			
+			if (Integer.toString(id_local).equalsIgnoreCase("")){
+				mensaje = "El nombre del local no puede estar vacio";
+				
+			}else{
+				if (controladorBD.existeLocal(id_local)){
+					id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+				}else{
+					mensaje = mensaje + "El nombre del local no existe en la BD.";
+				}
+			}
+			
+			if (Integer.toString(id_cliente).equalsIgnoreCase("")){
+				mensaje = "El nombre del cliente no puede estar vacio";
+				
+			}else{
+				if (controladorBD.existeCliente(id_cliente)){
+					id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+				}else{
+					mensaje = mensaje + "El nombre del cliente no existe en la BD.";
+				}
+			}
+			
+			if(controladorBD.existeTransaccion(id_transaccion)){
+				mensaje = "El id de transaccion ya existe";
+			}else{
+				id_transaccion = Integer.parseInt(request.getParameter("id_transaccion"));
+			}
+			
+			if(controladorBD.existeClienteJuegoLocal(id_cliente, id_videojuego,id_local)==true){
+				mensaje = "El ese id de transacción ya existe";
+			}else{
+			}
+			
+			//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
+			if (mensaje.equalsIgnoreCase("")){		
+				
+				controladorBD.insertarCompraClienteLocal(id_local, id_videojuego, id_cliente, id_transaccion, fecha_compra);
+				
+				mensaje = "Compra de videojuego registrada";
+			}else{
+				mensaje = "Operación cancelada: " + mensaje;
+			}
+		}
 
 //Alta genero
 	
@@ -254,6 +383,11 @@
 				mensaje = mensaje + " La dificultad no puede estar vacía";
 			}else{
 				dificultad = request.getParameter("dificultad");
+			}
+			
+			if(controladorBD.existeGeneroNombre(nombre)){
+				mensaje = "Error el genero ya existe";
+			}else{
 			}
 				
 				
@@ -285,6 +419,11 @@
 				}else{
 					sede = request.getParameter("sede");
 				}
+				
+				if(controladorBD.existeDesarrolladorNombre(nombre)){
+					mensaje = "Error el desarrollador ya existe";
+				}else{
+				}
 					
 					
 				if (mensaje.equalsIgnoreCase("")){
@@ -314,6 +453,11 @@
 					}else{
 						stock = Integer.parseInt(request.getParameter("stock"));
 					}
+					
+					if(controladorBD.existeFormatoNombre(nombre)){
+						mensaje = "Error el formato ya existe";
+					}else{
+					}
 							
 					if (mensaje.equalsIgnoreCase("")){
 						id_formato = controladorBD.calcularCod_formato();
@@ -342,6 +486,11 @@
 						mensaje = mensaje + "La localización no puede estar vacia";
 					}else{
 						localizacion = request.getParameter("localizacion");
+					}
+					
+					if(controladorBD.existeLocalNombre(nombre)){
+						mensaje = "Error el local ya existe";
+					}else{
 					}
 							
 					if (mensaje.equalsIgnoreCase("")){
@@ -378,6 +527,11 @@
 					}else{
 						sede = request.getParameter("sede");
 					}
+					
+					if(controladorBD.existeDistribuidorNombre(nombre)){
+						mensaje = "Error el distribuidor ya existe";
+					}else{
+					}
 							
 					if (mensaje.equalsIgnoreCase("")){
 						id_distribuidor = controladorBD.calcularCod_distribuidor();
@@ -387,6 +541,46 @@
 						controladorBD.insertarDistribuidorBDD(distribuidor);
 						
 						mensaje = "Distribuidor dado de alta";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
+					}
+					}
+			
+			//Alta cliente
+			
+			if (accion.equalsIgnoreCase("AltaCliente")){
+					
+					if (request.getParameter("nombre_cliente").equalsIgnoreCase("")){
+						mensaje = mensaje + " El nombre no puede estar vacío.";
+					}else{
+						nombre_cliente = request.getParameter("nombre_cliente");
+					}
+					
+					if (request.getParameter("apellidos_cliente").equalsIgnoreCase("")){
+						mensaje = mensaje + "Los apellidos del cliente no pueden estar vacios";
+					}else{
+						apellidos_cliente = request.getParameter("apellidos_cliente");
+					}
+					
+					if (request.getParameter("dni_cliente").equalsIgnoreCase("")){
+						mensaje = mensaje + "El dni del cliente no puede estar vacio";
+					}else{
+						dni_cliente = request.getParameter("dni_cliente");
+					}
+					
+					if(controladorBD.existeClienteNombre(nombre_cliente)){
+						mensaje = "Error el cliente ya existe";
+					}else{
+					}
+							
+					if (mensaje.equalsIgnoreCase("")){
+						id_cliente = controladorBD.calcularCod_cliente();
+						
+						Cliente cliente = new Cliente(id_cliente,nombre_cliente,apellidos_cliente,dni_cliente);
+						
+						controladorBD.insertarClienteBDD(cliente);
+						
+						mensaje = "Cliente dado de alta";
 					}else{
 						mensaje = "Operación cancelada: " + mensaje;
 					}
@@ -434,17 +628,16 @@
 
 					<div class="main-navigation" style="width:1450px">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
+							<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="Altas/videojuegos.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Formato </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Altas/Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Altas/Local_videojuego.jsp">Local-Videojuego</a></li>
+							<li class="menu-item"><a href="Altas/clientes.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="Altas/locales.jsp">Local </a></li>
+							<li class="menu-item"><a href="Altas/generos.jsp">Género </a></li>
+							<li class="menu-item"><a href="Altas/formatos.jsp">Formato </a></li>
+							<li class="menu-item"><a href="Altas/distribuidores.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="Altas/desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Altas/altasextra.jsp">Consultas extra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->

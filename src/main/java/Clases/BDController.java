@@ -106,7 +106,7 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery("SELECT * FROM  WHERE formato id='" + id_formato + "'");
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM formato WHERE  id='" + id_formato + "'");
 
 			if (rs.first() == true) {
 				existe = true;
@@ -137,6 +137,27 @@ public class BDController {
 		}
 		return existe;
 	}
+	
+	
+	public Boolean existeTransaccion(int id_transaccion) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM compra WHERE id_transaccion='" + id_transaccion + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeDistribuidor del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+
 	
 	
 	
@@ -198,6 +219,27 @@ public class BDController {
 		return existe;
 	}
 	
+	public Boolean existeClienteJuegoLocal(int id_cliente,int id_videojuego, int id_local) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM compra WHERE id_local IN (SELECT id FROM local_fisico WHERE id='" + id_local + "')" + " AND (id_videojuego IN (SELECT id FROM videojuegos WHERE id='" + id_videojuego +"'))" + " AND (id_cliente IN (SELECT id FROM clientes WHERE id='" + id_cliente +"'));");
+			
+			
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeClienteJuegoLocal del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
 	public Boolean existeJuegoLocal(int id_local,int id_videojuego) {
 		Boolean existe = false;
 
@@ -217,6 +259,160 @@ public class BDController {
 		}
 		return existe;
 	}
+	
+	public Boolean existeJuegoFormato(int id_formato,int id_videojuego) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM formato_juego WHERE id_formato IN (SELECT id FROM formato WHERE id='" + id_formato + "')" + "AND id_videojuego IN (SELECT id FROM videojuegos WHERE id='" + id_videojuego +"')");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeJuegoFormato del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeJuegoNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM videojuegos WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeJuegoNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeLocalNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM local_fisico WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeLocalNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeDesarrolladorNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM desarrolladora WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeDesarrolladoraNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeClienteNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM clientes WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeClienteNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeFormatoNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM formato WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeFormatoNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeGeneroNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM genero WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeGeneroNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
+	public Boolean existeDistribuidorNombre(String nombre) {
+		Boolean existe = false;
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM distribuidor WHERE nombre like '" + nombre + "'");
+
+			if (rs.first() == true) {
+				existe = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en existeDistribuidorNombre del BDController" + e.getMessage());
+		}
+		return existe;
+	}
+	
 	
 // Extraer datos simples
 	
@@ -668,6 +864,48 @@ public class BDController {
 		return id;	
 	}
 	
+	public int dameCodigoClienteNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT id FROM clientes WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoClienteNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+	
+	public int dameCodigoFormatoNombre(String nombre) {
+		int id=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT id FROM formato WHERE nombre like '"+nombre+"'");
+			
+			if (rs.first() == true) {
+				id = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCodigoFormatoNombre del BDController" + e.getMessage());
+		}
+		return id;	
+	}
+
+
+	
 	
 	
 
@@ -752,7 +990,7 @@ public class BDController {
 		int id_cliente = 1;
 		try {
 			Statement miStatement = this.miConexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("SELECT MAX(id) FROM cliente");
+			ResultSet rs = miStatement.executeQuery("SELECT MAX(id) FROM clientes");
 			if (rs.first() == true) {
 				id_cliente = rs.getInt(1);
 				id_cliente++;
@@ -922,6 +1160,23 @@ public void insertarLocalBDD(Local local) {
 		}
 	}
 	
+public void insertarClienteBDD(Cliente cliente) {
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			
+			String sql = "INSERT INTO clientes VALUES ('" + cliente.getId() + "', '" + cliente.getNombre() + "', '" + cliente.getApellidos() + "', '" + cliente.getDni() + "')";
+			miStatement.executeUpdate(sql);			
+			
+			miStatement.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en insertarCliente del BDController" + e.getMessage());
+		}
+	}
+	
 	
 	
 	public void insertarJuegoDesarrolladora(int id_videojuego,int id_desarrolladora) {
@@ -940,6 +1195,42 @@ public void insertarLocalBDD(Local local) {
 				System.out.println("Error en insertarJuegoDesarrolladora del BDController" + e.getMessage());
 			}
 		}
+	
+	
+	public void insertarJuegoFormato(int id_videojuego,int id_formato) {
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			
+			String sql ="INSERT INTO formato_juego values ('" +id_videojuego +"' , '"+ id_formato+"')";
+			miStatement.executeUpdate(sql);
+			
+			miStatement.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en insertarJuegoFormato del BDController" + e.getMessage());
+		}
+	}
+	
+	
+	public void insertarCompraClienteLocal(int id_local,int id_videojuego,int id_cliente,int id_transaccion,String fecha_compra) {
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			
+			String sql ="INSERT INTO compra values ('" +id_videojuego +"' , '"+ id_cliente+"' , '"+ id_transaccion +"' , '"+ fecha_compra + "' , '" + id_local+ "')";
+			miStatement.executeUpdate(sql);
+			
+			miStatement.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en insertarCompraClienteLocal del BDController" + e.getMessage());
+		}
+	}
 	
 	public void insertarJuegoLocal(int id_local,int id_videojuego) {
 		

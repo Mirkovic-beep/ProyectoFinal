@@ -51,6 +51,8 @@
 							<li class="menu-item home current-menu-item"><a href="../../index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
 							<li class="menu-item"><a href="Local_videojuego.jsp">Local-Videojuego</a></li>
+							<li class="menu-item"><a href="Formato_videojuego.jsp">Formato-Videojuego</a></li>
+							<li class="menu-item"><a href="Compra_videojuego.jsp">Compra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->

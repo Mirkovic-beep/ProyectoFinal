@@ -76,21 +76,21 @@
 						<div class="product-list">
 							
 							<section>
-								<h3>Alta Videojuego-Desarrolladora</h3>
+								<h3>Alta Videojuego-Formato</h3>
 								
-								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoDesarrolladora" method="post">
+								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoFormato" method="post">
 									<div>
 										<div class="">
 											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre del videojuego" style="width:163px"/>
 										</div>
 										<br>
 										<div class="">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required placeholder="Nombre de la desarrolladora" style="width:163px"/>
+											<input type="text" name="nombre_formato" id="nombre_formato" required placeholder="Nombre del formato" style="width:163px"/>
 										</div>
 										<br>	
 									</div>
 									<br>
-										<input type="submit" class="button" value="Dar de Alta" />
+									<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								

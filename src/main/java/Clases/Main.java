@@ -23,6 +23,8 @@ public class Main {
 		//}
 		
 		System.out.println(controlador.existeJuegoDesarrolladora(33, 3));
+		System.out.println(controlador.existeJuegoNombre("Crazytaxi"));
+		System.out.println(controlador.existeClienteNombre("Daniel"));
 	}
 
 }
