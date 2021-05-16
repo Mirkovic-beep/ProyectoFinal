@@ -21,10 +21,8 @@ public class Main {
 		//for (int i = 0; i < juegosCon.size(); i++) {
 						//System.out.println(juegosCon.get(i).toString());
 		//}
-		
-		System.out.println(controlador.existeJuegoDesarrolladora(33, 3));
-		System.out.println(controlador.existeJuegoNombre("Crazytaxi"));
-		System.out.println(controlador.existeClienteNombre("Daniel"));
+		System.out.println();
+		System.out.println(controlador.dameCliente(controlador.dameCodigoClienteNombre("Galo")));
 	}
 
 }

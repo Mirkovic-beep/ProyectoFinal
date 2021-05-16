@@ -13,6 +13,10 @@ public class Formato {
 		this.nombre = nombre;
 		Stock = stock;
 	}
+	
+	public Formato() {
+		
+	}
 
 
 	public int getId() {

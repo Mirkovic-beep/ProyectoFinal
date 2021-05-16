@@ -24,9 +24,17 @@
 
 	</head>
 	
-<%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
-
+<%
+		int id_cliente=0;
+		BDController controladorBD = new BDController();
+		Cliente cliente = new Cliente();
+		
+		if (!request.getParameter("id_cliente").isEmpty()){
+			id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+			cliente = controladorBD.dameCliente(id_cliente);
+		}
+		
+		%>
 
 	<body>
 		
@@ -48,22 +56,24 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Extras/Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Local_videojuego.jsp">Local-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Formato_videojuego.jsp">Formato-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Compra_videojuego.jsp">Compra</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clienteslist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
+							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-						<div class="breadcrumbs">
+					<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
-							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../altas.jsp">Altas</a>
-							<span>Altas extra</span>
+							<a href="../bajas.jsp">Bajas</a>
+							<span>Videojuegos</span>
 						</div>
 					</div>
 
@@ -73,24 +83,34 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Altas-Extra</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrarás las insercciones a las tablas intermedias, por ejemplo añadir una desarrolladora a un videojuego</p>
-							
-							
+								<h3>Modificar Cliente</h3>
 								
+								<form action="../operaciones_mod.jsp?accion=ModificarCliente" method="post">
+									<div>
+										<div class="">
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required style="width:163px" placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required style="width:163px" placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="text" name="dni_cliente" id="dni_cliente" required style="width:163px" placeholder="Dni del cliente" value="<%=cliente.getDni() %>"/>
+										</div>
+											<input type="hidden" value="<%= controladorBD.dameCodigoClienteNombre(cliente.getNombre())%>" name="id_cliente" id="id_cliente">
+										<br>
+												
+									</div>
+									<br>
+										<input type="submit" class="button" value="Modificar" />
+									
+								</form>
 								
-							</div> <!-- .product-list -->
-
-						</section>
+							</section>
 						
 								
 						</div> <!-- .product-list -->
@@ -114,7 +134,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>

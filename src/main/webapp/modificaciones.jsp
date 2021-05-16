@@ -42,20 +42,20 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp#">Logout <small>(Admin)</small></a>
+						<a href="index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
+							<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="alta_videojuego.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="alta_cliente.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Local </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Género </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Formato </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="alta_local.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Modificaciones/videojuegoslist.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="Modificaciones/clientelist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="Modificaciones/localeslist.jsp">Local </a></li>
+							<li class="menu-item"><a href="Modificaciones/generoslist.jsp">Género </a></li>
+							<li class="menu-item"><a href="Modificaciones/formatoslist.jsp">Formato </a></li>
+							<li class="menu-item"><a href="Modificaciones/distribuidoreslist.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="Modificaciones/desarrolladoraslist.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->

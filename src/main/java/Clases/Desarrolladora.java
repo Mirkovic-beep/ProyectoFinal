@@ -12,6 +12,10 @@ public class Desarrolladora {
 		this.nombe = nombe;
 		this.sede = sede;
 	}
+	
+	public Desarrolladora() {
+		
+	}
 
 	public int getId() {
 		return id;

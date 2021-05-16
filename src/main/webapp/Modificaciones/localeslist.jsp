@@ -25,7 +25,7 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Local> locales = cotroladorBD.dameLocales();%>
 
 
 	<body>
@@ -49,21 +49,23 @@
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Extras/Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Local_videojuego.jsp">Local-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Formato_videojuego.jsp">Formato-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Compra_videojuego.jsp">Compra</a></li>
+							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clienteslist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
+							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-						<div class="breadcrumbs">
+					<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
-							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../altas.jsp">Altas</a>
-							<span>Altas extra</span>
+							<a href="../bajas.jsp">Bajas</a>
+							<span>Videojuegos</span>
 						</div>
 					</div>
 
@@ -73,25 +75,33 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
-							<section>
-							<header>
-								<h2 class="section-title">Menu Altas-Extra</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrarás las insercciones a las tablas intermedias, por ejemplo añadir una desarrolladora a un videojuego</p>
-							
-							
+				<form action="localform.jsp" method="post">
+					<div class="row gtr-50">
+							<section>		
+								<h3>Modificar local</h3>
+						<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona local</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<locales.size();i++){%>
+									<li class="input-option" data-value="<%=locales.get(i).getId()%>">
+									<img src="../images/<%=locales.get(i).getNombre() %>.jpg" alt="Girl in a jacket" width="500" height="600">
+									<h3><%=locales.get(i).getNombre()%></h3>
+									<input type="hidden" class="option" name="id_local" value="<%=locales.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
+							</div>
 								
-								
-							</div> <!-- .product-list -->
-
-						</section>
-						
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Modificar"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -114,7 +124,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>

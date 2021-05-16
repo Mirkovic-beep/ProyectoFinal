@@ -133,6 +133,10 @@
 			
 			if (request.getParameter("nuevo").equalsIgnoreCase("")){
 				mensaje = mensaje + " El campo nuevo no puede estar vacío.";
+			}
+			
+			if(Integer.parseInt(request.getParameter("nuevo"))!=1 && Integer.parseInt(request.getParameter("nuevo"))!=0) {
+				mensaje = mensaje + "El juego solo puede ser nuevo o no nuevo (1/0)";
 			}else{
 				nuevo = request.getParameter("nuevo");
 			}
@@ -645,6 +649,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
+							<a href="altas.jsp"> Altas</a>
 						</div>
 					</div>
 

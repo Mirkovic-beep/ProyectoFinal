@@ -24,9 +24,18 @@
 
 	</head>
 	
-<%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%
+		Videojuego videojuego = new Videojuego();
+		int id_videojuego=0;
+		BDController controladorBD = new BDController();
 
+		
+		if (!request.getParameter("id_videojuego").isEmpty()){
+			id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+			videojuego = controladorBD.dameJuego(id_videojuego);
+		}
+		
+		%>
 
 	<body>
 		
@@ -48,22 +57,24 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Extras/Desarrolladora_videojuego.jsp">Desarrolladora-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Local_videojuego.jsp">Local-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Formato_videojuego.jsp">Formato-Videojuego</a></li>
-							<li class="menu-item"><a href="Extras/Compra_videojuego.jsp">Compra</a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clienteslist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
+							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-						<div class="breadcrumbs">
+					<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
-							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../altas.jsp">Altas</a>
-							<span>Altas extra</span>
+							<a href="../bajas.jsp">Bajas</a>
+							<span>Videojuegos</span>
 						</div>
 					</div>
 
@@ -73,24 +84,58 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Altas-Extra</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrarás las insercciones a las tablas intermedias, por ejemplo añadir una desarrolladora a un videojuego</p>
-							
-							
+								<h3>Modificar videojuego</h3>
 								
+								<form action="../operaciones_mod.jsp?accion=ModificarVideojuego" method="post">
+									<div>
+										<div class="">
+											<input type="text" name="nombre_genero" id="nombre_genero" required style="width:163px" placeholder="Nombre del género" value="<%=controladorBD.dameNombreGenero(videojuego.getId_genero()) %>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="duracion" id="duracion" required placeholder="Duracion en minutos" value="<%=videojuego.getDuracion()%>"/>
+										</div>
+										<br>			
+										<div class="">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required style="width:163px" value="<%=videojuego.getNombre()%>"/>
+										</div>	
+										<div class="">
+											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required style="width:163px" value="<%=videojuego.getPegi()%>"/>
+										</div>	
+										<br>
+										<div class="">
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor" style="width:163px" value="<%=controladorBD.dameNombreDistribuidor(videojuego.getId_distribuidor())%>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" step="0.01" name="precio" id="precio" required placeholder="Precio juego" value="<%=videojuego.getPrecio()%>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="text" name="consola" id="consola" required placeholder="Consola" style="width:163px" value="<%=videojuego.getConsola()%>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)" value="<%=videojuego.getNuevo()%>"/>
+										</div>
+										
+										<input type="hidden" value="<%= controladorBD.dameCodigoVideojuegoNombre(videojuego.getNombre())%>" name="id_videojuego" id="id_videojuego">
+										
+												
+									</div>
+									<br>
+										<input type="submit" class="button" value="Modificar" />
+									
+								</form>
 								
-							</div> <!-- .product-list -->
-
-						</section>
+							</section>
 						
 								
 						</div> <!-- .product-list -->
@@ -114,7 +159,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>

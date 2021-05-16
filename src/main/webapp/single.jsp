@@ -117,8 +117,9 @@
 									<p>Genero: <%=nombreGenero %> </p>
 									<p>Distribuidora: <%=controlador.dameDistribuidoraVideojuego(id) %></p>
 									<p>
+									Desarrolladora:
 									<%for(int i=0;i<desarrolladoras.size();i++){ %>
-										Desarrolladora: <%=desarrolladoras.get(i)%>
+										 <%=desarrolladoras.get(i)%>
 									<%} %>
 									</p>
 									<p> Locales:

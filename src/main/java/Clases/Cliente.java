@@ -15,6 +15,10 @@ public class Cliente {
 		this.apellidos = apellidos;
 		this.dni = dni;
 	}
+	
+	public Cliente() {
+		
+	}
 
 
 	public int getId() {

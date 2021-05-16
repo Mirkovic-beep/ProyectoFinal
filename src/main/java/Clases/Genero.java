@@ -12,6 +12,10 @@ public class Genero {
 		this.nombre = nombre;
 		this.dificultad = dificultad;
 	}
+	
+	public Genero() {
+		
+	}
 
 	public int getId() {
 		return id;

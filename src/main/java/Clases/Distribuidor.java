@@ -14,6 +14,10 @@ public class Distribuidor {
 		this.afiliacion = afiliacion;
 		this.sede = sede;
 	}
+	
+	public Distribuidor() {
+		
+	}
 
 	public int getId() {
 		return id;

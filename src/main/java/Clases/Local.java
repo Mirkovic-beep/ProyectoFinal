@@ -13,6 +13,10 @@ public class Local {
 		this.nombre = nombre;
 		this.localización = localización;
 	}
+	
+	public Local() {
+		
+	}
 
 
 	public int getId() {

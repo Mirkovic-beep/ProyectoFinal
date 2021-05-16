@@ -580,6 +580,126 @@ public class BDController {
 		return jueguito;
 	}
 	
+	public Cliente dameCliente(int cliente) {
+		Cliente clientes = new Cliente();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM clientes WHERE id='"+cliente+"'");
+
+			if (rs.first() == true) {
+				 clientes = (new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCliente del BDController" + e.getMessage());
+		}
+		return clientes;
+	}
+	
+	public Desarrolladora dameDesarrolladora(int desarrolladora) {
+		Desarrolladora desarrolladoras = new Desarrolladora();
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM desarrolladora WHERE id='"+desarrolladora+"'");
+
+			if (rs.first() == true) {
+				 desarrolladoras = (new Desarrolladora(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameDesarrolladora del BDController" + e.getMessage());
+		}
+		return desarrolladoras;
+	}
+	
+	public Distribuidor dameDistribuidor(int distribuidor) {
+		Distribuidor distribuidores = new Distribuidor();
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM distribuidor WHERE id='"+distribuidor+"'");
+
+			if (rs.first() == true) {
+				 distribuidores = (new Distribuidor(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameDesarrolladora del BDController" + e.getMessage());
+		}
+		return distribuidores;
+	}
+	
+	public Formato dameFormato(int formato) {
+		Formato formatos = new Formato();
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM formato WHERE id='"+formato+"'");
+
+			if (rs.first() == true) {
+				 formatos = (new Formato(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameFormato del BDController" + e.getMessage());
+		}
+		return formatos;
+	}
+	
+	public Genero dameGenero(int genero) {
+		Genero generos = new Genero();
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM genero WHERE id='"+genero+"'");
+
+			if (rs.first() == true) {
+				 generos = (new Genero(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameGenero del BDController" + e.getMessage());
+		}
+		return generos;
+	}
+	
+	public Local dameLocal(int local) {
+		Local locales = new Local();
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM local_fisico WHERE id='"+local+"'");
+
+			if (rs.first() == true) {
+				 locales = (new Local(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocal del BDController" + e.getMessage());
+		}
+		return locales;
+	}
+
+	
 	
 // Datos complejos
 	
@@ -791,7 +911,7 @@ public class BDController {
 		try {
 			Statement miStatement = this.miConexion.createStatement();
 
-			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM videojuegos WHERE id='"+id+"')");
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM videojuegos WHERE id='"+id+"'");
 			
 			if (rs.first() == true) {
 				genero = rs.getString(1);
@@ -803,6 +923,26 @@ public class BDController {
 			System.out.println("Error en dameNombreVideojuego del BDController" + e.getMessage());
 		}
 		return genero;	
+	}
+	
+	public String dameNombreDistribuidor(int id) {
+		String distribuidor="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM distribuidor WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				distribuidor = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNombreDistribuidor del BDController" + e.getMessage());
+		}
+		return distribuidor;	
 	}
 	
 
@@ -1431,5 +1571,106 @@ public void insertarClienteBDD(Cliente cliente) {
 			System.out.println("Error en borrarDesarrolladora del BDController" + e.getMessage());
 		}
 	}
+	
+	//Modificaciones
+	
+	public void modificarVideojuego(Videojuego videojuego){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE videojuegos SET id_genero="+videojuego.getId_genero()+
+                    ", ncopias='"+videojuego.getNcopias()+"', duracion='"+videojuego.getDuracion()+
+                    "', nombre='"+videojuego.getNombre()+"', pegi='"+videojuego.getPegi()+"', id_distribuidor='"+videojuego.getId_distribuidor()+"', precio='"+videojuego.getPrecio()+"', consola='"+videojuego.getConsola()+ "', nuevo='"+videojuego.getNuevo()+ "' where id="+videojuego.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarCliente(Cliente cliente){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE clientes SET nombre='"+cliente.getNombre()+
+                    "', apellidos='"+cliente.getApellidos()+"', dni='"+cliente.getDni()+ "' where id="+cliente.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarDesarrolladora(Desarrolladora desarrolladora){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE desarrolladora SET nombre='"+desarrolladora.getNombe()+
+                    "', sede='"+desarrolladora.getSede()+ "' where id="+desarrolladora.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarDistribuidor(Distribuidor distribuidor){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE distribuidor SET nombre='"+distribuidor.getNombre()+
+                    "',afiliacion='"+distribuidor.getAfiliacion()+ "', sede='"+distribuidor.getSede()+"' where id="+distribuidor.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarFormato(Formato formato){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE formato SET nombre='"+formato.getNombre()+
+                    "',stock='"+formato.getStock() +"' where id="+formato.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarGenero(Genero genero){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE genero SET nombre='"+genero.getNombre()+
+                    "',dificultad='"+genero.getDificultad() +"' where id="+genero.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarLocal(Local local){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE local_fisico SET nombre='"+local.getNombre()+
+                    "',localizacion='"+local.getLocalización() +"' where id="+local.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 	
 }
