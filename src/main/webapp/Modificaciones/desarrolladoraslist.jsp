@@ -48,14 +48,15 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="clienteslist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="clientelist.jsp">Cliente</a></li>
 							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
 							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
 							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
 							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="modificacionesextra.jsp">Uniones </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -64,8 +65,9 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
-							<a href="../bajas.jsp">Bajas</a>
-							<span>Videojuegos</span>
+							<a href="../indexadmin.jsp">Admin</a>
+							<a href="../modificaciones.jsp">Modificaciones</a>
+							<span>Clientes</span>
 						</div>
 					</div>
 

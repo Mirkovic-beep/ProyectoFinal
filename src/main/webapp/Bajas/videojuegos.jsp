@@ -64,6 +64,7 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
+							<a href="../indexadmin.jsp">Admin</a>
 							<a href="../bajas.jsp">Bajas</a>
 							<span>Videojuegos</span>
 						</div>

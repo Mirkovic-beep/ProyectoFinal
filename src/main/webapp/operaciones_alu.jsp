@@ -239,7 +239,7 @@
 				}
 			}
 			
-			if(controladorBD.existeJuegoFormato(id_desarrolladora, id_videojuego)){
+			if(controladorBD.existeJuegoFormato(id_formato, id_videojuego)){
 				mensaje = "El juego ya tiene ese formato registrado";
 			}else{
 			}

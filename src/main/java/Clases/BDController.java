@@ -1663,6 +1663,32 @@ public void insertarClienteBDD(Cliente cliente) {
         }
     }
 	
+	public void borrarJuegoDesarrolladora(int id_desarrolladora,int id_videojuego){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "DELETE FROM es_desarrollado where id_videojuego="+id_videojuego+" and id_desarrolladora="+id_desarrolladora+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void borrarJuegoFormato(int id_formato,int id_videojuego){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "DELETE FROM formato_juego where id_videojuego="+id_videojuego+" and id_formato="+id_formato+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
 	public void borrarCompra(int id_videojuego,int id_cliente, int id_local){
         try {
             Statement miStatement = this.miConexion.createStatement();

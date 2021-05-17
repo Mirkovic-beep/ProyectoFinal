@@ -61,8 +61,8 @@
 						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../altas.jsp">Altas</a>
-							<span>Altas extra</span>
+							<a href="../modificaciones.jsp">Modificaciones</a>
+							<span>Modificaciones extra</span>
 						</div>
 					</div>
 
@@ -77,12 +77,12 @@
 							
 							<section>
 							<header>
-								<h2 class="section-title">Menu Altas-Extra</h2>
+								<h2 class="section-title">Menu Modificaciones-Extra</h2>
 							</header>
 		
 							<div class="product-list">
 							
-								<p> En el menú superior encontrarás las insercciones a las tablas intermedias, por ejemplo añadir una desarrolladora a un videojuego</p>
+								<p> En el menú superior encontrarás las posibles modificaciones entre uniones de tablas</p>
 							
 							
 								

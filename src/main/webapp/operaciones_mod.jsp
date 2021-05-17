@@ -66,6 +66,7 @@
 		int id_formato = 0;
 		int id_cliente = 0;
 		int id_transaccion = 0;
+		int count = 0;
 		String mensaje = "";
 			
 		
@@ -146,7 +147,6 @@
 						nuevo = request.getParameter("nuevo");
 					}
 					
-					
 						
 					//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
 					if (mensaje.equalsIgnoreCase("")){
@@ -164,97 +164,140 @@
 				
 			//Modificar videojuego desarrolladora
 			
-			if (accion.equalsIgnoreCase("AltaVideojuegoDesarrolladora")){
+			if (accion.equalsIgnoreCase("ModificarDesarrolladoraVideojuego")){
 				
 				nombre_videojuego = request.getParameter("nombre_videojuego");
-				nombre_desarrolladora = request.getParameter("nombre_desarrolladora");
 				
-				id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
-				id_desarrolladora = controladorBD.dameCodigoDesarrolladoraNombre(nombre_desarrolladora);
+				ArrayList<String> desarrolladoras = new ArrayList<String>();
+				ArrayList<String> desarrolladorasold = new ArrayList<String>();
+
+				int count_desarrolladoras = Integer.parseInt(request.getParameter("count_desarrolladoras"));
 				
-				if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
+				for (int i=0;i<count_desarrolladoras;i++){
+					desarrolladoras.add(request.getParameter("nombre_desarrolladoras"+i));
+				}
+				
+				for (int i=0;i<count_desarrolladoras;i++){
+					desarrolladorasold.add(request.getParameter("nombre_desarrolladorasold"+i));
+				}
+
+				
+								
+				if (request.getParameter("nombre_videojuego").equalsIgnoreCase("")){
 					mensaje = "El nombre del videojuego no puede estar vacio";
 					
 				}else{
-					if (controladorBD.existeJuego(id_videojuego)){
+					if (controladorBD.existeJuego(controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego))){
 						id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 					}else{
 						mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
 					}
-				}
+				}	
 				
-				if (Integer.toString(id_desarrolladora).equalsIgnoreCase("")){
-					mensaje = "El nombre de la desarrolladora no puede estar vacio";
+				for (int i=0;i<desarrolladoras.size();i++){
 					
-				}else{
-					if (controladorBD.existeDesarrolladora(id_desarrolladora)){
-						id_desarrolladora = controladorBD.dameCodigoDesarrolladoraNombre(nombre_desarrolladora);
-					}else{
-						mensaje = mensaje + "El nombre de la desarrolladora no existe en la BD.";
-					}
-				}
-				
-				if(controladorBD.existeJuegoDesarrolladora(id_desarrolladora, id_videojuego)){
-					mensaje = "El juego ya pertenece a esa desarrolladora";
-				}else{
-				}
-					
-					//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
-					if (mensaje.equalsIgnoreCase("")){				
-						controladorBD.insertarJuegoDesarrolladora(id_videojuego,id_desarrolladora);
-						
-						mensaje = "Videojuego unido a la desarrolladora indicada";
-					}else{
-						mensaje = "Operación cancelada: " + mensaje;
-					}
-				}
-			
-			//Modificar videojuego formato
-			
-			if (accion.equalsIgnoreCase("AltaVideojuegoFormato")){
-					
-					nombre_videojuego = request.getParameter("nombre_videojuego");
-					nombre_formato = request.getParameter("nombre_formato");
-					
-					id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
-					id_formato = controladorBD.dameCodigoFormatoNombre(nombre_formato);
-					
-					if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
-						mensaje = "El nombre del videojuego no puede estar vacio";
+					if (desarrolladoras.get(i).equalsIgnoreCase("")){
+						mensaje = "El nombre de la desarrolladora no puede estar vacio";
 						
 					}else{
-						if (controladorBD.existeJuego(id_videojuego)){
-							id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+						if (controladorBD.existeDesarrolladora(controladorBD.dameCodigoDesarrolladoraNombre(desarrolladoras.get(i)))){
+							
 						}else{
-							mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+							mensaje = mensaje + "El nombre de la desarrolladora no existe en la BD.";
 						}
 					}
 					
-					if (Integer.toString(id_formato).equalsIgnoreCase("")){
-						mensaje = "El formato del juego no puede estar vacio";
+				}
+					
+					//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
+					if (mensaje.equalsIgnoreCase("")){		
+						
+						
+						for (int i=0;i<desarrolladoras.size();i++){
+							
+							controladorBD.borrarJuegoDesarrolladora(controladorBD.dameCodigoDesarrolladoraNombre(desarrolladorasold.get(i)),id_videojuego);
+							
+							controladorBD.insertarJuegoDesarrolladora(id_videojuego,controladorBD.dameCodigoDesarrolladoraNombre(desarrolladoras.get(i)));
+							
+						}
+					
+						
+						mensaje = "Union Juego-local modificada";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
+					}
+			
+			}
+			
+			
+			//Modificar videojuego formato
+			
+			if (accion.equalsIgnoreCase("ModificarFormatoVideojuego")){
+					
+				nombre_videojuego = request.getParameter("nombre_videojuego");
+				
+				ArrayList<String> formatos = new ArrayList<String>();
+				ArrayList<String> formatosold = new ArrayList<String>();
+
+				int count_formatos = Integer.parseInt(request.getParameter("count_formatos"));
+				
+				for (int i=0;i<count_formatos;i++){
+					formatos.add(request.getParameter("nombre_formatos"+i));
+				}
+				
+				for (int i=0;i<count_formatos;i++){
+					formatosold.add(request.getParameter("nombre_formatosold"+i));
+				}
+
+				
+								
+				if (request.getParameter("nombre_videojuego").equalsIgnoreCase("")){
+					mensaje = "El nombre del videojuego no puede estar vacio";
+					
+				}else{
+					if (controladorBD.existeJuego(controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego))){
+						id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
+					}else{
+						mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+					}
+				}	
+				
+				for (int i=0;i<formatos.size();i++){
+					
+					if (formatos.get(i).equalsIgnoreCase("")){
+						mensaje = "El nombre del formato no puede estar vacio";
 						
 					}else{
-						if (controladorBD.existeFormato(id_formato)){
-							id_formato = controladorBD.dameCodigoFormatoNombre(nombre_formato);
+						if (controladorBD.existeFormato(controladorBD.dameCodigoFormatoNombre(formatos.get(i)))){
+							
 						}else{
 							mensaje = mensaje + "El nombre del formato no existe en la BD.";
 						}
 					}
 					
-					if(controladorBD.existeJuegoFormato(id_desarrolladora, id_videojuego)){
-						mensaje = "El juego ya tiene ese formato registrado";
-					}else{
-					}
+				}
+					
+					//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
+					if (mensaje.equalsIgnoreCase("")){		
 						
-						//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
-						if (mensaje.equalsIgnoreCase("")){				
-							controladorBD.insertarJuegoFormato(id_videojuego,id_formato);
+						
+						for (int i=0;i<formatos.size();i++){
 							
-							mensaje = "Formato registrado para el juego";
-						}else{
-							mensaje = "Operación cancelada: " + mensaje;
+							controladorBD.borrarJuegoFormato(controladorBD.dameCodigoFormatoNombre(formatosold.get(i)),id_videojuego);
+							
+							controladorBD.insertarJuegoFormato(id_videojuego,controladorBD.dameCodigoFormatoNombre(formatos.get(i)));
+							
 						}
+					
+						
+						mensaje = "Union Juego-local modificada";
+					}else{
+						mensaje = "Operación cancelada: " + mensaje;
 					}
+			
+			}
+
+			
 
 			
 			//Modificar videojuego-local
@@ -306,14 +349,7 @@
 					}
 					
 				} 
-			
-				for (int i=0;i<locales.size();i++){
-					if(controladorBD.existeJuegoLocal(controladorBD.dameCodigoLocalNombre(locales.get(i)), id_videojuego)==true){
-						mensaje = "El juego ya pertenece a ese local";
-					}else{
-					}
-				}
-				
+							
 				
 				
 				//Si la variable mensaje viene vacía es que no ha habido ningún error y todos los datos son correctos
@@ -380,6 +416,7 @@
 							
 						}else{
 							mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
+							count ++;
 						}
 					}	
 					
@@ -392,6 +429,7 @@
 
 
 						}else{
+							count++;
 							mensaje = mensaje + "El nombre del local no existe en la BD.";
 						}
 					}
@@ -405,18 +443,12 @@
 
 
 						}else{
+							count++;
 							mensaje = mensaje + "El nombre del cliente no existe en la BD.";
 						}
 					}
 					
-					
-					if(controladorBD.existeClienteJuegoLocal(id_cliente,id_videojuego,id_local)==true){
-						mensaje = mensaje + "Esa compra ya existe";
-
-					}else{
-					}
-					
-					
+									
 					if (mensaje.equalsIgnoreCase("")){		
 						controladorBD.borrarCompra(id_videojuegoold, id_clienteold, id_localold);
 						controladorBD.insertarCompraClienteLocal(id_local, id_videojuego, id_cliente, id_transaccion, fecha_compra);
@@ -427,7 +459,9 @@
 					
 				}
 				
-				mensaje = mensaje + "Operacion exitosa";
+				if(count==0){
+					mensaje = mensaje + "Operacion exitosa";
+				}
 				
 				}
 				
@@ -661,6 +695,7 @@
 							<li class="menu-item"><a href="Modificaciones/formatoslist.jsp">Formato </a></li>
 							<li class="menu-item"><a href="Modificaciones/distribuidoreslist.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="Modificaciones/desarrolladoraslist.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Modificaciones/modificacionesextra.jsp">Uniones </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
