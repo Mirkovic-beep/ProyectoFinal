@@ -763,6 +763,27 @@ public class BDController {
 		return juegos;
 	}
 	
+	public ArrayList<Compra> dameCompras(int id_cliente) {
+		
+		ArrayList<Compra> compras = new ArrayList<Compra>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM compra WHERE id_cliente='"+id_cliente+"'");
+
+			while (rs.next() == true) {
+				compras.add(new Compra(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCompras del BDController" + e.getMessage());
+		}
+		return compras;
+	}
+	
 	public String dameDistribuidoraVideojuego(int id) {
 		String distribuidora="";
 		
@@ -945,6 +966,46 @@ public class BDController {
 		return distribuidor;	
 	}
 	
+	public String dameNombreCliente(int id) {
+		String distribuidor="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM clientes WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				distribuidor = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNombreClientes del BDController" + e.getMessage());
+		}
+		return distribuidor;	
+	}
+	
+	public String dameNombreLocal(int id) {
+		String distribuidor="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM local_fisico WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				distribuidor = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNombreLocal del BDController" + e.getMessage());
+		}
+		return distribuidor;	
+	}
+	
 
 	public int dameGeneroVideojuego(int id) {
 		int genero=0;
@@ -965,6 +1026,7 @@ public class BDController {
 		}
 		return genero;	
 	}
+	
 
 	public String damePegiVideojuego(int id) {
 		String pegi="";
@@ -1126,10 +1188,26 @@ public class BDController {
 		return id;	
 	}
 
+	
+	public ArrayList<Almacenar> dameAlmacenar() {
+		ArrayList<Almacenar> almacenar = new ArrayList<Almacenar>();
 
-	
-	
-	
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM almacenar");
+
+			while (rs.next() == true) {
+				almacenar.add(new Almacenar(rs.getInt(1),rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameAlmacenar del BDController" + e.getMessage());
+		}
+		return almacenar;
+	}
 
 	
 	public ArrayList<Videojuego> dameJuegosGenero(int id) {
@@ -1572,6 +1650,32 @@ public void insertarClienteBDD(Cliente cliente) {
 		}
 	}
 	
+	public void borrarJuegoLocal(int id_local,int id_videojuego){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "DELETE FROM almacenar where id_local="+id_local+" and id_videojuego="+id_videojuego+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void borrarCompra(int id_videojuego,int id_cliente, int id_local){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "DELETE FROM compra where id_videojuego="+id_videojuego+" and id_cliente="+id_cliente+" and id_local="+id_local+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
 	//Modificaciones
 	
 	public void modificarVideojuego(Videojuego videojuego){
@@ -1664,6 +1768,19 @@ public void insertarClienteBDD(Cliente cliente) {
             Statement miStatement = this.miConexion.createStatement();
             String cadena = "UPDATE local_fisico SET nombre='"+local.getNombre()+
                     "',localizacion='"+local.getLocalización() +"' where id="+local.getId()+";";
+            System.out.println(cadena);
+            int rs = miStatement.executeUpdate(cadena);
+            miStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public void modificarJuegoLocal(int id_local,int id_videojuego){
+        try {
+            Statement miStatement = this.miConexion.createStatement();
+            String cadena = "UPDATE almacenar SET id_local='"+id_local+ "' where id_videojuego="+id_videojuego+";";
             System.out.println(cadena);
             int rs = miStatement.executeUpdate(cadena);
             miStatement.close();

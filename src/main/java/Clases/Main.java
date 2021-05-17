@@ -23,6 +23,11 @@ public class Main {
 		//}
 		System.out.println();
 		System.out.println(controlador.dameCliente(controlador.dameCodigoClienteNombre("Galo")));
+		
+		for (int j = 0; j < 3; j++) {
+			System.out.println(controlador.dameCompras(11).get(j).getId_cliente());
+
+		}
 	}
 
 }

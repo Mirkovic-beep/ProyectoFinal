@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -24,17 +24,37 @@
 
 	</head>
 	
-<%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%
+		int id_cliente=0;
+		
+		BDController controladorBD = new BDController();
+		Videojuego videojuego = new Videojuego();
 
+		ArrayList<Compra> compras = new ArrayList<Compra>();
+		ArrayList<Compra> comprasold = new ArrayList<Compra>();
+
+		
+		
+		if (!request.getParameter("id_cliente").isEmpty()){
+			id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+			comprasold = controladorBD.dameCompras(id_cliente);
+			compras = controladorBD.dameCompras(id_cliente);
+
+		}
+		
+			
+		
+
+		
+		%>
 
 	<body>
 		
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.jsp" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+					<a href="../../index.jsp" id="branding">
+						<img src="../../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,21 +62,20 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
-							<ul class="menu">
+						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Modificaciones/videojuegoslist.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="Modificaciones/clientelist.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="Modificaciones/localeslist.jsp">Local </a></li>
-							<li class="menu-item"><a href="Modificaciones/generoslist.jsp">Género </a></li>
-							<li class="menu-item"><a href="Modificaciones/formatoslist.jsp">Formato </a></li>
-							<li class="menu-item"><a href="Modificaciones/distribuidoreslist.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="Modificaciones/desarrolladoraslist.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Modificaciones/modificacionesextra.jsp">Uniones </a></li>
+							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
+							<li class="menu-item"><a href="clienteslist.jsp">Cliente</a></li>
+							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
+							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
+							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
+							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
+							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -64,9 +83,9 @@
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
-							<span>Modificaciones</span>
+							<a href="../../index.jsp">Home</a>
+							<a href="../../bajas.jsp">Bajas</a>
+							<span>Videojuegos</span>
 						</div>
 					</div>
 
@@ -75,28 +94,60 @@
 			<main class="main-content">
 				<div class="container">
 					<div class="page">
-						
-						
-						<div class="product-list">
+					
+					<div class="product-list">
 							
 							<section>
-							<header>
-								<h2 class="section-title">Menu Modificaciones</h2>
-							</header>
-		
-							<div class="product-list">
-							
-								<p> En el menú superior encontrará el acceso a los formularios de edición</p>
-							
-							
+								<h3>Modificar Compra-videojuego-local</h3>
 								
+								<form action="../../operaciones_mod.jsp?accion=ModificarCompraVideojuegoLocal" method="post">
+									<div>
 								
-							</div> <!-- .product-list -->
+								<%for(int i=0;i<comprasold.size();i++){ %>
+								
+								<h1>Compra numero	<%=i %></h1>
+									
+										<div class="">
+											<input type="text" name="nombre_videojuego<%=i%>" id="nombre_videojuego<%=i%>" required placeholder="Nombre videojuego" style="width:163px" value="<%=controladorBD.dameNombreVideojuego(comprasold.get(i).getId_videojuego())%>"/>
+										</div>
+										<br>
+										<div class="">
+											<input type="number" name="id_transaccion<%=i%>" id="id_transaccion<%=i%>" required placeholder="Id transaccion"  value="<%=comprasold.get(i).getId_transaccion()%>"/>
+										</div>
+										<br>	
+										<div class="">
+											<input type="text" name="fecha_compra<%=i%>" id="fecha_compra<%=i%>" required placeholder="Fecha compra"  value="<%=comprasold.get(i).getFecha_compra()%>"/>
+										</div>
+										<br>			
+										<div class="">
+											<input type="text" name="nombre_local<%=i%>" id="nombre_local<%=i%>" required placeholder="Nombre local" style="width:163px" value="<%=controladorBD.dameNombreLocal(comprasold.get(i).getId_local())%>"/>
+										</div>
+										<br>	
+									</div>
+									<br>
+										<input type="hidden" name="nombre_cliente<%=i%>" id="nombre_cliente<%=i%>" required placeholder="Nombre cliente" style="width:163px" value="<%=controladorBD.dameNombreCliente(comprasold.get(i).getId_cliente())%>"/>
 
-						</section>
+										<input type="hidden" value="<%=controladorBD.dameNombreVideojuego(compras.get(i).getId_videojuego())%>" id="nombre_videojuegoold<%=i%>" name="nombre_videojuegoold<%=i%>">
+										<input type="hidden" value="<%=controladorBD.dameNombreCliente(compras.get(i).getId_cliente())%>" id="nombre_clienteold<%=i%>" name="nombre_clienteold<%=i%>">
+										<input type="hidden" value="<%=controladorBD.dameNombreLocal(compras.get(i).getId_local())%>" id="nombre_localold<%=i%>" name="nombre_localold<%=i%>">
+								<%} %>
+										<input type="submit" class="button" value="Dar de Alta" />
+										<input type="hidden" value="<%=comprasold.size()%>" id="count_compras" name="count_compras">
+																				
+										
+											
+											
+											
+									
+											
+								</form>
+								
+							</section>
 						
 								
 						</div> <!-- .product-list -->
+						
+
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
@@ -117,7 +168,7 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">Servicio de paqueterÃ­a</h3>
+								<h3 class="widget-title">Servicio de paquetería</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Envios</a></li>
 									<li><a href="#">Devoluciones</a></li>
@@ -186,9 +237,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../../js/jquery-1.11.1.min.js"></script>
+		<script src="../../js/plugins.js"></script>
+		<script src="../../js/app.js"></script>
 		
 	</body>
 

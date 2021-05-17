@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -25,7 +25,6 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
 
 
 	<body>
@@ -33,8 +32,8 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.jsp" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+					<a href="../index.jsp" id="branding">
+						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,31 +41,28 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
-							<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="Modificaciones/videojuegoslist.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="Modificaciones/clientelist.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="Modificaciones/localeslist.jsp">Local </a></li>
-							<li class="menu-item"><a href="Modificaciones/generoslist.jsp">Género </a></li>
-							<li class="menu-item"><a href="Modificaciones/formatoslist.jsp">Formato </a></li>
-							<li class="menu-item"><a href="Modificaciones/distribuidoreslist.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="Modificaciones/desarrolladoraslist.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Modificaciones/modificacionesextra.jsp">Uniones </a></li>
+						<ul class="menu">
+							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item"><a href="Extra/Desarrolladora-videojuegolist.jsp">Desarrolladora-Videojuego</a></li>
+							<li class="menu-item"><a href="Extra/Local-videojuegolist.jsp">Local-Videojuego</a></li>
+							<li class="menu-item"><a href="Extra/Formato-videojuegolist.jsp">Formato-Videojuego</a></li>
+							<li class="menu-item"><a href="Extra/compralist.jsp">Compra</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
-					<div class="breadcrumbs">
+						<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.jsp">Home</a>
-							<a href="indexadmin.jsp">Admin</a>
-							<span>Modificaciones</span>
+							<a href="../index.jsp">Home</a>
+							<a href="../indexadmin.jsp">Admin</a>
+							<a href="../altas.jsp">Altas</a>
+							<span>Altas extra</span>
 						</div>
 					</div>
 
@@ -81,12 +77,12 @@
 							
 							<section>
 							<header>
-								<h2 class="section-title">Menu Modificaciones</h2>
+								<h2 class="section-title">Menu Altas-Extra</h2>
 							</header>
 		
 							<div class="product-list">
 							
-								<p> En el menú superior encontrará el acceso a los formularios de edición</p>
+								<p> En el menú superior encontrarás las insercciones a las tablas intermedias, por ejemplo añadir una desarrolladora a un videojuego</p>
 							
 							
 								
@@ -186,9 +182,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/app.js"></script>
 		
 	</body>
 
