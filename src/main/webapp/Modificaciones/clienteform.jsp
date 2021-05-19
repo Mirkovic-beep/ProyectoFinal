@@ -94,16 +94,21 @@
 																
 								<form action="../operaciones_mod.jsp?accion=ModificarCliente" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>"/>
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre cliente"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>"/>
+											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Apellidos cliente"/>
+											
 										</div>
 										<div class="user-box">
-											<input type="text" name="dni_cliente" id="dni_cliente" required placeholder="Dni del cliente" value="<%=cliente.getDni() %>"/>
+											<input type="text" name="dni_cliente" id="dni_cliente" required placeholder="Dni del cliente" value="<%=cliente.getDni() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Dni cliente"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoClienteNombre(cliente.getNombre())%>" name="id_cliente" id="id_cliente">
-										<input type="submit" class="button" value="Modificar" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
+											
 								</form>
 							</div>						
 						</div> <!-- .product-list -->

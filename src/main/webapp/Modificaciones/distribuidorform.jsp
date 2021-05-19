@@ -95,18 +95,21 @@
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarDistribuidor" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre distribuidor" value="<%=distribuidor.getNombre() %>"/>
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre distribuidor" value="<%=distribuidor.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre del distribuidor"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="afiliacion_distribuidor" id="afiliacion_distribuidor" required placeholder="Afiliacion" value="<%=distribuidor.getAfiliacion() %>"/>
+											<input type="text" name="afiliacion_distribuidor" id="afiliacion_distribuidor" required placeholder="Afiliacion" value="<%=distribuidor.getAfiliacion() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Afiliacion"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="sede_distribuidor" id="sede_distribuidor" required placeholder="Sede" value="<%=distribuidor.getSede() %>"/>
+											<input type="text" name="sede_distribuidor" id="sede_distribuidor" required placeholder="Sede" value="<%=distribuidor.getSede() %>"data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Sede"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoDistribuidorNombre(distribuidor.getNombre())%>" name="id_distribuidor" id="id_distribuidor">
 												
-										<input type="submit" class="button" value="Modificar" />
-									
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
+																			
 								</form>
 								
 							</div>						

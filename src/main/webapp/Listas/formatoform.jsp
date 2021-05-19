@@ -25,13 +25,13 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		int id_formato=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		Formato formato = new Formato();
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_formato").isEmpty()){
+			id_formato = Integer.parseInt(request.getParameter("id_formato"));
+			formato = controladorBD.dameFormato(id_formato);
 		}
 		
 		%>
@@ -71,12 +71,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<a href="formatoslist.jsp">Formatos</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -86,28 +86,30 @@
 				<div class="container">
 					<div class="page">
 						
-						<div class="product-list">
+					<div class="product-list">
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=formato.getNombre() %></h2>
 								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+								<img src="../images/<%=formato.getNombre() %>.jpg" class="center" width="500" height="200">
+								<br>
+								
+								<form action="../operaciones_mod.jsp?accion=ModificarFormato" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre formato" value="<%=formato.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre formato"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="stock" id="stock" required  placeholder="Stock" value="<%=formato.getStock() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Stock"/>
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
+											<input type="hidden" value="<%= controladorBD.dameCodigoFormatoNombre(formato.getNombre())%>" name="id_formato" id="id_formato">
 												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
 									
 								</form>
 								
-							</div>
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

@@ -25,13 +25,13 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		int id_local=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		Local local = new Local();
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_local").isEmpty()){
+			id_local = Integer.parseInt(request.getParameter("id_local"));
+			local = controladorBD.dameLocal(id_local);
 		}
 		
 		%>
@@ -71,12 +71,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<a href="localeslist.jsp">Locales</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -90,24 +90,26 @@
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=local.getNombre() %></h2>
 								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+						
+								
+								<form action="../operaciones_mod.jsp?accion=ModificarLocal" method="post">
+								<img src="../images/<%=local.getNombre() %>.jpg" class="center" width="500" height="200">
+								<br>
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre local" value="<%=local.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre del local"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											<input type="text" name="localizacion" id="localizacion" required  placeholder="Localizacion" value="<%=local.getLocalización() %>" data-bs-toggle="tooltip" data-bs-html="true"
 											data-bs-placement="top" title="Localizacion"/>
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
+											<input type="hidden" value="<%= controladorBD.dameCodigoLocalNombre(local.getNombre())%>" name="id_local" id="id_local">
 									
 								</form>
 								
-							</div>
+						</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

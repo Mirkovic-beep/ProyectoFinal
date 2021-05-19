@@ -24,17 +24,9 @@
 
 	</head>
 	
-<%
-		int id_genero=0;
-		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
-		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
-		}
-		
-		%>
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Desarrolladora> desarrolladoras = cotroladorBD.dameDesarrolladoras();%>
+
 
 	<body>
 		
@@ -71,12 +63,11 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<span>Desarrolladoras</span>
 						</div>
 					</div>
 
@@ -88,26 +79,31 @@
 						
 						<div class="product-list">
 							
-							<div class="login-box">
-							
-								<h2>Modificar Genero</h2>
-								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
-										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
-										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
-								</form>
-								
+				<form action="desarrolladoraform.jsp" method="post">
+					<div class="row gtr-50">
+							<section>		
+								<h3>Lista desarrolladoras</h3>
+						<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona desarrolladora</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<desarrolladoras.size();i++){%>
+									<li class="input-option" data-value="<%=desarrolladoras.get(i).getId()%>">
+									<img src="../images/<%=desarrolladoras.get(i).getNombe() %>.png" class="center" width="500" height="600">
+									<h3 id="centro"><%=desarrolladoras.get(i).getNombe()%></h3>
+									<input type="hidden" class="option" name="id_desarrolladora" value="<%=desarrolladoras.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
 							</div>
+								
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Ver detalles"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -202,6 +198,9 @@
 		<script src="../js/jquery-1.11.1.min.js"></script>
 		<script src="../js/plugins.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/dropdowns.js"></script>
+		<script src="../js/dropdowns2.js"></script>
+	
 		
 	</body>
 

@@ -80,7 +80,7 @@
 					id_distribuidor = controladorBD.dameCodigoDistribuidorNombre(nombre_distribuidor);
 					id_genero = controladorBD.dameCodigoGeneroNombre(nombre_genero);
 					
-					if (Integer.toString(id_genero).equalsIgnoreCase("")){
+					if (nombre_genero.equalsIgnoreCase("")){
 						mensaje = "El nombre del genero no puede estar vacio";
 						
 					}else{

@@ -96,14 +96,15 @@
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarLocal" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre local" value="<%=local.getNombre() %>"/>
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre local" value="<%=local.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre del local"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="localizacion" id="localizacion" required  placeholder="Localizacion" value="<%=local.getLocalización() %>"/>
+											<input type="text" name="localizacion" id="localizacion" required  placeholder="Localizacion" value="<%=local.getLocalización() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Localizacion"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoLocalNombre(local.getNombre())%>" name="id_local" id="id_local">
-												
-										<input type="submit" class="button" value="Modificar" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
 									
 								</form>
 								

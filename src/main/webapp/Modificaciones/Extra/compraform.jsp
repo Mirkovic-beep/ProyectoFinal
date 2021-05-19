@@ -29,9 +29,12 @@
 		
 		BDController controladorBD = new BDController();
 		Videojuego videojuego = new Videojuego();
-
+		
+		ArrayList<Videojuego> videojuegos = controladorBD.dameVideojuegos();
+		ArrayList<Local> locales = controladorBD.dameLocales();
 		ArrayList<Compra> compras = new ArrayList<Compra>();
 		ArrayList<Compra> comprasold = new ArrayList<Compra>();
+		
 
 		
 		
@@ -95,55 +98,56 @@
 				<div class="container">
 					<div class="page">
 					
+				<div class="login-box">
+
 					<div class="product-list">
 							
-							<section>
-								<h3>Modificar Compra-videojuego-local</h3>
-								
+								<h2>Modificar Compra-videojuego-local</h2>
+								<br>
 								<form action="../../operaciones_mod.jsp?accion=ModificarCompraVideojuegoLocal" method="post">
 									<div>
 								
 								<%for(int i=0;i<comprasold.size();i++){ %>
 								
-								<h1>Compra numero	<%=i %></h1>
+								<h2>Compra numero	<%=i %></h2>
 									
-										<div class="">
-											<input type="text" name="nombre_videojuego<%=i%>" id="nombre_videojuego<%=i%>" required placeholder="Nombre videojuego" style="width:163px" value="<%=controladorBD.dameNombreVideojuego(comprasold.get(i).getId_videojuego())%>"/>
+										<div class="user-box">
+											<input type="text" name="nombre_videojuego<%=i%>" id="nombre_videojuego<%=i%>" required placeholder="Nombre videojuego" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="right" value="<%=controladorBD.dameNombreVideojuego(comprasold.get(i).getId_videojuego())%>" title="Videojuegos: <%for (int j = 0; j < videojuegos.size(); j++) {%> <%=videojuegos.get(j).getNombre()%><%}%>" />
+											
 										</div>
 										<br>
-										<div class="">
-											<input type="number" name="id_transaccion<%=i%>" id="id_transaccion<%=i%>" required placeholder="Id transaccion"  value="<%=comprasold.get(i).getId_transaccion()%>"/>
+										<div class="user-box">
+											<input type="text" name="id_transaccion<%=i%>" id="id_transaccion<%=i%>" required placeholder="Id transaccion"  value="<%=comprasold.get(i).getId_transaccion()%>"  data-bs-html="true"
+											data-bs-placement="right" title="Id transaccion"/>
 										</div>
 										<br>	
-										<div class="">
-											<input type="text" name="fecha_compra<%=i%>" id="fecha_compra<%=i%>" required placeholder="Fecha compra"  value="<%=comprasold.get(i).getFecha_compra()%>"/>
+										<div class="user-box">
+											<input type="text" name="fecha_compra<%=i%>" id="fecha_compra<%=i%>" required placeholder="Fecha compra"  value="<%=comprasold.get(i).getFecha_compra()%>" data-bs-html="true"
+											data-bs-placement="right" title="Fecha compra"/>
 										</div>
 										<br>			
-										<div class="">
-											<input type="text" name="nombre_local<%=i%>" id="nombre_local<%=i%>" required placeholder="Nombre local" style="width:163px" value="<%=controladorBD.dameNombreLocal(comprasold.get(i).getId_local())%>"/>
+										<div class="user-box">
+											<input type="text" name="nombre_local<%=i%>" id="nombre_local<%=i%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="right" required placeholder="Nombre local" value="<%=controladorBD.dameNombreLocal(comprasold.get(i).getId_local())%>" title="Locales: <%for (int j = 0; j < locales.size(); j++) {%> <%=locales.get(j).getNombre()%><%}%>"/>
 										</div>
 										<br>	
 									</div>
 									<br>
-										<input type="hidden" name="nombre_cliente<%=i%>" id="nombre_cliente<%=i%>" required placeholder="Nombre cliente" style="width:163px" value="<%=controladorBD.dameNombreCliente(comprasold.get(i).getId_cliente())%>"/>
+										<input type="hidden" name="nombre_cliente<%=i%>" id="nombre_cliente<%=i%>" required placeholder="Nombre cliente" value="<%=controladorBD.dameNombreCliente(comprasold.get(i).getId_cliente())%>"/>
 
 										<input type="hidden" value="<%=controladorBD.dameNombreVideojuego(compras.get(i).getId_videojuego())%>" id="nombre_videojuegoold<%=i%>" name="nombre_videojuegoold<%=i%>">
 										<input type="hidden" value="<%=controladorBD.dameNombreCliente(compras.get(i).getId_cliente())%>" id="nombre_clienteold<%=i%>" name="nombre_clienteold<%=i%>">
 										<input type="hidden" value="<%=controladorBD.dameNombreLocal(compras.get(i).getId_local())%>" id="nombre_localold<%=i%>" name="nombre_localold<%=i%>">
 								<%} %>
-										<input type="submit" class="button" value="Dar de Alta" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:130px"/>
 										<input type="hidden" value="<%=comprasold.size()%>" id="count_compras" name="count_compras">
-																				
-										
-											
-											
-											
-									
+																
+																
 											
 								</form>
 								
-							</section>
-						
+							</div>
 								
 						</div> <!-- .product-list -->
 						
@@ -152,7 +156,7 @@
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
 
-			<div class="site-footer">
+		<div class="site-footer">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
@@ -240,6 +244,8 @@
 		<script src="../../js/jquery-1.11.1.min.js"></script>
 		<script src="../../js/plugins.js"></script>
 		<script src="../../js/app.js"></script>
+		<script src="../../js/dropdowns.js"></script>
+		<script src="../../js/dropdowns2.js"></script>
 		
 	</body>
 

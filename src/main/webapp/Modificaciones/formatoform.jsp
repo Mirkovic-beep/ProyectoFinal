@@ -94,14 +94,16 @@
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarFormato" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre formato" value="<%=formato.getNombre() %>"/>
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre formato" value="<%=formato.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre formato"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="stock" id="stock" required  placeholder="Stock" value="<%=formato.getStock() %>"/>
+											<input type="text" name="stock" id="stock" required  placeholder="Stock" value="<%=formato.getStock() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Stock"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoFormatoNombre(formato.getNombre())%>" name="id_formato" id="id_formato">
 												
-										<input type="submit" class="button" value="Modificar" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
 									
 								</form>
 								

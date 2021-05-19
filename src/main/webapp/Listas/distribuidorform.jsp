@@ -25,13 +25,13 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		int id_distribuidor=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		Distribuidor distribuidor = new Distribuidor();
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_distribuidor").isEmpty()){
+			id_distribuidor = Integer.parseInt(request.getParameter("id_distribuidor"));
+			distribuidor = controladorBD.dameDistribuidor(id_distribuidor);
 		}
 		
 		%>
@@ -71,12 +71,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../modificaciones.jsp">Listas</a>
+							<a href="distribuidoreslist.jsp">Distribuidores</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -90,24 +90,31 @@
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=distribuidor.getNombre() %></h2>
 								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+								<img src="../images/<%=distribuidor.getNombre() %>.png" class="center" width="500" height="200">
+								<br>
+								
+								<form action="../operaciones_mod.jsp?accion=ModificarDistribuidor" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre distribuidor" value="<%=distribuidor.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre del distribuidor"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="afiliacion_distribuidor" id="afiliacion_distribuidor" required placeholder="Afiliacion" value="<%=distribuidor.getAfiliacion() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Afiliacion"/>
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
+										<div class="user-box">
+											<input type="text" name="sede_distribuidor" id="sede_distribuidor" required placeholder="Sede" value="<%=distribuidor.getSede() %>"data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Sede"/>
+										</div>
+											<input type="hidden" value="<%= controladorBD.dameCodigoDistribuidorNombre(distribuidor.getNombre())%>" name="id_distribuidor" id="id_distribuidor">
 												
 										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
+																			
 								</form>
 								
-							</div>
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

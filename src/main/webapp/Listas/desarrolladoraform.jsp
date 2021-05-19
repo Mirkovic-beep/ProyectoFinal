@@ -25,13 +25,13 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		int id_desarrolladora=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		Desarrolladora desarrolladora = new Desarrolladora();
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_desarrolladora").isEmpty()){
+			id_desarrolladora = Integer.parseInt(request.getParameter("id_desarrolladora"));
+			desarrolladora = controladorBD.dameDesarrolladora(id_desarrolladora);
 		}
 		
 		%>
@@ -71,12 +71,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<a href="desarrolladoraslist.jsp">Desarrolladoras</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -90,24 +90,25 @@
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=desarrolladora.getNombe() %></h2>
 								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+								<img src="../images/<%=desarrolladora.getNombe() %>.png" class="center" width="500" height="200">
+								<br>
+								
+								<form action="../operaciones_mod.jsp?accion=ModificarDesarrolladora" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required  placeholder="Nombre desarrolladora" value="<%=desarrolladora.getNombe() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre de la desarrolladora"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="sede_desarrolladora" id="sede_desarrolladora" required  placeholder="Sede desarrolladora" value="<%=desarrolladora.getSede() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Sede"/>
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
+											<input type="hidden" value="<%= controladorBD.dameCodigoDesarrolladoraNombre(desarrolladora.getNombe())%>" name="id_desarrolladora" id="id_desarrolladora">
 									
 								</form>
 								
-							</div>
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

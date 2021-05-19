@@ -24,17 +24,9 @@
 
 	</head>
 	
-<%
-		int id_genero=0;
-		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
-		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
-		}
-		
-		%>
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Formato> formatos = cotroladorBD.dameFormatos();%>
+
 
 	<body>
 		
@@ -71,12 +63,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="breadcrumbs">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<span>Formatos</span>
 						</div>
 					</div>
 
@@ -88,26 +80,31 @@
 						
 						<div class="product-list">
 							
-							<div class="login-box">
-							
-								<h2>Modificar Genero</h2>
-								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
-										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
-										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
-								</form>
-								
+				<form action="formatoform.jsp" method="post">
+					<div class="row gtr-50">
+							<section>		
+								<h3>Lista formatos</h3>
+						<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona formato</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<formatos.size();i++){%>
+									<li class="input-option" data-value="<%=formatos.get(i).getId()%>">
+									<img src="../images/<%=formatos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
+									<h3 id="centro"><%=formatos.get(i).getNombre()%></h3>
+									<input type="hidden" class="option" name="id_formato" value="<%=formatos.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
 							</div>
+								
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Ver detalles"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -202,6 +199,9 @@
 		<script src="../js/jquery-1.11.1.min.js"></script>
 		<script src="../js/plugins.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/dropdowns.js"></script>
+		<script src="../js/dropdowns2.js"></script>
+	
 		
 	</body>
 

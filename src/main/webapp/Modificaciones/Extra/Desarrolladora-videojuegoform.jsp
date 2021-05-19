@@ -112,6 +112,7 @@
 								<%for(int i=0;i<desarrolladoraslist.size();i++){ %>
 										<ul class="scrollable-menu">
 											<li class="input-option" data-value="<%=desarrolladoraslist.get(i).getNombe()%>">
+											<img src="../../images/<%=desarrolladoraslist.get(i).getNombe() %>.png"  class="center" width="100" height="100">
 											<h3 id="centro"><%=desarrolladoraslist.get(i).getNombe()%></h3>
 											</li>
 										</ul>	
@@ -120,12 +121,11 @@
 									</div>
 									<br>
 									<br>
-								<h2>Modificacion de desarrolladoras</h2>
 									
 							<%for(int i=0;i<desarrolladoras.size();i++){ %>
 									
 									<div class="user-box">
-											<input type="text" name="nombre_desarrolladoras<%=i%>" required placeholder="Número de copias" value="<%=desarrolladoras.get(i)%>"/>
+											<input type="text" name="nombre_desarrolladoras<%=i%>" required placeholder="Número de copias" value="<%=desarrolladoras.get(i)%>" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="<%for(int j=0;j<desarrolladoraslist.size();j++){%> <%=desarrolladoraslist.get(j).getNombe()%><%}%>"/>
 									</div>
 							<%} %>
 										
@@ -144,7 +144,7 @@
 										<br>
 										
 												
-										<input type="submit" class="button" value="Modificar" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
 									
 								</form>
 								
@@ -244,6 +244,8 @@
 		<script src="../../js/jquery-1.11.1.min.js"></script>
 		<script src="../../js/plugins.js"></script>
 		<script src="../../js/app.js"></script>
+		<script src="../../js/dropdowns.js"></script>
+		<script src="../../js/dropdowns2.js"></script>
 		
 	</body>
 

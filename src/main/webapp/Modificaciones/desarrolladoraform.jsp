@@ -95,13 +95,15 @@
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarDesarrolladora" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required  placeholder="Nombre desarrolladora" value="<%=desarrolladora.getNombe() %>"/>
+											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required  placeholder="Nombre desarrolladora" value="<%=desarrolladora.getNombe() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre de la desarrolladora"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="sede_desarrolladora" id="sede_desarrolladora" required  placeholder="Sede desarrolladora" value="<%=desarrolladora.getSede() %>"/>
+											<input type="text" name="sede_desarrolladora" id="sede_desarrolladora" required  placeholder="Sede desarrolladora" value="<%=desarrolladora.getSede() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Sede"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoDesarrolladoraNombre(desarrolladora.getNombe())%>" name="id_desarrolladora" id="id_desarrolladora">
-										<input type="submit" class="button" value="Modificar" />
+										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
 									
 								</form>
 								

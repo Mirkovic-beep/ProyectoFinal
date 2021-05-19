@@ -81,7 +81,7 @@
 				<form action="Desarrolladora-videojuegoform.jsp" method="post">
 					<div class="row gtr-50">
 							<section>		
-								<h3>Modificar el local o locales donde esta el juego</h3>
+								<h3>Modificar desarrolladora de videojuego</h3>
 						<div class="">
 							<div class="mm-dropdown">
 								<div class="textfirst">Selecciona un videojuego para cambiar su local asociado</div>

@@ -25,13 +25,13 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		int id_cliente=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		Cliente cliente = new Cliente();
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_cliente").isEmpty()){
+			id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+			cliente = controladorBD.dameCliente(id_cliente);
 		}
 		
 		%>
@@ -71,12 +71,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<a href="clientelist.jsp">Clientes</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -85,30 +85,31 @@
 			<main class="main-content">
 				<div class="container">
 					<div class="page">
-						
+					
 						<div class="product-list">
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
-								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+								<h2>Datos <%=cliente.getNombre() %></h2>
+																
+								<form action="../operaciones_mod.jsp?accion=ModificarCliente" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre cliente"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Apellidos cliente"/>
+											
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
+										<div class="user-box">
+											<input type="text" name="dni_cliente" id="dni_cliente" required placeholder="Dni del cliente" value="<%=cliente.getDni() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Dni cliente"/>
+										</div>
+											<input type="hidden" value="<%= controladorBD.dameCodigoClienteNombre(cliente.getNombre())%>" name="id_cliente" id="id_cliente">
+											
 								</form>
-								
-							</div>
-								
+							</div>						
 						</div> <!-- .product-list -->
 					</div>
 				</div> <!-- .container -->

@@ -74,9 +74,9 @@
 						<<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
+							<a href="../listas.jsp">Listas</a>
 							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -90,21 +90,20 @@
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=genero.getNombre() %></h2>
+							
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre local" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre genero"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="dificultad" id="dificultad" required  placeholder="Localizacion" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Dificultad"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
+																					
 								</form>
 								
 							</div>

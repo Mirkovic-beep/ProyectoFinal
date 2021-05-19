@@ -237,6 +237,8 @@ ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/plugins.js"></script>
 	<script src="../js/app.js"></script>
+	<script src="../js/dropdowns.js"></script>
+	<script src="../js/dropdowns2.js"></script>
 
 </body>
 

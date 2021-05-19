@@ -25,13 +25,16 @@
 	</head>
 	
 <%
-		int id_genero=0;
+		Videojuego videojuego = new Videojuego();
+		int id_videojuego=0;
 		BDController controladorBD = new BDController();
-		Genero genero = new Genero();
+		ArrayList<Genero> generos = controladorBD.dameGeneros();
+		ArrayList<Distribuidor> distribuidores = controladorBD.dameDistribuidores();
+
 		
-		if (!request.getParameter("id_genero").isEmpty()){
-			id_genero = Integer.parseInt(request.getParameter("id_genero"));
-			genero = controladorBD.dameGenero(id_genero);
+		if (!request.getParameter("id_videojuego").isEmpty()){
+			id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+			videojuego = controladorBD.dameJuego(id_videojuego);
 		}
 		
 		%>
@@ -71,12 +74,12 @@
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
-						<<div class="container">
+						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="generoslist.jsp">Generos</a>
-							<span>Form</span>
+							<a href="../listas.jsp">Listas</a>
+							<a href="videojuegoslist.jsp">Videojuegos</a>
+							<span>Datos</span>
 						</div>
 					</div>
 
@@ -86,28 +89,63 @@
 				<div class="container">
 					<div class="page">
 						
-						<div class="product-list">
+						
+						<div class="product-list ">
 							
 							<div class="login-box">
 							
-								<h2>Modificar Genero</h2>
+								<h2>Datos <%=controladorBD.dameNombreVideojuego(id_videojuego) %></h2>
 								
-								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
+								<!-- <h2 id="centro" style="font-size:14px; color:#45B77D;">Nombre genero</h2> -->
+								
+								
+								<form action="../operaciones_mod.jsp?accion=ModificarVideojuego" method="post">
+								
+								<img src="../images/<%=videojuego.getNombre() %>.jpg" class="center" width="500" height="200">
+								<br>
+										<div class="user-box">										
+											<input type="text" name="nombre_genero" id="nombre_genero" required  placeholder="Nombre del género" value="<%=controladorBD.dameNombreGenero(videojuego.getId_genero()) %>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="right" title="Generos:<%for (int j = 0; j < generos.size(); j++) {%> <%=generos.get(j).getNombre()%><%}%>"/>
+										</div>
+																				
 										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre genero" value="<%=genero.getNombre() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Nombre local"/>
+											<input type="text" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Numero de copias"/>
 										</div>
 										<div class="user-box">
-											<input type="text" name="dificultad" id="dificultad" required  placeholder="Dificultad" value="<%=genero.getDificultad() %>" data-bs-toggle="tooltip" data-bs-html="true"
-											data-bs-placement="top" title="Localizacion"/>
+											<input type="text" name="duracion" id="duracion" required placeholder="Duracion en minutos" value="<%=videojuego.getDuracion()%>" data-bs-toggle="tooltip"
+											data-bs-placement="top" title="Duracion"/>
 										</div>
-											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-												
-										<input type="submit" class="button" value="Modificar" style="margin-left:90px"/>
-									
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required value="<%=videojuego.getNombre()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nombre del juego"/>
+										</div>	
+										<div class="user-box">
+											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required  value="<%=videojuego.getPegi()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Pegi"/>
+										</div>	
+										<div class="user-box">
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor"  value="<%=controladorBD.dameNombreDistribuidor(videojuego.getId_distribuidor())%>"  data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="right" title="Distribuidores:<%for (int j = 0; j < distribuidores.size(); j++) {%> <%=distribuidores.get(j).getNombre()%><%}%>"/>
+										</div>
+										<div class="user-box">
+											<input type="text" step="0.01" name="precio" id="precio" required placeholder="Precio juego" value="<%=videojuego.getPrecio()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Precio"/>
+										</div>
+										<div class="user-box">
+											<input type="text" name="consola" id="consola" required placeholder="Consola"  value="<%=videojuego.getConsola()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Consola"/>
+										</div>
+										<div class="user-box">
+											<input type="text" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)" value="<%=videojuego.getNuevo()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											data-bs-placement="top" title="Nuevo Si(1) No(0)"/>
+										</div>
+										
+										<input type="hidden" value="<%= controladorBD.dameCodigoVideojuegoNombre(videojuego.getNombre())%>" name="id_videojuego" id="id_videojuego">
+																		
 								</form>
-								
-							</div>
+							
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>
