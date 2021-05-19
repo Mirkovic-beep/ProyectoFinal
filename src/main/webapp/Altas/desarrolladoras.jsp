@@ -79,20 +79,18 @@
 						
 						
 						<div class="product-list">
+							<div class="login-box">
 							
-							<section>
-								<h3>Alta Desarrolladora</h3>
+								<h2>Alta Desarrolladora</h2>
 								
 								<form action="../operaciones_alu.jsp?accion=AltaDesarrolladora" method="post">
 									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre desarrolladora" required style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre desarrolladora" required/>
 										</div>	
-										<br>
-										<div class="">
-											<input type="text" name="sede" id="sede" required placeholder="Sede" style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="sede" id="sede" required placeholder="Sede"/>
 										</div>
-										<br>
 							
 									</div>
 									<br>
@@ -100,8 +98,7 @@
 									
 								</form>
 								
-							</section>
-						
+						</div>
 								
 						</div> <!-- .product-list -->
 					</div>

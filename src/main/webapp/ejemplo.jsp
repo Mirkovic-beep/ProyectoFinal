@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 	<head>
 		<%@page contentType="text/html" pageEncoding="UTF-8"%>
 		<meta charset="UTF-8">
@@ -7,43 +8,35 @@
 		<%@ page import="Clases.*" %>
 		<%@ page import="java.util.*" %>
 		
-		<title>PC</title>
+		<title>Home</title>
 
 		<!-- Loading third party fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+		
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Videojuego> ofertas = cotroladorBD.dameJuegosOferta();%>
+<%ArrayList<Videojuego> nuevos = cotroladorBD.dameJuegosNuevos(1);%>
+
 
 	</head>
-	
-<%
-		Videojuego videojuego = new Videojuego();
-		int id_videojuego=0;
-		BDController controladorBD = new BDController();
 
-		
-		if (!request.getParameter("id_videojuego").isEmpty()){
-			id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
-			videojuego = controladorBD.dameJuego(id_videojuego);
-		}
-		
-		%>
 
 	<body>
-		
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="../index.jsp" id="branding">
-						<img src="../images/logo.png" alt="" class="logo">
+					<a href="index.jsp" id="branding">
+						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -51,33 +44,33 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="../index.jsp">Logout <small>(Admin)</small></a>
+						<a href="cart.jsp" class="cart"><i class="icon-cart"></i> Carrito Vacío</a>
+						<a href="#" class="login-button">Iniciar sesion/Registro</a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="clientelist.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
-							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
-							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
-							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="modificacionesextra.jsp">Uniones </a></li>
+							<li class="menu-item"><a href="pc.jsp">PC</a></li>
+							<li class="menu-item"><a href="playstation.jsp">PlayStation</a></li>
+							<li class="menu-item"><a href="xbox.jsp">Xbox</a></li>
+							<li class="menu-item"><a href="wii.jsp">Wii</a></li>
+							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
+						<div class="search-form">
+							<label><img src="images/icon-search.png"></label>
+							<input type="text" placeholder="Buscar...">
+						</div> <!-- .search-form -->
+
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="../index.jsp">Home</a>
-							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="videojuegoslist.jsp">Videojuegos</a>
-							<span>Formulario</span>
+							<a href="index.jsp">Home</a>
+							<span>Xbox</span>
 						</div>
 					</div>
 
@@ -90,49 +83,30 @@
 						
 						<div class="product-list">
 							
-							<div class="login-box">
-							
-								<h2>Modificar videojuego</h2>
-								
-								
-								<form action="../operaciones_mod.jsp?accion=ModificarVideojuego" method="post">
-										<div class="user-box">
-											<input type="text" name="nombre_genero" id="nombre_genero" required  placeholder="Nombre del género" value="<%=controladorBD.dameNombreGenero(videojuego.getId_genero()) %>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="duracion" id="duracion" required placeholder="Duracion en minutos" value="<%=videojuego.getDuracion()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required value="<%=videojuego.getNombre()%>"/>
-										</div>	
-										<div class="user-box">
-											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required  value="<%=videojuego.getPegi()%>"/>
-										</div>	
-										<div class="user-box">
-											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor"  value="<%=controladorBD.dameNombreDistribuidor(videojuego.getId_distribuidor())%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" step="0.01" name="precio" id="precio" required placeholder="Precio juego" value="<%=videojuego.getPrecio()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="consola" id="consola" required placeholder="Consola"  value="<%=videojuego.getConsola()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)" value="<%=videojuego.getNuevo()%>"/>
-										</div>
-										
-										<input type="hidden" value="<%= controladorBD.dameCodigoVideojuegoNombre(videojuego.getNombre())%>" name="id_videojuego" id="id_videojuego">
-									
-										<input type="submit" class="button" value="Modificar" />
-									
-								</form>
-							
-							</div>						
-								
+						<div class="login-box">
+						
+						  <h2>Login</h2>
+							  <form>
+							    <div class="user-box">
+							      <input type="text" name="" required="">
+							      <label>Username</label>
+							    </div>
+							    <div class="user-box">
+							      <input type="password" name="" required="">
+							      <label>Password</label>
+							    </div>
+							    <a href="#">
+							      <span></span>
+							      <span></span>
+							      <span></span>
+							      <span></span>
+							      Submit
+							    </a>
+							  </form>
+						</div>
+
 						</div> <!-- .product-list -->
+					
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
@@ -175,7 +149,7 @@
 						</div> <!-- column -->
 						<div class="col-md-6">
 							<div class="widget">
-								<h3 class="widget-title">¿Quieres recibir notificaciones?</h3>
+								<h3 class="widget-title">Â¿Quieres recibir notificaciones?</h3>
 								<form action="#" class="newsletter-form">
 									<input type="text" placeholder="Inserta tu email...">
 									<input type="submit" value="Suscribirse">
@@ -212,20 +186,19 @@
                 </div>
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
-						<input type="submit" value="Registrarse">
+					<form action="operaciones_alu.jsp?accion=AltaCliente" method="post">
+						<input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Nombre de usuario...">
+						<input type="text" name="apellidos_cliente" id="id_cliente" placeholder="Apellidos...">
+						<input type="text" name="dni_cliente" id="dni_cliente"placeholder="Dni...">
+						<input type="submit" value="Dar de alta">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="../js/jquery-1.11.1.min.js"></script>
-		<script src="../js/plugins.js"></script>
-		<script src="../js/app.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
 		
 	</body>
-
 </html>

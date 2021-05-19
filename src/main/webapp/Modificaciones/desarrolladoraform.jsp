@@ -88,29 +88,24 @@
 						
 						<div class="product-list">
 							
-							<section>
-								<h3>Modificar Cliente</h3>
+							<div class="login-box">
+							
+								<h2>Modificar Desarrolladora</h2>
+								
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarDesarrolladora" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required style="width:163px" placeholder="Nombre desarrolladora" value="<%=desarrolladora.getNombe() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required  placeholder="Nombre desarrolladora" value="<%=desarrolladora.getNombe() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="sede_desarrolladora" id="sede_desarrolladora" required style="width:163px" placeholder="Sede desarrolladora" value="<%=desarrolladora.getSede() %>"/>
+										<div class="user-box">
+											<input type="text" name="sede_desarrolladora" id="sede_desarrolladora" required  placeholder="Sede desarrolladora" value="<%=desarrolladora.getSede() %>"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoDesarrolladoraNombre(desarrolladora.getNombe())%>" name="id_desarrolladora" id="id_desarrolladora">
-										<br>
-												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

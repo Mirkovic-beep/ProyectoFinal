@@ -31,6 +31,7 @@
 		Videojuego videojuego = new Videojuego();
 		ArrayList <String> desarrolladoras = new ArrayList<String>();
 		ArrayList <String> desarrolladorasold = new ArrayList<String>();
+		ArrayList <Desarrolladora> desarrolladoraslist = controladorBD.dameDesarrolladoras();
 
 		
 		
@@ -98,19 +99,35 @@
 				<div class="container">
 					<div class="page">
 						
-						<div class="product-list">
-							
-							<section>
-								<h3>Modificar desarrollador asociado videojuego</h3>
+				<div class="product-list">
+											
+					<div class="login-box">
+								<h2>Modificar desarrollador asociado videojuego</h2>
 								
 								<form action="../../operaciones_mod.jsp?accion=ModificarDesarrolladoraVideojuego" method="post">
-									<div>
+								
+								<div class="mm-dropdown">
+									<div class="textfirst">Desarrolladoras disponibles</div>
+								
+								<%for(int i=0;i<desarrolladoraslist.size();i++){ %>
+										<ul class="scrollable-menu">
+											<li class="input-option" data-value="<%=desarrolladoraslist.get(i).getNombe()%>">
+											<h3 id="centro"><%=desarrolladoraslist.get(i).getNombe()%></h3>
+											</li>
+										</ul>	
+										
+								<%} %>
+									</div>
+									<br>
+									<br>
+								<h2>Modificacion de desarrolladoras</h2>
 									
-									<%for(int i=0;i<desarrolladoras.size();i++){ %>
-										<div class="">
-											<input type="text" name="nombre_desarrolladoras<%=i%>" id="nombre_desarrolladoras<%=i%>" required style="width:163px" placeholder="Nombre desarrolladora" value="<%=desarrolladoras.get(i)%>"/>
-										</div>
-									<%} %>
+							<%for(int i=0;i<desarrolladoras.size();i++){ %>
+									
+									<div class="user-box">
+											<input type="text" name="nombre_desarrolladoras<%=i%>" required placeholder="Número de copias" value="<%=desarrolladoras.get(i)%>"/>
+									</div>
+							<%} %>
 										
 										<br>
 											<input type="hidden" value="<%=videojuego.getNombre() %>" name="nombre_videojuego" id="nombre_videojuego">
@@ -127,15 +144,13 @@
 										<br>
 										
 												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
+						</div>
 						
-								
+						
 						</div> <!-- .product-list -->
 					</div>
 				</div> <!-- .container -->

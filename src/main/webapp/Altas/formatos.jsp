@@ -79,20 +79,18 @@
 						
 						
 						<div class="product-list">
+							<div class="login-box">
 							
-							<section>
-								<h3>Alta Formato</h3>
+								<h2>Alta Formato</h2>
 								
 								<form action="../operaciones_alu.jsp?accion=AltaFormato" method="post">
 									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre formato" required style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre formato" required />
 										</div>	
-										<br>
-										<div class="">
-											<input type="text" name="stock" id="stock" required placeholder="Stock del formato" style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="stock" id="stock" required placeholder="Stock del formato" />
 										</div>
-										<br>
 										
 												
 									</div>
@@ -101,8 +99,7 @@
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

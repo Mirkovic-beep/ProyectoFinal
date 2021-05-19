@@ -31,7 +31,7 @@
 		<div id="site-content">
 						<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -109,6 +109,9 @@
 								</div>
 								<div class="col-sm-6 col-md-8">
 									<h2 class="entry-title"><%=juego.getNombre() %></h2>
+									<img src="images/<%=controlador.dameConsolaVideojuego(id)%>.png" style="width:55px">
+									<br>
+									<br>
 									<small class="price"><%=juego.getPrecio()%> €</small>
 
 									<p>Copias disponibles: <%=juego.getNcopias() %></p>
@@ -136,6 +139,8 @@
 									<br>
 									<br>
 									<img src="images/<%=juego.getPegi()%>.png" style="width:100px">
+									
+									
 									
 																		
 

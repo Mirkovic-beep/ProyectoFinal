@@ -85,37 +85,27 @@
 			<main class="main-content">
 				<div class="container">
 					<div class="page">
-						
+					
 						<div class="product-list">
 							
-							<section>
-								<h3>Modificar Cliente</h3>
-								
+							<div class="login-box">
+							
+								<h2>Modificar Cliente</h2>
+																
 								<form action="../operaciones_mod.jsp?accion=ModificarCliente" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_cliente" id="nombre_cliente" required style="width:163px" placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre_cliente" id="nombre_cliente" required placeholder="Nombre del cliente" value="<%=cliente.getNombre() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required style="width:163px" placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>"/>
+										<div class="user-box">
+											<input type="text" name="apellidos_cliente" id="apellidos_cliente" required placeholder="Apellidos del cliente" value="<%=cliente.getApellidos() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="dni_cliente" id="dni_cliente" required style="width:163px" placeholder="Dni del cliente" value="<%=cliente.getDni() %>"/>
+										<div class="user-box">
+											<input type="text" name="dni_cliente" id="dni_cliente" required placeholder="Dni del cliente" value="<%=cliente.getDni() %>"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoClienteNombre(cliente.getNombre())%>" name="id_cliente" id="id_cliente">
-										<br>
-												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
-									
 								</form>
-								
-							</section>
-						
-								
+							</div>						
 						</div> <!-- .product-list -->
 					</div>
 				</div> <!-- .container -->

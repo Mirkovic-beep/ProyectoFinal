@@ -312,51 +312,49 @@
 			nombre_cliente = request.getParameter("nombre_cliente");
 			fecha_compra = request.getParameter("fecha_compra");
 			
-			id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
-			id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
-			id_cliente = controladorBD.dameCodigoClienteNombre(nombre_cliente);
+			id_transaccion = controladorBD.calcularCod_transaccion();
 			
-			if (Integer.toString(id_videojuego).equalsIgnoreCase("")){
-				mensaje = "El nombre del videojuego no puede estar vacio";
+			
+			if (nombre_videojuego.equalsIgnoreCase("")){
+				mensaje = mensaje  + "El nombre del videojuego no puede estar vacio";
 				
 			}else{
-				if (controladorBD.existeJuego(id_videojuego)){
+				if (controladorBD.existeJuego(controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego))){
 					id_videojuego = controladorBD.dameCodigoVideojuegoNombre(nombre_videojuego);
 				}else{
 					mensaje = mensaje + "El nombre del videojuego no existe en la BD.";
 				}
 			}	
 			
-			if (Integer.toString(id_local).equalsIgnoreCase("")){
+			if (nombre_local.equalsIgnoreCase("")){
 				mensaje = "El nombre del local no puede estar vacio";
 				
 			}else{
-				if (controladorBD.existeLocal(id_local)){
+				if (controladorBD.existeLocal(controladorBD.dameCodigoLocalNombre(nombre_local))){
 					id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
 				}else{
 					mensaje = mensaje + "El nombre del local no existe en la BD.";
 				}
 			}
 			
-			if (Integer.toString(id_cliente).equalsIgnoreCase("")){
+			if (nombre_cliente.equalsIgnoreCase("")){
 				mensaje = "El nombre del cliente no puede estar vacio";
 				
 			}else{
-				if (controladorBD.existeCliente(id_cliente)){
-					id_local = controladorBD.dameCodigoLocalNombre(nombre_local);
+				if (controladorBD.existeCliente(controladorBD.dameCodigoClienteNombre(nombre_cliente))){
+					id_cliente = controladorBD.dameCodigoClienteNombre(nombre_cliente);
 				}else{
 					mensaje = mensaje + "El nombre del cliente no existe en la BD.";
 				}
 			}
 			
 			if(controladorBD.existeTransaccion(id_transaccion)){
-				mensaje = "El id de transaccion ya existe";
+				mensaje = mensaje + "El id de transaccion ya existe";
 			}else{
-				id_transaccion = Integer.parseInt(request.getParameter("id_transaccion"));
 			}
 			
 			if(controladorBD.existeClienteJuegoLocal(id_cliente, id_videojuego,id_local)==true){
-				mensaje = "El ese id de transacción ya existe";
+				mensaje = mensaje +"Esa misma compra ya se ha hecho";
 			}else{
 			}
 			

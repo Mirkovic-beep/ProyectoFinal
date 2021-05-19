@@ -25,7 +25,9 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegos();%>
+<%ArrayList<Desarrolladora> desarrolladoras = cotroladorBD.dameDesarrolladoras();%>
+
 
 
 	<body>
@@ -72,32 +74,52 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
-							
-							<section>
-								<h3>Alta Videojuego-Desarrolladora</h3>
 								
+							<div class="login-box">
+								
+														
 								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoDesarrolladora" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre videojuego" style="width:163px"/>
+								
+								<h2>Alta Videojuego-Desarrolladora</h2>
+								
+									<div class="mm-dropdown">
+										<div class="textfirst">Selecciona Desarrolladora</div>
+											<ul class="scrollable-menu">
+												<%for (int i=0;i<desarrolladoras.size();i++){%>
+												<li class="input-option" data-value="<%=desarrolladoras.get(i).getNombe()%>">
+												<img src="../../images/<%=desarrolladoras.get(i).getNombe() %>.png" class="center" width="100" height="100">
+												<h3 id="centro"><%=desarrolladoras.get(i).getNombe()%></h3>
+												<input type="hidden" class="option" name="nombre_desarrolladora" value="<%=desarrolladoras.get(i).getNombe()%>"/>
+												</li>
+												<%} %>
+											</ul>	
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="nombre_desarrolladora" id="nombre_desarrolladora" required placeholder="Nombre desarrolladora" style="width:163px"/>
-										</div>
-										<br>	
+								<br>
+								<br>						
+								<div class="mm-dropdown">
+									<div class="textfirst1">Selecciona Juego</div>
+										<ul class="scrollable-menu">
+											<%for (int i=0;i<juegos.size();i++){%>
+											<li class="input-option1" data-value="<%=juegos.get(i).getNombre()%>">
+											<img src="../../images/<%=juegos.get(i).getNombre() %>.jpg" class="center" width="100" height="100">
+											<h3 id="centro"><%=juegos.get(i).getNombre()%></h3>
+											<input type="hidden" class="option1" name="nombre_videojuego" value="<%=juegos.get(i).getNombre()%>"/>
+											</li>
+											<%} %>
+										</ul>	
 									</div>
+										<br>	
+										
 									<br>
-										<input type="submit" class="button" value="Dar de Alta" />
+									<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
+					
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->
@@ -187,9 +209,11 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="../js/jquery-1.11.1.min.js"></script>
-		<script src="../js/plugins.js"></script>
-		<script src="../js/app.js"></script>
+		<script src="../../js/jquery-1.11.1.min.js"></script>
+		<script src="../../js/plugins.js"></script>
+		<script src="../../js/app.js"></script>
+		<script src="../../js/dropdowns.js"></script>
+		<script src="../../js/dropdowns2.js"></script>
 		
 	</body>
 

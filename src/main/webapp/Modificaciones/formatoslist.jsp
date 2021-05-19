@@ -90,8 +90,8 @@
 								<ul class="scrollable-menu">
 									<%for (int i=0;i<formatos.size();i++){%>
 									<li class="input-option" data-value="<%=formatos.get(i).getId()%>">
-									<img src="../images/<%=formatos.get(i).getNombre() %>.jpg" alt="Girl in a jacket" width="500" height="600">
-									<h3><%=formatos.get(i).getNombre()%></h3>
+									<img src="../images/<%=formatos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
+									<h3 id="centro"><%=formatos.get(i).getNombre()%></h3>
 									<input type="hidden" class="option" name="id_formato" value="<%=formatos.get(i).getId()%>"/>
 									</li>
 									<%} %>
@@ -199,6 +199,9 @@
 		<script src="../js/jquery-1.11.1.min.js"></script>
 		<script src="../js/plugins.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/dropdowns.js"></script>
+		<script src="../js/dropdowns2.js"></script>
+	
 		
 	</body>
 

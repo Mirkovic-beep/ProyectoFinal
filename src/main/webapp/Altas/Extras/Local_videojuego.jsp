@@ -25,7 +25,9 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegos();%>
+<%ArrayList<Local> locales = cotroladorBD.dameLocales();%>
+
 
 
 	<body>
@@ -74,28 +76,48 @@
 						
 						
 						<div class="product-list">
-							
-							<section>
-								<h3>Alta Videojuego-Local</h3>
 								
+							<div class="login-box">
+								
+														
 								<form action="../../operaciones_alu.jsp?accion=AltaVideojuegoLocal" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_local" id="nombre_local" required placeholder="Nombre del local" style="width:163px"/>
+								
+								<h2>Alta Videojuego-Local</h2>
+								
+									<div class="mm-dropdown">
+										<div class="textfirst">Selecciona Local</div>
+											<ul class="scrollable-menu">
+												<%for (int i=0;i<locales.size();i++){%>
+												<li class="input-option" data-value="<%=locales.get(i).getNombre()%>">
+												<img src="../../images/<%=locales.get(i).getNombre() %>.jpg" class="center" width="100" height="100">
+												<h3 id="centro"><%=locales.get(i).getNombre()%></h3>
+												<input type="hidden" class="option" name="nombre_local" value="<%=locales.get(i).getNombre()%>"/>
+												</li>
+												<%} %>
+											</ul>	
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="nombre_videojuego" id="nombre_videojuego" required placeholder="Nombre videojuego" style="width:163px"/>
-										</div>
-										<br>	
+								<br>
+								<br>						
+								<div class="mm-dropdown">
+									<div class="textfirst1">Selecciona Juego</div>
+										<ul class="scrollable-menu">
+											<%for (int i=0;i<juegos.size();i++){%>
+											<li class="input-option1" data-value="<%=juegos.get(i).getNombre()%>">
+											<img src="../../images/<%=juegos.get(i).getNombre() %>.jpg"  class="center" width="100" height="100">
+											<h3 id="centro"><%=juegos.get(i).getNombre()%></h3>
+											<input type="hidden" class="option1" name="nombre_videojuego" value="<%=juegos.get(i).getNombre()%>"/>
+											</li>
+											<%} %>
+										</ul>	
 									</div>
+										<br>	
+										
 									<br>
 									<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -187,9 +209,11 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="../js/jquery-1.11.1.min.js"></script>
-		<script src="../js/plugins.js"></script>
-		<script src="../js/app.js"></script>
+		<script src="../../js/jquery-1.11.1.min.js"></script>
+		<script src="../../js/plugins.js"></script>
+		<script src="../../js/app.js"></script>
+		<script src="../../js/dropdowns.js"></script>
+		<script src="../../js/dropdowns2.js"></script>
 		
 	</body>
 

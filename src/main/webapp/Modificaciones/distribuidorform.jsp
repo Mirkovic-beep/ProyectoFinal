@@ -88,33 +88,28 @@
 						
 						<div class="product-list">
 							
-							<section>
-								<h3>Modificar Cliente</h3>
+							<div class="login-box">
+							
+								<h2>Modificar Distribuidor</h2>
+								
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarDistribuidor" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required style="width:163px" placeholder="Nombre distribuidor" value="<%=distribuidor.getNombre() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre distribuidor" value="<%=distribuidor.getNombre() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="afiliacion_distribuidor" id="afiliacion_distribuidor" required style="width:163px" placeholder="Afiliacion" value="<%=distribuidor.getAfiliacion() %>"/>
+										<div class="user-box">
+											<input type="text" name="afiliacion_distribuidor" id="afiliacion_distribuidor" required placeholder="Afiliacion" value="<%=distribuidor.getAfiliacion() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="sede_distribuidor" id="sede_distribuidor" required style="width:163px" placeholder="Sede" value="<%=distribuidor.getSede() %>"/>
+										<div class="user-box">
+											<input type="text" name="sede_distribuidor" id="sede_distribuidor" required placeholder="Sede" value="<%=distribuidor.getSede() %>"/>
 										</div>
 											<input type="hidden" value="<%= controladorBD.dameCodigoDistribuidorNombre(distribuidor.getNombre())%>" name="id_distribuidor" id="id_distribuidor">
-										<br>
 												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

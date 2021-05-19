@@ -88,30 +88,26 @@
 						
 						<div class="product-list">
 							
-							<section>
-								<h3>Modificar Local</h3>
+							<div class="login-box">
+							
+								<h2>Modificar Local</h2>
+								
+						
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarLocal" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required style="width:163px" placeholder="Nombre local" value="<%=local.getNombre() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre local" value="<%=local.getNombre() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="localizacion" id="localizacion" required style="width:163px" placeholder="Localizacion" value="<%=local.getLocalización() %>"/>
+										<div class="user-box">
+											<input type="text" name="localizacion" id="localizacion" required  placeholder="Localizacion" value="<%=local.getLocalización() %>"/>
 										</div>
-										<br>
 											<input type="hidden" value="<%= controladorBD.dameCodigoLocalNombre(local.getNombre())%>" name="id_local" id="id_local">
-										<br>
 												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
-						
+						</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

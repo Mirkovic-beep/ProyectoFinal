@@ -88,30 +88,24 @@
 						
 						<div class="product-list">
 							
-							<section>
-								<h3>Modificar Local</h3>
+							<div class="login-box">
+							
+								<h2>Modificar Genero</h2>
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarGenero" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required style="width:163px" placeholder="Nombre local" value="<%=genero.getNombre() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre local" value="<%=genero.getNombre() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="text" name="dificultad" id="dificultad" required style="width:163px" placeholder="Localizacion" value="<%=genero.getDificultad() %>"/>
+										<div class="user-box">
+											<input type="text" name="dificultad" id="dificultad" required  placeholder="Localizacion" value="<%=genero.getDificultad() %>"/>
 										</div>
-										<br>
 											<input type="hidden" value="<%= controladorBD.dameCodigoGeneroNombre(genero.getNombre())%>" name="id_genero" id="id_genero">
-										<br>
 												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
-						
+							</div>
 								
 						</div> <!-- .product-list -->
 					</div>

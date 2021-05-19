@@ -90,8 +90,8 @@
 								<ul class="scrollable-menu">
 									<%for (int i=0;i<locales.size();i++){%>
 									<li class="input-option" data-value="<%=locales.get(i).getId()%>">
-									<img src="../images/<%=locales.get(i).getNombre() %>.jpg" alt="Girl in a jacket" width="500" height="600">
-									<h3><%=locales.get(i).getNombre()%></h3>
+									<img src="../images/<%=locales.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
+									<h3 id="centro"><%=locales.get(i).getNombre()%></h3>
 									<input type="hidden" class="option" name="id_local" value="<%=locales.get(i).getId()%>"/>
 									</li>
 									<%} %>
@@ -199,6 +199,9 @@
 		<script src="../js/jquery-1.11.1.min.js"></script>
 		<script src="../js/plugins.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/dropdowns.js"></script>
+		<script src="../js/dropdowns2.js"></script>
+		
 		
 	</body>
 

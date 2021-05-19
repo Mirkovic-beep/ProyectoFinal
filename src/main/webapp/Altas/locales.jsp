@@ -80,29 +80,28 @@
 						
 						<div class="product-list">
 							
-							<section>
-								<h3>Alta Local</h3>
+						<div class="login-box">
+							
+							
+								<h2>Alta Local</h2>
 								
 								<form action="../operaciones_alu.jsp?accion=AltaLocal" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre local" required style="width:163px"/>
+										
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre local" required />
 										</div>	
-										<br>
-										<div class="">
-											<input type="text" name="localizacion" id="localizacion" required placeholder="Localizacion" style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="localizacion" id="localizacion" required placeholder="Localizacion" />
 										</div>
 										<br>
 										
 												
-									</div>
 									<br>
 										<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								
-							</section>
-						
+							</div>
 								
 						</div> <!-- .product-list -->
 					</div>

@@ -151,7 +151,7 @@
 						</div> <!-- column -->
 						<div class="col-md-6">
 							<div class="widget">
-								<h3 class="widget-title">Â¿Quieres recibir notificaciones?</h3>
+								<h3 class="widget-title">¿Quieres recibir notificaciones?</h3>
 								<form action="#" class="newsletter-form">
 									<input type="text" placeholder="Inserta tu email...">
 									<input type="submit" value="Suscribirse">

@@ -86,32 +86,26 @@
 				<div class="container">
 					<div class="page">
 						
-						<div class="product-list">
+					<div class="product-list">
 							
-							<section>
-								<h3>Modificar Formato</h3>
+							<div class="login-box">
+							
+								<h2>Modificar Formato</h2>
 								
 								<form action="../operaciones_mod.jsp?accion=ModificarFormato" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required style="width:163px" placeholder="Nombre formato" value="<%=formato.getNombre() %>"/>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required  placeholder="Nombre formato" value="<%=formato.getNombre() %>"/>
 										</div>
-										<br>
-										<div class="">
-											<input type="number" name="stock" id="stock" required style="width:163px" placeholder="Stock" value="<%=formato.getStock() %>"/>
+										<div class="user-box">
+											<input type="text" name="stock" id="stock" required  placeholder="Stock" value="<%=formato.getStock() %>"/>
 										</div>
-										<br>
 											<input type="hidden" value="<%= controladorBD.dameCodigoFormatoNombre(formato.getNombre())%>" name="id_formato" id="id_formato">
-										<br>
 												
-									</div>
-									<br>
 										<input type="submit" class="button" value="Modificar" />
 									
 								</form>
 								
-							</section>
-						
+							</div>						
 								
 						</div> <!-- .product-list -->
 					</div>

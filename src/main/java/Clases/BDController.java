@@ -763,6 +763,27 @@ public class BDController {
 		return juegos;
 	}
 	
+	public ArrayList<Videojuego> dameJuegos() {
+		ArrayList<Videojuego> juegos = new ArrayList<Videojuego>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT*FROM videojuegos");
+
+			while (rs.next() == true) {
+				juegos.add(new Videojuego(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getDouble(8),rs.getString(9),rs.getString(10)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameJuegos del BDController" + e.getMessage());
+		}
+		return juegos;
+	}
+	
+	
 	public ArrayList<Compra> dameCompras(int id_cliente) {
 		
 		ArrayList<Compra> compras = new ArrayList<Compra>();
@@ -783,6 +804,7 @@ public class BDController {
 		}
 		return compras;
 	}
+	
 	
 	public String dameDistribuidoraVideojuego(int id) {
 		String distribuidora="";
@@ -904,6 +926,47 @@ public class BDController {
 		}
 		return id_videojuego;	
 	}
+	
+	public int damePrecioVideojuego(int id) {
+		int precio=0;
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT precio FROM videojuegos WHERE id='"+id+"'");
+
+			if (rs.first() == true) {
+				precio = rs.getInt(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en damePrecioVideojuego del BDController" + e.getMessage());
+		}
+		return precio;	
+	}
+	
+	public String dameConsolaVideojuego(int id) {
+		String consola = "";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT consola from videojuegos where id='"+id+"'");
+
+			if (rs.first() == true) {
+				consola = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameConsolaVideojuego del BDController" + e.getMessage());
+		}
+		return consola;	
+	}
+
 
 	
 	public String dameNombreGenero(int id) {
@@ -965,6 +1028,8 @@ public class BDController {
 		}
 		return distribuidor;	
 	}
+	
+	
 	
 	public String dameNombreCliente(int id) {
 		String distribuidor="";
@@ -1208,7 +1273,9 @@ public class BDController {
 		}
 		return almacenar;
 	}
-
+	
+	
+	
 	
 	public ArrayList<Videojuego> dameJuegosGenero(int id) {
 		ArrayList<Videojuego> juegos = new ArrayList<Videojuego>();
@@ -1248,6 +1315,23 @@ public class BDController {
 			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Error en calcularCod_liga del BDController" + e.getMessage());
+		}
+		return id_videojuego;
+	}
+	
+	public int calcularCod_transaccion() {
+		int id_videojuego = 1;
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT MAX(id_transaccion) FROM compra");
+			if (rs.first() == true) {
+				id_videojuego = rs.getInt(1);
+				id_videojuego++;
+				}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Error en calcularCodTransaccion del BDController" + e.getMessage());
 		}
 		return id_videojuego;
 	}

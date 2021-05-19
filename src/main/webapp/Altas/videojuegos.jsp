@@ -25,7 +25,10 @@
 	</head>
 	
 <%BDController cotroladorBD= new BDController(); %>
-<%ArrayList<Videojuego> juegos = cotroladorBD.dameJuegosConsola("Wii");%>
+<%ArrayList<Genero> generos = cotroladorBD.dameGeneros();%>
+<%ArrayList<Distribuidor> distribuidores = cotroladorBD.dameDistribuidores();%>
+
+
 
 
 	<body>
@@ -78,56 +81,71 @@
 					<div class="page">
 						
 						
-						<div class="product-list">
+				<div class="product-list">
 							
-							<section>
-								<h3>Alta Videojuego</h3>
 								
-								<form action="../operaciones_alu.jsp?accion=AltaVideojuego" method="post">
-									<div>
-										<div class="">
-											<input type="text" name="nombre_genero" id="nombre_genero" required style="width:163px" placeholder="Nombre del género" />
-										</div>
+					<div class="login-box">
+								
+						<form action="../operaciones_alu.jsp?accion=AltaVideojuego" method="post">
+									
+							<h2>Alta Videojuego</h2>
+							
+									
+								<div class="mm-dropdown">
+									<div class="textfirst">Selecciona genero</div>
+										<ul class="scrollable-menu">
+											<%for (int i=0;i<generos.size();i++){%>
+											<li class="input-option" data-value="<%=generos.get(i).getNombre()%>">
+											<h3 id="centro"><%=generos.get(i).getNombre()%></h3>
+											<input type="hidden" class="option" name="nombre_genero" value="<%=generos.get(i).getNombre()%>"/>
+											</li>
+											<%} %>
+										</ul>	
+									</div>
+										
 										<br>
-										<div class="">
-											<input type="number" name="ncopias" id="ncopias" required placeholder="Número de copias"/>
-										</div>
 										<br>
-										<div class="">
-											<input type="number" name="duracion" id="duracion" required placeholder="Duracion en minutos"/>
+										<div class="user-box">
+											<input type="text" name="ncopias" id="ncopias" required placeholder="Número de copias"/>
 										</div>
-										<br>			
-										<div class="">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required style="width:163px" />
+										<div class="user-box">
+											<input type="text" name="duracion" id="duracion" required placeholder="Duracion en minutos"/>
+										</div>
+										<div class="user-box">
+											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required />
 										</div>	
-										<div class="">
-											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required style="width:163px"/>
+										<div class="user-box">
+											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required />
 										</div>	
-										<br>
-										<div class="">
-											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor" style="width:163px"/>
-										</div>
-										<br>
-										<div class="">
-											<input type="number" step="0.01" name="precio" id="precio" required placeholder="Precio juego" />
-										</div>
-										<br>
-										<div class="">
-											<input type="text" name="consola" id="consola" required placeholder="Consola" style="width:163px"/>
-										</div>
-										<br>
-										<div class="">
-											<input type="number" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)"/>
-										</div>
-												
+										
+								<div class="mm-dropdown">
+									<div class="textfirst1">Selecciona distribuidor</div>
+										<ul class="scrollable-menu">
+											<%for (int i=0;i<distribuidores.size();i++){%>
+											<li class="input-option1" data-value="<%=distribuidores.get(i).getNombre()%>">
+											<img src="../images/<%=distribuidores.get(i).getNombre() %>.png"  class="center" width="100" height="100">
+											<h3 id="centro"><%=distribuidores.get(i).getNombre()%></h3>
+											<input type="hidden" class="option1" name="nombre_distribuidor" value="<%=distribuidores.get(i).getNombre()%>"/>
+											</li>
+											<%} %>
+										</ul>	
 									</div>
 									<br>
+										<div class="user-box">
+											<input type="text" step="0.01" name="precio" id="precio" required placeholder="Precio juego" />
+										</div>
+										<div class="user-box">
+											<input type="text" name="consola" id="consola" required placeholder="Consola" />
+										</div>
+										<div class="user-box">
+											<input type="text" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)"/>
+										</div>
 										<input type="submit" class="button" value="Dar de Alta" />
 									
 								</form>
 								
-							</section>
-						
+							</div>
+					
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -222,6 +240,9 @@
 		<script src="../js/jquery-1.11.1.min.js"></script>
 		<script src="../js/plugins.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/dropdowns.js"></script>
+		<script src="../js/dropdowns2.js"></script>
+		
 		
 	</body>
 

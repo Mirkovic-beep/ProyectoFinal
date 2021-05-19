@@ -11,11 +11,11 @@
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,400,700|" rel="stylesheet" type="text/css">
-		<link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="../fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="style.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -24,18 +24,9 @@
 
 	</head>
 	
-<%
-		Videojuego videojuego = new Videojuego();
-		int id_videojuego=0;
-		BDController controladorBD = new BDController();
+<%BDController cotroladorBD= new BDController(); %>
+<%ArrayList<Cliente> clientes = cotroladorBD.dameClientes();%>
 
-		
-		if (!request.getParameter("id_videojuego").isEmpty()){
-			id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
-			videojuego = controladorBD.dameJuego(id_videojuego);
-		}
-		
-		%>
 
 	<body>
 		
@@ -58,26 +49,21 @@
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="videojuegoslist.jsp">Videojuego</a></li>
-							<li class="menu-item"><a href="clientelist.jsp">Cliente</a></li>
-							<li class="menu-item"><a href="localeslist.jsp">Local </a></li>
-							<li class="menu-item"><a href="generoslist.jsp">Género </a></li>
-							<li class="menu-item"><a href="formatoslist.jsp">Formato </a></li>
-							<li class="menu-item"><a href="distribuidoreslist.jsp">Distribuidor </a></li>
-							<li class="menu-item"><a href="desarrolladoraslist.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="modificacionesextra.jsp">Uniones </a></li>
+							<li class="menu-item"><a href="altas.jsp">Altas</a></li>
+							<li class="menu-item"><a href="bajas.jsp">Bajas</a></li>
+							<li class="menu-item"><a href="modificaciones.jsp">Modificaciones</a></li>
+							<li class="menu-item"><a href="cartslist.jsp">Carritos</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
 				</div> <!-- .container -->
 
 					<div class="breadcrumbs">
+						<div class="breadcrumbs">
 						<div class="container">
 							<a href="../index.jsp">Home</a>
 							<a href="../indexadmin.jsp">Admin</a>
-							<a href="../modificaciones.jsp">Modificaciones</a>
-							<a href="videojuegoslist.jsp">Videojuegos</a>
-							<span>Formulario</span>
+							<span>Clientes</span>
 						</div>
 					</div>
 
@@ -87,50 +73,32 @@
 				<div class="container">
 					<div class="page">
 						
-						
 						<div class="product-list">
 							
-							<div class="login-box">
-							
-								<h2>Modificar videojuego</h2>
+				<form action="cart.jsp" method="post">
+					<div class="row gtr-50">
+							<section>		
+								<h3>Consultar carrito cliente</h3>
+						<div class="">
+							<div class="mm-dropdown">
+								<div class="textfirst">Selecciona cliente</div>
+								<ul class="scrollable-menu">
+									<%for (int i=0;i<clientes.size();i++){%>
+									<li class="input-option" data-value="<%=clientes.get(i).getId()%>">
+									<h3><%=clientes.get(i).getNombre()%></h3>
+									<input type="hidden" class="option" name="id_cliente" value="<%=clientes.get(i).getId()%>"/>
+									</li>
+									<%} %>
+									</ul>
+								</div>
+							</div>
 								
-								
-								<form action="../operaciones_mod.jsp?accion=ModificarVideojuego" method="post">
-										<div class="user-box">
-											<input type="text" name="nombre_genero" id="nombre_genero" required  placeholder="Nombre del género" value="<%=controladorBD.dameNombreGenero(videojuego.getId_genero()) %>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="duracion" id="duracion" required placeholder="Duracion en minutos" value="<%=videojuego.getDuracion()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="nombre" id="nombre" required placeholder="Nombre del juego" required value="<%=videojuego.getNombre()%>"/>
-										</div>	
-										<div class="user-box">
-											<input type="text" name="pegi" id="pegi" required placeholder="Pegi" required  value="<%=videojuego.getPegi()%>"/>
-										</div>	
-										<div class="user-box">
-											<input type="text" name="nombre_distribuidor" id="nombre_distribuidor" required placeholder="Nombre del distribuidor"  value="<%=controladorBD.dameNombreDistribuidor(videojuego.getId_distribuidor())%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" step="0.01" name="precio" id="precio" required placeholder="Precio juego" value="<%=videojuego.getPrecio()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="consola" id="consola" required placeholder="Consola"  value="<%=videojuego.getConsola()%>"/>
-										</div>
-										<div class="user-box">
-											<input type="text" name="nuevo" id="nuevo" required placeholder="Nuevo/Nonuevo (1,0)" value="<%=videojuego.getNuevo()%>"/>
-										</div>
-										
-										<input type="hidden" value="<%= controladorBD.dameCodigoVideojuegoNombre(videojuego.getNombre())%>" name="id_videojuego" id="id_videojuego">
-									
-										<input type="submit" class="button" value="Modificar" />
-									
-								</form>
-							
-							</div>						
+							</section>
+						</div>
+						<div>
+								<input type="submit" class="button alt" value="Mostrar carrito"/>
+						</div>
+						</form>
 								
 						</div> <!-- .product-list -->
 					</div>
@@ -222,9 +190,9 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 
-		<script src="../js/jquery-1.11.1.min.js"></script>
-		<script src="../js/plugins.js"></script>
-		<script src="../js/app.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
 		
 	</body>
 

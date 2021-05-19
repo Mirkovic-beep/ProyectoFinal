@@ -52,6 +52,8 @@
 							<li class="menu-item"><a href="altas.jsp">Altas</a></li>
 							<li class="menu-item"><a href="bajas.jsp">Bajas</a></li>
 							<li class="menu-item"><a href="modificaciones.jsp">Modificaciones</a></li>
+							<li class="menu-item"><a href="cartslist.jsp">Carritos</a></li>
+
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
