@@ -44,10 +44,7 @@
 			compras = controladorBD.dameCompras(id_cliente);
 
 		}
-		
-			
-		
-
+	
 		
 		%>
 
@@ -140,7 +137,7 @@
 										<input type="hidden" value="<%=controladorBD.dameNombreCliente(compras.get(i).getId_cliente())%>" id="nombre_clienteold<%=i%>" name="nombre_clienteold<%=i%>">
 										<input type="hidden" value="<%=controladorBD.dameNombreLocal(compras.get(i).getId_local())%>" id="nombre_localold<%=i%>" name="nombre_localold<%=i%>">
 								<%} %>
-										<input type="submit" class="button" value="Modificar" style="margin-left:130px"/>
+										<input type="submit" class="button" value="Modificar" style="margin-left:110px"/>
 										<input type="hidden" value="<%=comprasold.size()%>" id="count_compras" name="count_compras">
 																
 																
@@ -150,7 +147,7 @@
 							</div>
 								
 						</div> <!-- .product-list -->
-						
+						</div>
 
 					</div>
 				</div> <!-- .container -->

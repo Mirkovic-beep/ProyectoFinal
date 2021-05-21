@@ -80,31 +80,35 @@
 						
 						<div class="product-list">
 							
-				<form action="distribuidorform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
 								<h3>Modificar distribuidor</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona distribuidor</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<distribuidores.size();i++){%>
-									<li class="input-option" data-value="<%=distribuidores.get(i).getId()%>">
-									<img src="../images/<%=distribuidores.get(i).getNombre() %>.png" class="center" width="500" height="600">
-									<h3 id="centro"><%=distribuidores.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_distribuidor" value="<%=distribuidores.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+								<%
+						for (int i = 0; i < distribuidores.size(); i++) {
+						%>
+						<div class="product">
+							<div class="inner-product">
+								<div class="figure-image">
+									<a
+										href="distribuidorform.jsp?id_distribuidor=<%=distribuidores.get(i).getId()%>"><img
+										src="../images/<%=distribuidores.get(i).getNombre()%>.png"
+										width="100" height="200" alt="Game 1"></a>
+								</div>
+								<h3 class="product-title">
+									<a href="#"><%=distribuidores.get(i).getNombre().toUpperCase()%></a>
+								</h3>
+
+								<br>
+							</div>
+						</div>
+						<!-- .product -->
+						<%
+						}
+						%>
+						
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Modificar"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

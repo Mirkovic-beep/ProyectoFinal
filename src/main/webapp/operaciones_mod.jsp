@@ -704,6 +704,9 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
+							<a href="modificaciones.jsp">Modificaciones</a>
+							<span>Operacion completada</span>
+							
 						</div>
 					</div>
 

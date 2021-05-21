@@ -25,7 +25,6 @@
 
 	</head>
 
-
 	<body>
 		
 		<div id="site-content">
@@ -55,8 +54,10 @@
 							<li class="menu-item"><a href="aboutus.jsp">Sobre nosotros</a></li>
 						</ul> <!-- .menu -->
 						<div class="search-form">
-							<label><img src="images/icon-search.png"></label>
-							<input type="text" placeholder="Buscar...">
+							<form action="single2.jsp" method="post">
+									<label><img src="images/icon-search.png"></label>
+									<input type="text" name="nombre_juego" id="nombre_juego" placeholder="Buscar...">
+								</form>
 						</div> <!-- .search-form -->
 
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
@@ -78,6 +79,8 @@
 					ArrayList<String> desarrolladoras = controlador.dameDesarrolladoraVideojuego(id);
 					ArrayList<String> locales = controlador.dameLocalVideojuego(id);
 					ArrayList<String> formatos = controlador.dameFormatoVideojuego(id);
+					String nombrejuego = request.getParameter("nombre_juego");
+					int id_juego = controlador.dameCodigoVideojuegoNombre(nombrejuego);
 					
 
 

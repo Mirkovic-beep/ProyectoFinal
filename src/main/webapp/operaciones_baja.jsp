@@ -176,6 +176,114 @@
 						}
 					}
 				}	
+			
+			//BAJA Local videojuego
+				
+				if(accion.equalsIgnoreCase("BajaLocalVideojuego")){
+					
+					if(request.getParameter("id_videojuego").isEmpty()) {
+						mensaje = mensaje + "El código del videojeugo no puede venir vacío";
+					}else{
+						id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+
+					}
+					
+					if(request.getParameter("id_local").isEmpty()) {
+						mensaje = mensaje + "El código del local no puede venir vacio";
+					}else{
+						id_local = Integer.parseInt(request.getParameter("id_local"));
+
+					}
+					
+						if(controladorBD.existeJuegoLocal(id_local,id_videojuego)){
+							
+							controladorBD.borrarJuegoLocal(id_local,id_videojuego);
+							
+							mensaje = mensaje + "Union Local-videojuego dada de baja con exito";
+						}else{
+						}
+					}
+			
+			if(accion.equalsIgnoreCase("BajaFormatoVideojuego")){
+					
+					if(request.getParameter("id_videojuego").isEmpty()) {
+						mensaje = mensaje + "El código del videojeugo no puede venir vacío";
+					}else{
+						id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+
+					}
+					
+					if(request.getParameter("id_formato").isEmpty()) {
+						mensaje = mensaje + "El código del formato no puede venir vacio";
+					}else{
+						id_formato = Integer.parseInt(request.getParameter("id_formato"));
+
+					}
+					
+						if(controladorBD.existeJuegoFormato(id_formato,id_videojuego)){
+							
+							controladorBD.borrarJuegoFormato(id_formato,id_videojuego);
+							
+							mensaje = mensaje + "Union Local-videojuego dada de baja con exito";
+						}else{
+						}
+					}
+			
+			if(accion.equalsIgnoreCase("BajaDesarrolladoraVideojuego")){
+				
+				if(request.getParameter("id_videojuego").isEmpty()) {
+					mensaje = mensaje + "El código del videojeugo no puede venir vacío";
+				}else{
+					id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+
+				}
+				
+				if(request.getParameter("id_desarrolladora").isEmpty()) {
+					mensaje = mensaje + "El código de desarrolladora no puede venir vacio";
+				}else{
+					id_desarrolladora = Integer.parseInt(request.getParameter("id_desarrolladora"));
+
+				}
+				
+					if(controladorBD.existeJuegoDesarrolladora(id_desarrolladora,id_videojuego)){
+						
+						controladorBD.borrarJuegoDesarrolladora(id_desarrolladora,id_videojuego);
+						
+						mensaje = mensaje + "Union Desarrolladora-videojuego dada de baja con exito";
+					}else{
+					}
+				}
+			
+		if(accion.equalsIgnoreCase("BajaCompra")){
+				
+				if(request.getParameter("id_videojuego").isEmpty()) {
+					mensaje = mensaje + "El código del videojeugo no puede venir vacío";
+				}else{
+					id_videojuego = Integer.parseInt(request.getParameter("id_videojuego"));
+
+				}
+				
+				if(request.getParameter("id_cliente").isEmpty()) {
+					mensaje = mensaje + "El código de cliente no puede venir vacio";
+				}else{
+					id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+
+				}
+				
+				if(request.getParameter("id_local").isEmpty()) {
+					mensaje = mensaje + "El código del local no puede venir vacio";
+				}else{
+					id_local = Integer.parseInt(request.getParameter("id_local"));
+
+				}
+				
+						
+						controladorBD.borrarCompra(id_videojuego,id_cliente,id_local);
+						
+						mensaje = mensaje + "Union Desarrolladora-videojuego dada de baja con exito";
+		}
+				
+					
 		
 
 		
@@ -218,6 +326,9 @@
 					<div class="breadcrumbs">
 						<div class="container">
 							<a href="index.jsp">Home</a>
+							<a href="bajas.jsp">Bajas</a>
+							<span>Operacion correcta</span>
+							
 						</div>
 					</div>
 

@@ -723,6 +723,88 @@ public class BDController {
 		return juegos;
 	}
 	
+	public ArrayList<Almacenar> dameLocal_videojuego() {
+		ArrayList<Almacenar> almacenar = new ArrayList<Almacenar>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * from almacenar");
+
+			while (rs.next() == true) {
+				almacenar.add(new Almacenar(rs.getInt(1),rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalesJuego del BDController" + e.getMessage());
+		}
+		return almacenar;
+	}
+	
+	public ArrayList<Desarrollo> dameDesarrolladora_videojuego() {
+		ArrayList<Desarrollo> almacenar = new ArrayList<Desarrollo>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * from es_desarrollado");
+
+			while (rs.next() == true) {
+				almacenar.add(new Desarrollo(rs.getInt(1),rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameDesarrolladoraVideojuego del BDController" + e.getMessage());
+		}
+		return almacenar;
+	}
+	
+	public ArrayList<Formato_juego> dameFormato_videojuego() {
+		ArrayList<Formato_juego> formatos = new ArrayList<Formato_juego>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * from formato_juego");
+
+			while (rs.next() == true) {
+				formatos.add(new Formato_juego(rs.getInt(1),rs.getInt(2)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalesJuego del BDController" + e.getMessage());
+		}
+		return formatos;
+	}
+	
+	
+	public ArrayList<Integer> dameLocalesJuego(int id) {
+		ArrayList<Integer> locales = new ArrayList<Integer>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT id_local from almacenar WHERE id_videojuego='"+id+"'");
+
+			while (rs.next() == true) {
+				locales.add(rs.getInt(1));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalesJuego del BDController" + e.getMessage());
+		}
+		return locales;
+	}
+	
+	
 	public ArrayList<Videojuego> dameJuegosOferta() {
 		ArrayList<Videojuego> juegos = new ArrayList<Videojuego>();
 
@@ -784,6 +866,28 @@ public class BDController {
 	}
 	
 	
+public ArrayList<Compra> dameCompra() {
+		
+		ArrayList<Compra> compras = new ArrayList<Compra>();
+
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery("SELECT * FROM compra");
+
+			while (rs.next() == true) {
+				compras.add(new Compra(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameCompras del BDController" + e.getMessage());
+		}
+		return compras;
+	}
+
+
 	public ArrayList<Compra> dameCompras(int id_cliente) {
 		
 		ArrayList<Compra> compras = new ArrayList<Compra>();
@@ -987,6 +1091,46 @@ public class BDController {
 			System.out.println("Error en dameLocalVideojuego del BDController" + e.getMessage());
 		}
 		return genero;	
+	}
+	
+	public String dameNombreDesarrolladora(int id) {
+		String genero="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM desarrolladora WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				genero = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameLocalVideojuego del BDController" + e.getMessage());
+		}
+		return genero;	
+	}
+	
+	public String dameNombreFormato(int id) {
+		String formato="";
+		
+		try {
+			Statement miStatement = this.miConexion.createStatement();
+
+			ResultSet rs = miStatement.executeQuery(" SELECT nombre FROM formato WHERE id='"+id+"'");
+			
+			if (rs.first() == true) {
+				formato = rs.getString(1);
+			}
+			miStatement.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			System.out.println("Error en dameNombreFormato del BDController" + e.getMessage());
+		}
+		return formato;	
 	}
 	
 	public String dameNombreVideojuego(int id) {

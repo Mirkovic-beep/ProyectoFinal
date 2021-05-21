@@ -61,8 +61,8 @@
 						
 						
 						<div class="search-form">
-							<%int id = 3; %>										
-								<form action="single.jsp?id=<%=id %>" method="post">
+															
+								<form action="single2.jsp" method="post">
 									<label><img src="images/icon-search.png"></label>
 									<input type="text" name="nombre_juego" id="nombre_juego" placeholder="Buscar...">
 								</form>
@@ -72,8 +72,6 @@
 							</div> <!-- .container -->
 						</div> <!-- .site-header -->
 			
-		
-
 			<div class="home-slider">
 				<ul class="slides">
 				

@@ -80,31 +80,26 @@
 						
 						<div class="product-list">
 							
-				<form action="generoform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
-								<h3>Modificar genero</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona genero</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<generos.size();i++){%>
-									<li class="input-option" data-value="<%=generos.get(i).getId()%>">
-									<img src="../images/<%=generos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
-									<h3 id="centro"><%=generos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_genero" value="<%=generos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
-								
-							</section>
+						
+						<h3>Modificar genero</h3>
+					
+							<%for(int i=0;i<generos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="generoform.jsp?id_genero=<%=generos.get(i).getId()%>"><img src="../images/<%=generos.get(i).getNombre()%>.PNG"  width="100" height="200" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=generos.get(i).getNombre().toUpperCase() %></a></h3>
+										
+										<br>										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Modificar"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

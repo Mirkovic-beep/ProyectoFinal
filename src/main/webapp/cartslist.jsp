@@ -33,8 +33,8 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="../index.jsp" id="branding">
-						<img src="../images/logo.png" alt="" class="logo">
+					<a href="index.jsp" id="branding">
+						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
 							<small class="site-description">Reinventing the future</small>
@@ -42,7 +42,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="../index.jsp">Logout <small>(Admin)</small></a>
+						<a href="../../index.jsp">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
@@ -61,8 +61,8 @@
 					<div class="breadcrumbs">
 						<div class="breadcrumbs">
 						<div class="container">
-							<a href="../index.jsp">Home</a>
-							<a href="../indexadmin.jsp">Admin</a>
+							<a href="index.jsp">Home</a>
+							<a href="indexadmin.jsp">Admin</a>
 							<span>Clientes</span>
 						</div>
 					</div>
@@ -75,30 +75,29 @@
 						
 						<div class="product-list">
 							
-				<form action="cart.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
 								<h3>Consultar carrito cliente</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona cliente</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<clientes.size();i++){%>
-									<li class="input-option" data-value="<%=clientes.get(i).getId()%>">
-									<h3><%=clientes.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_cliente" value="<%=clientes.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+								<%for(int i=0;i<clientes.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="cart.jsp?id_cliente=<%=clientes.get(i).getId() %>"><img src="images/<%=clientes.get(i).getNombre()%>.jpg" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=clientes.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=clientes.get(i).getApellidos() %></small>
+										<small class="price"><%=clientes.get(i).getDni() %></small>
+										
+										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							
+						<div class="">
+					
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Mostrar carrito"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

@@ -78,34 +78,25 @@
 					<div class="page">
 						
 						<div class="product-list">
+						
+							<%for(int i=0;i<desarrolladoras.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="desarrolladoraform.jsp?id_desarrolladora=<%=desarrolladoras.get(i).getId() %>"><img src="../images/<%=desarrolladoras.get(i).getNombe()%>.png"  width="100" height="200" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=desarrolladoras.get(i).getNombe().toUpperCase() %></a></h3>
+										<br>
+										<small class="price"><%=desarrolladoras.get(i).getSede() %></small>
+									
+										
+										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
 							
-				<form action="desarrolladoraform.jsp" method="post">
-					<div class="row gtr-50">
-							<section>		
-								<h3>Lista desarrolladoras</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona desarrolladora</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<desarrolladoras.size();i++){%>
-									<li class="input-option" data-value="<%=desarrolladoras.get(i).getId()%>">
-									<img src="../images/<%=desarrolladoras.get(i).getNombe() %>.png" class="center" width="500" height="600">
-									<h3 id="centro"><%=desarrolladoras.get(i).getNombe()%></h3>
-									<input type="hidden" class="option" name="id_desarrolladora" value="<%=desarrolladoras.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
-								
-							</section>
-						</div>
-						<div>
-								<input type="submit" class="button alt" value="Ver detalles"/>
-						</div>
-						</form>
-								
-						</div> <!-- .product-list -->
+					</div>
+					
 					</div>
 				</div> <!-- .container -->
 			</main> <!-- .main-content -->

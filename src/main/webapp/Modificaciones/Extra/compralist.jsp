@@ -50,7 +50,7 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="../../index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="Desarrolladora-videojuegolist.jsp">Desarrolladora-Videojuego</a></li>
 							<li class="menu-item"><a href="Local-videojuegolist.jsp">Local-Videojuego</a></li>
 							<li class="menu-item"><a href="Formato-videojuegolist.jsp">Formato-Videojuego</a></li>
@@ -78,30 +78,28 @@
 						
 						<div class="product-list">
 							
-				<form action="compraform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
 								<h3>Modificar compra</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona un cliente del que quiera cambiar algun dato de una compra</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<clientes.size();i++){%>
-									<li class="input-option" data-value="<%=clientes.get(i).getId()%>">
-									<h3 id="centro"><%=clientes.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_cliente" value="<%=clientes.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+								<%for(int i=0;i<clientes.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="compraform.jsp?id_cliente=<%=clientes.get(i).getId() %>"><img src="../../images/<%=clientes.get(i).getNombre()%>.jpg" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=clientes.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=clientes.get(i).getApellidos() %></small>
+										<small class="price"><%=clientes.get(i).getDni() %></small>
+										
+										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							
+						
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Modificar"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

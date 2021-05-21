@@ -96,6 +96,7 @@
 										<ul class="scrollable-menu">
 											<%for (int i=0;i<generos.size();i++){%>
 											<li class="input-option" data-value="<%=generos.get(i).getNombre()%>">
+											<img src="../images/<%=generos.get(i).getNombre() %>.PNG"  class="center" width="100" height="100">
 											<h3 id="centro"><%=generos.get(i).getNombre()%></h3>
 											<input type="hidden" class="option" name="nombre_genero" value="<%=generos.get(i).getNombre()%>"/>
 											</li>

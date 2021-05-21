@@ -56,6 +56,7 @@
 							<li class="menu-item"><a href="formatos.jsp">Formato </a></li>
 							<li class="menu-item"><a href="distribuidores.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="bajasextra.jsp">Uniones</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
@@ -78,32 +79,28 @@
 						
 						<div class="product-list">
 							
-				<form action="../operaciones_baja.jsp?accion=BajaGenero" method="post">
 					<div class="row gtr-50">
 					
-							<section>		
 								<h3>Baja genero</h3>
 								
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona genero</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<generos.size();i++){%>
-									<li class="input-option" data-value="<%=generos.get(i).getId()%>">
-									<h3 id="centro"><%=generos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_genero" value="<%=generos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+								<%for(int i=0;i<generos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="../operaciones_baja.jsp?accion=BajaGenero&id_genero=<%=generos.get(i).getId()%>"><img src="../images/<%=generos.get(i).getNombre()%>.PNG"  width="100" height="200" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=generos.get(i).getNombre().toUpperCase() %></a></h3>
+										
+										<br>										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+								
+								
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Dar de baja"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

@@ -106,7 +106,7 @@
 										</div>
 																				
 										<div class="user-box">
-											<input type="text" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>" data-bs-toggle="tooltip" data-bs-html="true"
+											<input type="number" id="centro" name="ncopias" id="ncopias" required placeholder="Número de copias" value="<%=videojuego.getNcopias()%>" data-bs-toggle="tooltip" data-bs-html="true"
 											data-bs-placement="top" title="Numero de copias"/>
 										</div>
 										<div class="user-box">

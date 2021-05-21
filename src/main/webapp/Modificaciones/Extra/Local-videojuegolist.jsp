@@ -26,7 +26,7 @@
 	
 <%BDController controladorBD= new BDController(); %>
 <%ArrayList<Almacenar> almacenar = controladorBD.dameAlmacenar();%>
-<%ArrayList<Videojuego> videojuegos = controladorBD.dameVideojuegos();%>
+<%ArrayList<Videojuego> juegos = controladorBD.dameVideojuegos();%>
 
 
 
@@ -50,7 +50,7 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="../index.jsp"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="../../index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="Desarrolladora-videojuegolist.jsp">Desarrolladora-Videojuego</a></li>
 							<li class="menu-item"><a href="Local-videojuegolist.jsp">Local-Videojuego</a></li>
 							<li class="menu-item"><a href="Formato-videojuegolist.jsp">Formato-Videojuego</a></li>
@@ -77,32 +77,29 @@
 					<div class="page">
 						
 						<div class="product-list">
+						
+					<h3>Modificar local de videojuegos</h3>
+				
 							
-				<form action="Local-videojuegoform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
-								<h3>Modificar el local o locales donde esta el juego</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona un videojuego para cambiar su local asociado</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<videojuegos.size();i++){%>
-									<li class="input-option" data-value="<%=videojuegos.get(i).getId()%>">
-									<img src="../../images/<%=videojuegos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
-									<h3 id="centro"><%=videojuegos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_videojuego" value="<%=videojuegos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
-								
-							</section>
+					
+					<%for(int i=0;i<juegos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="Local-videojuegoform.jsp?id_videojuego=<%=juegos.get(i).getId()%>"><img src="../../images/<%=juegos.get(i).getNombre()%>.jpg"  width="100" height="200" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
+										<input type="hidden" class="option" name="id_videojuego" value="<%=juegos.get(i).getId()%>"/>
+										
+										<br>										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Modificar"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

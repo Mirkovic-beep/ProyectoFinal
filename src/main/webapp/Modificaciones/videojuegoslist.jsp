@@ -79,31 +79,27 @@
 						
 						<div class="product-list">
 							
-				<form action="videojuegosform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
 								<h3>Modificar videojuego</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona videojuego</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<juegos.size();i++){%>
-									<li class="input-option" data-value="<%=juegos.get(i).getId()%>">
-									<img src="../images/<%=juegos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
-									<h3 id="centro"><%=juegos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_videojuego" value="<%=juegos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+								<%for(int i=0;i<juegos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="videojuegosform.jsp?id_videojuego=<%=juegos.get(i).getId()%>"><img src="../images/<%=juegos.get(i).getNombre()%>.jpg"  width="100" height="200" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
+										<input type="hidden" class="option" name="id_videojuego" value="<%=juegos.get(i).getId()%>"/>
+										
+										<br>										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							
+						
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Modificar"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

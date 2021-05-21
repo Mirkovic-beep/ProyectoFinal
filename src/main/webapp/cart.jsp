@@ -41,7 +41,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">NelsON Games</h1>
@@ -50,8 +50,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> Carrito VacÃ­o</a>
-						<a href="#" class="login-button">Iniciar sesion/Registro</a>
+						<a href=index.jsp#">Logout <small>(Admin)</small></a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
@@ -87,7 +86,7 @@
 						<table class="cart">
 							<thead>
 								<tr>
-									<th class="product-name">Nombre del producto</th>
+									<th class="product-name" style="text-align:center;">Nombre del producto</th>
 									<th class="product-price">Precio</th>
 									<th class="product-qty">Local</th>
 									<th class="product-total">Fecha</th>
@@ -95,33 +94,49 @@
 							</thead>
 							<tbody>
 					
+					<h2>Carrito de: <%=controladorBD.dameNombreCliente(id_cliente) %></h2>
+					
 					<%for(int i=0;i<compras.size();i++){ %>
 								<tr>
 									<td class="product-name">
 									<div class="product-detail">
-											<h3 class="product-title" style=""><%=controladorBD.dameNombreVideojuego(compras.get(i).getId_videojuego())%></h3>
+											<h3 class="product-title" style="text-align:center;"><%=controladorBD.dameNombreVideojuego(compras.get(i).getId_videojuego())%></h3>
 										</div>
 										<div class="product-thumbnail">
 											<img src="images/<%=controladorBD.dameNombreVideojuego(compras.get(i).getId_videojuego())%>.jpg" style="width:100px" alt="">
 										</div>
 										
 									</td>
-									<td class="product-title"><%=controladorBD.damePrecioVideojuego(compras.get(i).getId_videojuego()) %> €</td>
-									<td class="product-qty"></td>
-									<td class="product-total"></td>
+									<td class="product-title" style="text-align:center;"><%=controladorBD.damePrecioVideojuego(compras.get(i).getId_videojuego()) %> €</td>
+									<td class="product-thumbnail"><h3 class="product-title" style="text-align:center;"><%=controladorBD.dameNombreLocal(compras.get(i).getId_local())%></h3><img src="images/<%=controladorBD.dameNombreLocal(compras.get(i).getId_local())%>.jpg" style="width:200px" alt="">
+									</td>
+									<td class="product-title" style="text-align:center;"><%=compras.get(i).getFecha_compra() %> </td>
 									</tr>
 						<%} %>
 								
+						<%
+						ArrayList <Videojuego> videojuegos = new ArrayList<Videojuego>();
+						
+						double total = 0;
+						
+						for(int i=0;i<compras.size();i++){
 							
+						total = controladorBD.dameJuego(compras.get(i).getId_videojuego()).getPrecio() + total;
+							
+
+						}
+		
+						
+						
+						%>
 							</tbody>
 						</table> <!-- .cart -->
 
 						<div class="cart-total">
-							<p><strong>Subtotal:</strong> 110.00â¬</p>
-							<p><strong>Envio:</strong> 10.00â¬</p>
-							<p class="total"><strong>Total</strong><span class="num">120.00â¬</span></p>
+							<p><strong>Subtotal: </strong><%=total %>€</p>
+							<p><strong>Envio: </strong> 10.00€</p>
+							<p class="total"><strong>Total</strong><span class="num"><%=total +10 %></span></p>
 							<p>
-								<a href="#" class="button muted">Continuar comprando</a>
 								<a href="#" class="button">Finalizar y pagar</a>
 							</p>
 						</div> <!-- .cart-total -->
@@ -205,11 +220,11 @@
                 </div>
 				<div class="col-md-6">
 					<h2 class="section-title">Crear una cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Nombre de usuario...">
-						<input type="text" placeholder="Email...">
-						<input type="text" placeholder="ContraseÃ±a...">
-						<input type="submit" value="Registrarse">
+					<form action="operaciones_alu.jsp?accion=AltaCliente" method="post">
+						<input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Nombre de usuario...">
+						<input type="text" name="apellidos_cliente" id="id_cliente" placeholder="Apellidos...">
+						<input type="text" name="dni_cliente" id="dni_cliente"placeholder="Dni...">
+						<input type="submit" value="Dar de alta">
 					</form>
 				</div> <!-- .column -->
 			</div> <!-- .row -->

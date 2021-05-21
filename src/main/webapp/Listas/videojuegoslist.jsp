@@ -79,31 +79,28 @@
 						
 						<div class="product-list">
 							
-				<form action="videojuegosform.jsp" method="post">
 					<div class="row gtr-50">
-							<section>		
 								<h3>Lista videojuegos</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Lista</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<juegos.size();i++){%>
-									<li class="input-option" data-value="<%=juegos.get(i).getId()%>">
-									<img src="../images/<%=juegos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
-									<h3 id="centro"><%=juegos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_videojuego" value="<%=juegos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
+							<div class="product-list">
+						
+							<%for(int i=0;i<juegos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="../single3.jsp?id=<%=juegos.get(i).getId() %>"><img src="../images/<%=juegos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=juegos.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=juegos.get(i).getPrecio() %> €</small>
+										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							</div> <!-- .product-list -->
+							
 						</div>
 						<div>
-								<input type="submit" class="button alt" value="Ver datos"/>
 						</div>
-						</form>
 								
 						</div> <!-- .product-list -->
 					</div>

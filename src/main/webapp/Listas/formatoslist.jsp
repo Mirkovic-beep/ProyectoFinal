@@ -84,25 +84,23 @@
 					<div class="row gtr-50">
 							<section>		
 								<h3>Lista formatos</h3>
-						<div class="">
-							<div class="mm-dropdown">
-								<div class="textfirst">Selecciona formato</div>
-								<ul class="scrollable-menu">
-									<%for (int i=0;i<formatos.size();i++){%>
-									<li class="input-option" data-value="<%=formatos.get(i).getId()%>">
-									<img src="../images/<%=formatos.get(i).getNombre() %>.jpg" class="center" width="500" height="600">
-									<h3 id="centro"><%=formatos.get(i).getNombre()%></h3>
-									<input type="hidden" class="option" name="id_formato" value="<%=formatos.get(i).getId()%>"/>
-									</li>
-									<%} %>
-									</ul>
-								</div>
-							</div>
 								
-							</section>
-						</div>
-						<div>
-								<input type="submit" class="button alt" value="Ver detalles"/>
+								<div class="product-list">
+						
+							<%for(int i=0;i<formatos.size();i++){ %>
+								<div class="product">
+									<div class="inner-product">
+										<div class="figure-image">
+											<a href="formatoform.jsp?id_formato=<%=formatos.get(i).getId() %>"><img src="../images/<%=formatos.get(i).getNombre()%>.jpg" alt="Game 1"></a>
+										</div>
+										<h3 class="product-title"><a href="#"><%=formatos.get(i).getNombre().toUpperCase() %></a></h3>
+										<small class="price"><%=formatos.get(i).getStock() %></small>
+										
+										
+									</div>
+								</div> <!-- .product -->	
+							<%} %>
+							</div> <!-- .product-list -->
 						</div>
 						</form>
 								

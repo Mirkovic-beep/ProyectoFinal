@@ -57,7 +57,7 @@
 							<li class="menu-item"><a href="Listas/formatoslist.jsp">Formato </a></li>
 							<li class="menu-item"><a href="Listas/distribuidoreslist.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="Listas/desarrolladoraslist.jsp">Desarrolladora </a></li>
-							<li class="menu-item"><a href="Listas/altasextra.jsplist">Uniones</a></li>
+							<li class="menu-item"><a href="Listas/modificacionesextra.jsp">Uniones</a></li>
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->

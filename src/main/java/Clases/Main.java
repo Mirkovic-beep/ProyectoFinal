@@ -25,6 +25,12 @@ public class Main {
 		
 		int id_transaccion = controlador.calcularCod_transaccion();
 		System.out.println(id_transaccion);
+		
+		ArrayList<Almacenar> almacenes = controlador.dameLocal_videojuego();
+		
+		for (int i = 0; i < almacenes.size(); i++) {
+			System.out.println(controlador.dameNombreVideojuego(almacenes.get(i).getId_videojuego()));
+		}
 	}
 
 }

@@ -56,6 +56,8 @@
 							<li class="menu-item"><a href="Bajas/formatos.jsp">Formato </a></li>
 							<li class="menu-item"><a href="Bajas/distribuidores.jsp">Distribuidor </a></li>
 							<li class="menu-item"><a href="Bajas/desarrolladoras.jsp">Desarrolladora </a></li>
+							<li class="menu-item"><a href="Bajas/bajasextra.jsp">Uniones</a></li>
+							
 						</ul> <!-- .menu -->
 						<div class="mobile-navigation"></div> <!-- .mobile-navigation -->
 					</div> <!-- .main-navigation -->
